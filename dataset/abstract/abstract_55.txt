@@ -1,0 +1,13 @@
+Improvements in text generation technologies
+such as machine translation have necessitated
+more costly and time-consuming human evaluation procedures to ensure an accurate signal.
+We investigate a simple way to reduce cost
+by reducing the number of text segments that
+must be annotated in order to accurately predict a score for a complete test set. Using a
+sampling approach, we demonstrate that information from document membership and automatic metrics can help improve estimates compared to a pure random sampling baseline. We
+achieve gains of up to 20% in average absolute error by leveraging stratified sampling and
+control variates. Our techniques can improve
+estimates made from a fixed annotation budget,
+are easy to implement, and can be applied to
+any problem with structure similar to the one
+we study

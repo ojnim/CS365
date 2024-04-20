@@ -1,0 +1,10 @@
+Incorrect labels in training data occur when human annotators make mistakes or when the data
+is generated via weak or distant supervision. It
+has been shown that complex noise-handling
+techniques - by modeling, cleaning or filtering
+the noisy instances - are required to prevent
+models from fitting this label noise. However,
+we show in this work that, for text classification tasks with modern NLP models like BERT,
+over a variety of noise types, existing noisehandling methods do not always improve its
+performance, and may even deteriorate it, suggesting the need for further investigation. We
+also back our observations with a comprehensive analysis.

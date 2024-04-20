@@ -1,0 +1,22 @@
+Machine-learned models for author profiling
+in social media often rely on data acquired via
+self-reporting-based psychometric tests (questionnaires) filled out by social media users.
+This is an expensive but accurate data collection strategy. Another, less costly alternative,
+which leads to potentially more noisy and biased data, is to rely on labels inferred from
+publicly available information in the profiles
+of the users, for instance self-reported diagnoses or test results. In this paper, we explore
+a third strategy, namely to directly use a corpus
+of items from validated psychometric tests as
+training data. Items from psychometric tests
+often consist of sentences from an I-perspective
+(e.g., “I make friends easily.”). Such corpora of
+test items constitute ‘small data’, but their availability for many concepts is a rich resource. We
+investigate this approach for personality profiling, and evaluate BERT classifiers fine-tuned
+on such psychometric test items for the big five
+personality traits (openness, conscientiousness,
+extraversion, agreeableness, neuroticism) and
+analyze various augmentation strategies regarding their potential to address the challenges
+coming with such a small corpus. Our evaluation on a publicly available Twitter corpus
+shows a comparable performance to in-domain
+training for 4/5 personality traits with T5-based
+data augmentation.

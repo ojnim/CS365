@@ -1,0 +1,52 @@
+1 Introduction
+South Asia1
+is home to one-quarter of the world’s
+population and boasts immense linguistic diversity (Saxena and Borin, 2008; Bashir, 2016). With
+members of at least four top-level major linguistic
+families2
+and several putative linguistic isolates,
+this region is a fascinating arena for linguistic research. The languages of South Asia, moreover,
+have a long recorded history, and have undergone
+complex change through genetic descent, sociolinguistic interactions, and contact influence.
+Nevertheless, South Asian languages for the
+most part remain severely underdocumented (van
+Driem, 2008), and several languages with even
+official administrative status (e.g. Sindhi) are lowresource (if not data-scarce) for the purposes of
+all natural language processing tasks (Joshi et al.,
+2020). This data scatteredness persists despite long
+native traditions of linguistic description, continued language vitality with active use on the internet, and vast numbers of speakers (Rahman, 2008;
+Groff, 2017).
+We argue that the most basic problem in NLP/CL
+work on South Asian languages is not data scarcity,
+but data scatteredness. There is much data to be
+extracted for even the most endangered languages
+(e.g., Burushaski, a language isolate of the northwest), from annotated corpora and grammatical
+descriptions compiled by linguists, if only one is
+willing to wrangle idiosyncratic data formats and
+digitise existing texts. Thus far, commercial interests and scientific agencies have only intermittently
+supported the development of language technology
+for the region—taking a new approach, we propose a research programme from the perspective
+of computational historical linguistics, outlining
+current data gathering initiatives in this discipline
+and potential benefits to other work across NLP.
+5 Conclusion
+In this paper, we gave an overview of the state
+of NLP in South Asia with a special focus on
+historical–comparative linguistics, a research programme of which we believe will help address the
+issue of data scatteredness. South Asian languages
+are not obliged to remain low-resource (in the NLP
+sense), and have plenty of speakers who would like
+access to and would benefit from language technologies, along with a multitude of raw linguistic
+resources that can be used to cultivate them. Incentives have not been in place to support those
+demands, however, so we suggest an alternative
+route founded in linguistic research to gather data.
+Collective efforts have had great success recently
+in NLP—besides institutional efforts like the Stanford Center for Research on Foundation Models
+(Bommasani et al., 2021) and HuggingFace’s BigScience Workshop,12 there are grassroots organisations like MaskhaneNLP for African languages
+(Nekoto et al., 2020) and AI4Bharat (Kakwani
+et al., 2020) that are working towards improving
+resource availability. Our proposals in this paper
+are the first seeds of a programme similar in spirit,
+motivated by a dual interest in understanding South
+Asian language history and remedying inequalities
+in technological availability.

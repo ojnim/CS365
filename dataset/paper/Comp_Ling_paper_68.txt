@@ -1,0 +1,44 @@
+In this work we explore the strategies of BERT
+(Devlin et al., 2019) serving for multiple tasks under the following two constraints: 1) Memory and
+computational resources are limited. On edge devices such as mobile phones, this is usually a hard
+constraint. On local GPU stations and Cloud-based
+servers, this constraint is not as hard but it is still
+desirable to reduce the computation overhead to cut
+the serving cost. 2) The tasks are expected to be
+modular and are subject to frequent updates. When
+one task is updated, the system should to be able
+to quickly adapt to the task modification such that
+the other tasks are not affected. This is a typical
+situation for applications (e.g. AI assistant) under
+iterative and incremental development.
+In principle, there are two strategies of BERT
+serving: single-task serving and multi-task serving.
+In single-task serving, one independent single-task
+model is trained and deployed for each task. Typically, those models are obtained by fine-tuning a
+copy of the pre-trained BERT and are completely
+different from each other. Single-task serving has
+the advantage of being flexible and modular as
+there is no dependency between the task models.
+The downside is its inefficiency in terms of both
+memory usage and computation, as neither parameters nor computation are shared or reused across the
+tasks. In multi-task serving, one single multi-task
+model is trained and deployed for all tasks. This
+model is typically trained with multi-task learning (MTL) (Caruana, 1997; Ruder, 2017). Compared to its single-task counterpart, multi-task serving is much more computationally efficient and
+incurs much less memory usage thanks to its sharing mechanism. However, it has the disadvantage
+in that any modification made to one task usually
+affect the other tasks.
+The main contribution of this work is the proposition of a framework for BERT serving that simultaneously achieves the flexibility of single-task
+serving and the efficiency of multi-task serving.
+Our method is based on the idea of partial finetuning, i.e. only fine-tuning some topmost layers
+of BERT depending on the task and keeping the
+remaining bottom layers frozen. The fine-tuned
+layers are task-specific, which can be updated on
+a per-task basis. The frozen layers at the bottom,
+which plays the role of a feature extractor, can be
+shared across the tasks.
+We have presented our framework that is designed
+to provide efficient and flexible BERT-based multitask serving. We have demonstrated on eight
+GLUE datasets that the proposed method achieves
+both strong performance and efficiency. We release
+our code2
+and hope that it can facilitate BERT serving in cost-sensitive applications.

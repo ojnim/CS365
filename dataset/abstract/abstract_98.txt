@@ -1,0 +1,21 @@
+Numerous analyses of reading time (RT) data
+have been implemented—all in the effort
+to better understand the cognitive processes
+driving reading comprehension. However,
+data measured on words at the end of a
+sentence—or even at the end of a clause—is
+often omitted due to the confounding factors introduced by so-called “wrap-up effects,” which
+manifests as a skewed distribution of RTs for
+these words. Consequently, the community’s
+understanding of the cognitive processes that
+might be involved in these wrap-up effects
+is limited. In this work, we attempt to learn
+more about these processes by examining
+the relationship between wrap-up effects
+and information-theoretic quantities, such as
+word and context surprisals. We find that the
+distribution of information in prior contexts is
+often predictive of sentence- and clause-final
+RTs (while not of sentence-medial RTs). This
+lends support to several prior hypotheses about
+the processes involved in wrap-up effects.

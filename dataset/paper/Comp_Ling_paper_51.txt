@@ -1,0 +1,51 @@
+For many languages, domains and tasks, large
+datasets with high-quality labels are not available.
+To tackle this issue, cheaper data acquisition methods have been suggested, such as crowdsourcing
+or automatic annotation methods like weak and
+distant supervision. Unfortunately, compared to
+gold-standard data, these approaches come with
+more labeling mistakes, which are known as noisy
+labels. Noise-handling has become an established
+approach to mitigate the negative impact of learning with noisy labels. A variety of methods have
+been proposed that model the noise, or clean and
+filter the noisy instances (Hedderich et al., 2021;
+Algan and Ulusoy, 2021). Jindal et al. (2019) show
+e.g. a 30% boost in performance after applying
+noise-handling techniques on a CNN-based text
+classifier.
+In a recent work, Tänzer et al. (2021) showed
+that BERT (Devlin et al., 2019) has an inherent
+robustness against noisy labels. The generalization
+performance on the clean distribution drops only
+slowly with the increase of the mislabeled samples.
+Also, they show that early-stopping is crucial for
+learning with noisy labels as BERT will eventually memorize all wrong labels when trained long
+enough. However, their experiments only focus on
+a single type of noise and a limited range of noise
+levels. It remains unclear if BERT still performs robustly under a wider range of noise types and with
+higher fractions of mislabeled samples. Moreover,
+they perform early-stopping on a clean validation
+set, which may not be available under low resource
+settings. Last but not least, they do not compare to
+any noise-handling methods.
+In this work, we investigate the behaviors of
+BERT on tasks with different noise types and noise
+levels. We also study the effect of noise-handling
+methods under these settings. Our main results
+include (1) BERT is robust against injected noise,
+but could be vulnerable to noise from weak supervision. In fact, the latter, even at a low level, can
+be more challenging than high injected noise. (2)
+Existing noise-handling methods do not improve
+the peak performance of BERT under any noise
+settings we investigated; as is shown with further
+analysis, noise-handling methods rarely render the
+correct labels more distinguishable from the incorrect ones.
+On several text classification datasets and for different noise types, we showed that BERT is noise
+resistant under injected noise, but not necessarily
+under weak supervision noise. In both cases, the
+improvement obtained by applying noise-handling
+methods are limited. Our analysis on the separability of losses corresponding to correct and incorrect
+labeled samples provides evidence to this argument.
+Our analysis offers both motivation and insights to
+further improve label noise-handling methods and
+make them useful on more realistic types of noise.

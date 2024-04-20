@@ -1,0 +1,65 @@
+In recent years, morphological (re)inflection tasks
+have gained a lot of attention in NLP.1 Subsequently, several multi-lingual morphological
+datasets have emerged to allow for the supervised
+training of morphological models, most notably
+UniMorph (McCarthy et al., 2020), that organizes
+words into inflectional tables, annotating each inflected word-form with its respective feature-set.
+While western languages are widely represented
+in UniMorph, many morphologically rich languages (Tsarfaty et al., 2010, 2020) exhibit rich
+and diverse inflection patterns that make them less
+compatible with the flat feature-sets in the UniMorph schema. Concretely, in some cases it is
+completely impossible to annotate parts of the inflectional paradigm with a flat bundle, as is the
+case with case stacking, and in other cases, such as
+polypersonal agreement, the annotation solutions
+provided are unnatural, non-transparent, and are
+barely used in practice. As a result, languages exhibiting such phenomena are under-represented in
+UniMorph, and when they are, the inflection tables
+for these languages are often incomplete.
+In this paper we propose a general solution
+for annotating such structures, thus extending the
+UniMorph annotation schema to fully cover a
+wider range of morphologically-complex argumentmarking phenomena. Following Anderson (1992),
+we propose a so-called layered annotation of features, where the inflectional features take the form
+of a hierarchical structure, in the spirit of formal
+linguistic frameworks as that of Johnson (1988);
+Pollard and Sag (1994); Shieber (2003); Bresnan
+et al. (2015). We organize the features of multiple
+arguments in a hierarchical structure, rather than
+the current flat structure that accommodates only
+subject concords. This schema shift allows for an
+adequate annotation of polypersonal agreement and
+of possessed nominals, where a word has multiple
+number and gender features, as well as forms with
+case stacking, where a word has multiple cases.
+We apply the suggested solution to Georgian,
+an agglutinative language with a convoluted verbal system, that indicates both subjects and objects
+with true affixes (rather than clitics that are omittable from the inflection tables). We create a new
+human-verified dataset for Georgian, that covers
+most of the grammatical phenomena in Georgian
+verbs, and includes 118 lemmas, adding up to about
+21k verb forms, compared with the 47 lemmas and
+3.3k verb forms, some of which are erroneous, currently available in the Georgian UniMorph.
+We use the new dataset to train a standard
+morphological reinflection model (Silfverberg and
+Hulden, 2018) and show that training on the Georgian inflections currently available in UniMorph
+is not sufficient for generalizing to the more inclusive set of inflections that are allowed by the
+new scheme. We conclude that our annotation approach provides a more complete representation of
+linguistic behaviors, and that our proposed Georgian dataset provides a much better depiction of
+the morphological phenomena that exist in the data
+and the computational challenge reflected therein.
+We therefore call to apply layered annotation to
+all currently existing morphological data in UniMorph, to more consistently and transparently capture the linguistic reality and morphological complexity reflected in the worlds languages.
+This paper proposes a transition of the UniMorph
+annotation standard to a layered hierarchical annotation of features. This revised schema caters for
+complex marking phenomena including multiple
+pronominal agreement. We apply it to Georgian,
+and construct a corresponding new dataset that is
+large, balanced, complete with respect to grammatical phenomena in the Georgian verb system and
+verified by native-speakers. Our experiments with
+a standard reinflection model on the old and new
+Georgian datasets shows that the old UniMorph
+dataset does not generalize well to the new testset, due to its partial coverage. This work is intended to encourage the community to extend the
+annotation of different languages to include phenomena such as polypersonal agreement and others
+that can be dealt with using a hierarchical annotation, ultimately leading to more complete and
+consistent benchmarks for studying non-trivial and
+less-explored areas of computational morphology.

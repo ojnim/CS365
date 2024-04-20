@@ -1,0 +1,87 @@
+1 Introduction
+Contextualized word representations provided by
+models such as BERT (Devlin et al., 2019),
+RoBERTa (Liu et al., 2019), GPT3 (Brown et al.,
+2020), T5 (Raffel et al., 2020) and more, were
+shown in recent years to be a critical component for
+obtaining state-of-the-art performance on a wide
+range of Natural Language Processing (NLP) tasks,
+from surface syntactic tasks as tagging and parsing,
+to downstream semantic tasks as question answering, information extraction and text summarization.
+While advances reported for English using such
+models are unprecedented, previously reported results using PLMs in Modern Hebrew are far from
+satisfactory. Specifically, the BERT-based Hebrew
+section of multilingual-BERT (Devlin et al., 2019)
+(henceforth, mBERT), did not provide a similar
+boost in performance as observed by the English
+section of mBERT. In fact, for several reported
+tasks, the results of the mBERT model are on a par
+with pre-neural models or neural models based on
+non-contextual embeddings (Tsarfaty et al., 2020;
+Klein and Tsarfaty, 2020). An additional Hebrew
+BERT-based model, HeBERT (Chriqui and Yahav,
+2021), has been recently released, yet without empirical evidence of performance improvements on
+key components of the Hebrew NLP pipeline.
+The challenge of developing PLMs for
+morphologically-rich and medium-resourced languages such as Modern Hebrew is twofold. First,
+contextualized word representations are obtained
+by pre-training a large language model on massive
+quantities of unlabeled texts. In Hebrew, the size of
+published texts available for training is relatively
+small. To wit, Hebrew Wikipedia (300K articles)
+used for training mBERT is orders of magnitude
+smaller compared to English Wikipedia (6M articles). Second, commonly accepted benchmarks for
+evaluating Hebrew models, via Morpho-Syntactic
+Tagging and Parsing (Sadde et al., 2018), or Named
+Entity Recognition (Bareket and Tsarfaty, 2020)
+require decomposition of words into morphemes,
+1
+which are distinct of the sub-words (a.k.a. wordpieces) provided by standard PLMs. Such morphemes are as of yet not readily available in the
+PLMs’ output embeddings.
+Evaluating BERT-based models on morphemelevel tasks is thus non-trivial due to the mismatch
+between the sub-word tokens used as sub-word
+
+input units used by the PLMs and the sub-word
+morphological units needed for evaluation. PLMs
+employ sub-word tokenization mechanisms such
+as WordPiece or Byte-Pair Encoding (BPE) for the
+purposes of minimizing Out-Of-Vocabulary words
+(Sennrich et al., 2016). These sub-word tokens are
+generated in a pre-processing step, without utilization of any linguistic information, and passed as
+input to the PLM. Crucially, such word-pieces do
+not reflect morphological units. Extracting morphological units from contextualized vectors provided
+by PLMs is challenging yet necessary in order to
+enable morphological-level evaluation of Hebrew
+PLMs on standard benchmarks.
+In this paper we introduce AlephBERT, a Hebrew
+PLM trained on more data and a larger vocabulary
+than any Hebrew PLM before.2 Moreover, we propose a novel architecture that extracts the morphological sub-word units implicitly encoded in the
+contextualized vectors outputted by PLMs. Using
+AlephBERT and the proposed morphological extraction model we enable evaluation on all existing
+Hebrew benchmarks. We thus present a processing and evaluation pipeline tailored to fit Morphologically Rich Languages (MRLs), i.e., covering
+
+sentence-level, word-level and most importantly
+sub-word morphological-level tasks (Segmentation,
+Part-of-Speech Tagging, full Morphological Tagging, Dependency Parsing, Named Entity Recognition (NER) and Sentiment Analysis), and present
+new and improved SOTA for Modern Hebrew on
+all of these tasks.
+
+7 Conclusion
+Modern Hebrew, a morphologically-rich and
+medium-resourced language, has for long suffered
+from a gap in the resources available for NLP applications, and lower level of empirical results than
+observed in other, resource-rich languages. This
+work provides the first step in remedying the situation, by making available a large Hebrew PLM,
+named AlephBERT, with larger vocabulary and
+larger training set than any Hebrew PLM before,
+and with clear evidence as to its empirical advantages. Crucially, we augment the PLM with
+a morphological disambiguation component that
+matches the input granularity of the downstream
+tasks. Our system does not presuppose Hebrewspecific linguistic-rules, and can be transparently
+applied to any language for which 2-level segmentation data (i.e., the standard UD benchmarks) exists.
+AlephBERTbase obtains state-of-the-art results on
+morphological segmentation, POS tagging, morphological feature extraction, dependency parsing,
+named-entity recognition, and sentiment analysis,
+outperforming all existing Hebrew PLMs. Our proposed morphologically-driven pipeline11 serves as
+a solid foundation for future evaluation of Hebrew
+PLMs and of MRLs in general.

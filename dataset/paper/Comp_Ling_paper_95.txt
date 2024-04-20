@@ -1,0 +1,73 @@
+The IS-A relation denotes a subclass relation. If
+A is-a B, then the concept A is a subclass of the
+concept B, or A is subsumed by B. The IS-A relation is frequently encoded in lexical taxonomies.
+The IS-A relation has great significance since it empowers generalization, and generalization is at the
+core of machine inference for text understanding.
+The IS-A hierarchy is inherently transitive, i.e., for
+three concepts (or word senses) A, B, and C, A
+is-a B and B is-a C entail A is-a C. For example,
+knowing that humanoid is a type of automaton, and
+automaton is a type of artifact, then by transitivity,
+the relation humanoid is an artifact also holds.
+The concept of transitivity is easy to comprehend by humans. However, deep learning models, including pre-trained language models such
+as BERT (Devlin et al., 2019), are known to lack
+some human-level generalization capacities in text
+understanding, or it may show some capacities for
+making correct predictions but for the wrong reasons, including being insensitive to negation and exploiting only surface features (Kassner and Schutze,
+2020; Ettinger, 2020), lacking understanding of perceptual properties (Forbes et al., 2019; Weir et al.,
+2020), and surface form competition (Holtzman
+et al., 2021).
+Despite the issues raised above, previous work
+has shown that BERT’s layers align with the NLP
+pipeline, and representations in the different layers
+of BERT are found to capture different levels of
+textual understanding, from syntactic (e.g., partof-speech tagging) to semantic (e.g., semantic role
+labeling) as the layers go from the lower to higher
+layers (Tenney et al., 2019a,b). Recent studies
+also suggest that BERT can capture lexical relation
+clues from words in contexts (Vulic et al. ´ , 2020;
+Misra et al., 2020). Researchers begin to recognize BERT as an open knowledge source and query
+BERT for information (Petroni et al., 2019). Moreover, BERT, even without fine-tuning on downstream tasks, possesses a fair ability to produce contextualized embeddings that cluster to word senses
+(Wiedemann et al., 2019; Haber and Poesio, 2020;
+Mickus et al., 2020; Loureiro et al., 2021). These
+findings suggest that BERT has some understanding of the building blocks of language. Following
+these findings, since an IS-A taxonomy can be built
+on top of explicit word senses, do contextualized
+embeddings learned from BERT for word senses
+(in particular contexts) respect the properties of the
+IS-A taxonomy, specifically transitivity? That is,
+does BERT make logically consistent predictions
+that enforce the transitivity constraint of the IS-A
+relation?
+In this paper, we introduce a minimalist probing
+method to investigate whether BERT knows that
+the IS-A relation is transitive. We first quantify
+how well BERT predicts the IS-A relation. Next,
+we measure the extent to which BERT enforces the
+transitivity constraint. That is, given that BERT
+predicts A is-a B and B is-a C, does it then predict
+A is-a C?
+In our work, we make use of WordNet (Fellbaum, 1998) and propose a method to sample word
+sense pairs with contexts from WordNet example
+sentences to build a probing dataset. We use a nearest neighbor classifier for probing, which does not
+require any parameter tuning. Our findings indicate that BERT can predict IS-A relations with an
+accuracy score of 72.6%. However, when BERT
+predicts A is-a B and B is-a C, it only predicts A
+is-a C 82.4% of the time. This suggests that simply
+treating BERT as is as a knowledge base (Petroni
+et al., 2019) is not completely satisfactory, and additional work needs to be done to incorporate the
+transitivity constraint in natural language inference
+when using BERT.
+In this paper, we have investigated how much
+BERT agrees with the transitivity constraint of the
+IS-A relation, via a minimalist probing setting. Our
+findings indicate that although BERT can predict
+IS-A relations to some extent, it does not always
+make logically consistent predictions. Allowing
+BERT and more generally neural network models
+to enforce the transitivity constraint of the IS-A
+relation would be a worthy future research goal.
+Besides the IS-A relation, there are other transitivity relations like after, before, larger than, smaller
+than, etc. It would also be interesting to investigate to what extent BERT also enforces or fails to
+enforce these other transitivity relations in future
+work.

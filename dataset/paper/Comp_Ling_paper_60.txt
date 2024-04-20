@@ -1,0 +1,75 @@
+Data augmentation is a widely used technique, especially in the low-resource regime. It increases
+the size of the training data to alleviate overfitting and improve the robustness of deep neural
+networks. In the field of natural language processing (NLP), various data augmentation techniques
+have been proposed. One most commonly used
+method is to randomly select tokens in a sentence
+and replace them with semantically similar tokens
+to synthesize a new sentence (Wei and Zou, 2019;
+Kobayashi, 2018). (Kobayashi, 2018) proposes
+contextual augmentation to predict the probability distribution of replacement tokens by using the
+LSTM language model and sampling the replacement tokens according to the probability distribution. (Wu et al., 2019a,b) uses BERT’s (Devlin
+et al., 2018) masked language modeling (MLM)
+task to extend contextual augmentation by considering deep bi-directional context. (Kumar et al.,
+2020) further propose to use different types of transformer based pre-trained models for conditional
+data augmentation in the low-resource regime.
+MLM takes masked sentences as input, and typically 15% of the original tokens in the sentences
+will be replaced by the [MASK] token. Before
+entering MLM, each token in sentences needs to
+be converted to its one-hot representation, a vector of the vocabulary size with only one position
+is 1 while the rest positions are 0. MLM outputs
+the probability distribution of the vocabulary size
+of each mask position. Through large-scale pretraining, it is expected that the probability distribution is as close as possible to the ground-truth
+one-hot representation. Compared with the onehot representation, the probability distribution predicted by pre-trained MLM is a “smoothed” representation, which can be seen as a set of candidate
+tokens with different weights. Usually, most of the
+weights are distributed on contextual-compatible
+tokens. Multiplying the smooth representation by
+the word embedding matrix can obtain a weighted
+summation of the word embeddings of the candidate words, termed smoothed embedding, which
+is more informative and context-rich than the one
+hot’s embedding obtained through lookup operation. Therefore, the use of smoothed representation
+instead of one-hot representation as the input of
+the model can be seen as an efficient weighted data
+augmentation method. To get the smoothed representation of all the tokens of the entire sentence
+with only one forward process in MLM, we do not
+explicitly mask the input. Instead, we turn on the
+dropout of MLM and dynamically randomly discard a portion of the weight and hidden state at
+each layer.
+An unneglectable situation is that some tokens
+appear more frequently than others in similar contexts during pre-training, which will cause the
+model to have a preference for these tokens. This is
+harmful for downstream tasks such as fine-grained
+sentiment classification. For example, given “The
+quality of this shirt is average .", the “average" token is most relevant to the label. The smoothed
+representation through the MLM at the position
+of “average" is shown in Figure 2. Although the
+probability of “average" is the highest, more probabilities are concentrated on tokens conflict with the
+task label, such as “high", “good" or “poor”. Such
+a smoothed representation is hardly a good augmented input for the task. To solve this problem,
+(Wu et al., 2019a) proposed to train label embedding to constraint MLM predict label compatible
+tokens. However, under the condition of low resources, it is not easy to have enough label data
+to provide supervision. Inspired by the practical
+data augmentation method mixup (Zhang et al.,
+2017) in the computer vision field, we interpolate
+the smoothed representation with the original onehot representation. Through interpolation, we can
+enlarge the probability of the original token, and
+the probabilities are still mostly distributed on the
+context-compatible words, as shown in the figure
+2.
+We combine the two stages as text smoothing: obtaining a smooth representation through
+MLM and interpolating to constrain the representation more controllable. To evaluate the effect
+of text smoothing, we perform experiments with
+low-resource settings on three classification benchmarks. In all experiments, text smoothing achieves
+better performance than other data augmentation
+methods. Further, we are pleased to find that text
+smoothing can be combined with other data augmentation methods to improve the tasks further. To
+the best of our knowledge, this is the first method to
+improve a variety of mainstream data augmentation
+methods.
+This article proposes text smoothing, an effective
+data augmentation method, by converting sentences
+from their one-hot representations to smoothing
+representations. In the case of a low data regime,
+text smoothing is significantly better than various
+data augmentation methods. Furthermore, text
+smoothing can further be combined with various
+data augmentation methods to obtain better performance.

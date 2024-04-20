@@ -1,0 +1,12 @@
+Over the years, the review helpfulness prediction task has been the subject of several works,
+but remains being a challenging issue in Natural Language Processing, as results vary a lot
+depending on the domain, on the adopted features and on the chosen classification strategy.
+This paper attempts to evaluate the impact of
+content features and classification methods for
+two different domains. In particular, we run
+our experiments for a low resource language –
+Portuguese –, trying to establish a benchmark
+for this language. We show that simple features and classical classification methods are
+powerful for the task of helpfulness prediction,
+but are largely outperformed by a convolutional
+neural network-based solution.

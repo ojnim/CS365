@@ -1,0 +1,79 @@
+Recent natural language processing (NLP) systems
+use large language models as the backbone. These
+models are first pre-trained on unannotated text and
+then fine-tuned on downstream tasks. They have
+been shown to drastically improve the downstream
+task performance by transferring knowledge from
+large text corpora. However, several studies (Zhao
+et al., 2019; Barocas et al., 2017; Kurita et al., 2019)
+have shown that societal bias are also encoded in
+these language models and transferred to downstream applications. Therefore, quantifying the biases in contextualized language representations is
+essential for building trustworthy NLP technology.
+To quantify these biases, various fairness metrics and datasets have been proposed. They can be
+roughly categorized into two categories: extrinsic
+and intrinsic metrics (Goldfarb-Tarrant et al., 2021).
+Intrinsic fairness metrics probe into the fairness of
+the language models (Guo and Caliskan, 2021; Kurita et al., 2019; Nadeem et al., 2020; Nangia et al.,
+2020), whereas extrinsic fairness metrics evaluate
+the fairness of the whole system through downstream predictions (Dhamala et al., 2021; Jigsaw,
+2019; De-Arteaga et al., 2019). Extrinsic metrics
+measure the fairness of system outputs, which are
+directly related to the downstream bias that affects
+end users. However, they only inform the fairness
+of the combined system components, whereas intrinsic metrics directly analyze the bias encoded in
+the contextualized language models.
+Nevertheless, the relationship between upstream
+and downstream fairness is unclear. While some
+prior work has demonstrated that biases in the upstream language model have significant effects on
+the downstream task fairness (Jin et al., 2021), others have shown that intrinsic and extrinsic metrics
+are not correlated (Goldfarb-Tarrant et al., 2021).
+These studies either focus on one specific application or consider static word embeddings. Therefore,
+it is still obscure how fairness metrics correlate
+across different tasks that use contextualized language models.
+To better understand the relationship between
+intrinsic and extrinsic fairness metrics, we conduct
+extensive experiments on 19 pre-trained language
+models (BERT, GPT-2, etc.). We delve into three
+kinds of biases, toxicity, sentiment, and stereotype,
+with six fairness metrics across intrinsic and extrinsic metrics, in text classification and generation
+downstream settings. The protected group domains
+we focus on are gender, race, and religion.
+Similar to the observations in static embeddings
+(Goldfarb-Tarrant et al., 2021), we find that these
+metrics correlate poorly. Therefore, when evaluating model fairness, researchers and practitioners
+should be careful in using intrinsic metrics as a
+proxy for evaluating the potential for downstream
+biases, since doing so may lead to failure to detect
+bias that may appear during inference. Specifically, we find that correlations between intrinsic
+and extrinsic metrics are sensitive to alignment in
+notions of bias, quality of testing data, and protected groups. We also find that extrinsic metrics
+are sensitive to variations on experiment configurations, such as to classifiers used in computing
+evaluation metrics. Practitioners thus should ensure that evaluation datasets correctly probe for
+the notions of bias being measured. Additionally,
+models used to compute evaluation metrics such as
+those in BOLD (Dhamala et al., 2021) can introduce additional bias, and thus should be optimized
+to be robust.
+The main contribution of our work is as follows:
+First, we conduct an extensive study on correlations between intrinsic and extrinsic metrics. Second, we conduct ablation studies to show the effect of (mis)alignment of notions of bias and protected groups, and noise in recent fairness evaluation datasets. Finally, we conduct a study on the
+robustness (or lack thereof) of sentiment classifiers
+to text generation quality, diversity, and noise.
+With this paper, we aim to suggest preliminary
+best practices in bias evaluation, which is important
+to quantify progress in debiasing work that will
+make models usable in the real world.
+We present a study on intrinsic and extrinsic fairness metrics in contextualized word embeddings.
+Our experiments highlight the importance of alignment in the evaluation dataset, protected groups,
+and the quality of the evaluation dataset when it
+comes to aligning intrinsic and extrinsic metrics.
+Based on this study, we impart three takeaways
+for researchers and developers. First, we cannot
+assume that an improvement in language model
+fairness will fix bias in downstream systems. Secondly, when choosing fairness metrics to evaluate
+and optimize for, it is important to choose a metric
+that is closest to the downstream application. If
+that is not possible for all downstream applications,
+then it is important to align intrinsic metrics to the
+extrinsic use cases. Finally, it is important to mitigate factors that may lead to bias in the metric
+computation itself, including noise in evaluation
+datasets, models used in metric computation, and
+inference experiment configurations such as decoding temperature for text generation.

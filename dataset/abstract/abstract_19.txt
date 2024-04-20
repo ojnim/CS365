@@ -1,0 +1,16 @@
+Entity linking disambiguates mentions by mapping them to entities in a knowledge graph
+(KG). One important question in today’s research is how to extend neural entity linking
+systems to new domains. In this paper, we aim
+at a system that enables linking mentions to entities from a general-domain KG and a domainspecific KG at the same time. In particular,
+we represent the entities of different KGs in
+a joint vector space and address the questions
+of which data is best suited for creating and
+fine-tuning that space, and whether fine-tuning
+harms performance on the general domain. We
+find that a combination of data from both the
+general and the special domain is most helpful.
+The first is especially necessary for avoiding
+performance loss on the general domain. While
+additional supervision on entities that appear in
+both KGs performs best in an intrinsic evaluation of the vector space, it has less impact on
+the downstream task of entity linking.

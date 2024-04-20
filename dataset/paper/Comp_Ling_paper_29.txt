@@ -1,0 +1,66 @@
+1 Introduction
+Compared to traditional text summarization, dialogue summarization introduces a unique challenge: conversion of first- and second-person
+speech into third-person reported speech. Such discrepancy between the observed text and expected
+model output puts greater emphasis on abstractive transduction than in traditional summarization
+tasks. The disorientation is further exacerbated by
+each of many diverse dialogue types calling for a
+differing form of transduction – short dialogues require terse abstractions, while meeting transcripts
+require summaries by agenda.
+Thus, despite the steady emergence of dialogue
+summarization datasets, the field of dialogue summarization is still bottlenecked by a scarcity of
+training data. To train a truly robust dialogue summarization model, one requires transcript-summary
+pairs not only across diverse dialogue domains, but
+also across multiple dialogue types as well. The
+lack of diverse annotated summarization data is
+especially pronounced in low-resourced languages.
+From such state of the literature, we identify a need
+for unsupervised dialogue summarization.
+Our method builds upon previous research on
+unsupervised summarization using word graphs.
+Starting from the simple assumption that a good
+summary sentence is at least as informative as any
+single input sentence, we develop novel schemes
+for path extraction from word graphs. Our contributions are as follows:
+1. We present a novel scheme for path reranking in graph-based summarization. We show
+that, in practice, simple keyword counting
+performs better than complex baselines. For
+longer texts, we present an optional topic segmentation scheme.
+2. We introduce a point-of-view (POV) conversion module to convert semi-extractive summaries into fully abstractive summaries. The
+new module by itself improves all scores on
+baseline methods, as well as our own.
+3. Finally, We verify our model on datasets beyond those traditionally used in literature to
+provide a strong baseline for future research.
+With just an off-the-shelf part-of-speech (POS)
+tagger and a list of stopwords, our model can be
+applied across different types of dialogue summarization.
+6 Conclusion
+6.1 Improving MSCG summarization
+This paper improves upon previous work on multisentence compression graphs for summarization.
+We find that simpler and more adaptive path reranking schemes can boost summarization quality. We
+also demonstrate a promising possibility for integrating point-of-view conversion into summarization pipelines.
+Compared to previous research, our model is
+still insufficient in keyphrase or bigram preservation. This phenomenon is captured by inconsistent
+R2 scores across benchmarks. We believe incorporating findings from keyphrase-based summarizers (Riedhammer et al., 2010; Boudin and Morin,
+2013) can mitigate such shortcomings.
+6.2 Avenues for future research
+While our methods demonstrate improved benchmark results, its mostly heuristic nature leaves
+much room for enhancement through integration
+of statistical models. POV conversion in particular
+can benefit from deep learning-based approaches
+(Lee et al., 2020). With recent advances in unsupervised sequence to sequence transduction (Li et al.,2020; He et al., 2020), we expect further research
+into more advanced POV conversion techniques
+will improve unsupervised dialogue summarization.
+Another possibility to augment our research with
+deep learning is through employing graph networks
+(Cui et al., 2020) for representing MSCGs. With
+graph networks, each word node and edge can
+be represented as a contextualized vector. Such
+schemes will enable a more flexible and interpolatable manipulation of syntax captured by traditional
+word graphs.
+One notable shortcoming of our system is the
+generation of summaries that lack grammatical coherence or fluency (Table 4). We intentionally leave
+out complex path filters that gauge linguistic validity or factual correctness. We only minimally
+inspect our summaries to check for inclusion of
+verb nodes, as in Filippova (2010). Our system can
+be easily augmented with such additional filters,
+which we leave for future work.

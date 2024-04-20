@@ -1,0 +1,5 @@
+We present a benchmark in six European languages containing manually annotated information about olfactory situations and events
+following a FrameNet-like approach. The documents selection covers ten domains of interest to cultural historians in the olfactory domain and includes texts published between
+1620 to 1920, allowing a diachronic analysis
+of smell descriptions. With this work, we aim
+to foster the development of olfactory information extraction approaches as well as the analysis of changes in smell descriptions over time

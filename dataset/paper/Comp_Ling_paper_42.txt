@@ -1,0 +1,70 @@
+Modern neural machine translation models are
+mostly parametric (Bahdanau et al., 2015; Vaswani
+et al., 2017), meaning that, for each input, the output depends only on a fixed number of model parameters, obtained using some training data, hopefully in the same domain. However, when running
+machine translation systems in the wild, it is often
+the case that the model is given input sentences
+or documents from domains that were not part of
+the training data, which frequently leads to subpar
+translations. One solution is training or fine-tuning
+the entire model or just part of it for each domain,
+but this can be expensive and may lead to catastrophic forgetting (Saunders, 2021).
+Recently, an approach that has achieved promising results is augmenting parametric models with
+a retrieval component, leading to semi-parametric
+models (Gu et al., 2018; Zhang et al., 2018; Bapna
+and Firat, 2019; Khandelwal et al., 2021; Meng
+et al., 2021; Zheng et al., 2021; Jiang et al., 2021).
+These models construct a datastore based on a set
+of source / target sentences or word-level contexts
+(translation memories) and retrieve similar examples from this datastore, using this information in
+the generation process. This allows having only
+one model that can be used for every domain. However, the model’s runtime increases with the size
+of the domain’s datastore and searching for related
+examples on large datastores can be computationally very expensive: for example, when retrieving
+64 neighbors from the datastore, the model may
+become two orders of magnitude slower (Khandelwal et al., 2021). Due to this, some recent works
+have proposed methods that aim to make this process more efficient. Meng et al. (2021) proposed
+constructing a different datastore for each source
+sentence, by first searching for the neighbors of
+the source tokens; and He et al. (2021) proposed
+several techniques – datastore pruning, adaptive retrieval, dimension reduction – for nearest neighbor
+language modeling.
+In this paper, we adapt several methods proposed
+by He et al. (2021) to machine translation, and we
+further propose a new approach that increases the
+model’s efficiency: the use of a retrieval distributions cache. By caching the kNN probability
+distributions, together with the corresponding decoder representations, for the previous steps of the
+generation of the current translation(s), the model
+can quickly retrieve the retrieval distribution when
+the current representation is similar to a cached
+one, instead of having to search for neighbors in
+the datastore at every single step.
+We perform a thorough analysis of the model’s
+efficiency on a controlled setting, which shows that
+the combination of our proposed techniques results
+in a model, the efficient kNN-MT, which is approximately twice as fast as the vanilla kNN-MT. This
+comes without harming translation performance,
+which is, on average, more than 8 BLEU points and
+5 COMET points better than the base MT model.
+In sum, this paper presents the following contributions:
+• We adapt the methods proposed by He et al.
+(2021) for efficient nearest neighbor language
+modeling to machine translation.
+• We propose a caching strategy to store the
+retrieval probability distributions, improving
+the translation speed.
+• We compare the efficiency and translation
+quality of the different methods, which show
+the benefits of the proposed and adapted techniques.
+
+In this paper we propose the efficient kNN-MT, in
+which we combine several methods to improve the
+kNN-MT generation speed. First, we adapted to
+machine translation methods that improve retrieval
+efficiency in language modeling (He et al., 2021).
+Then we proposed a new method which consists
+on keeping in cache the previous retrieval distributions so that the model does not need to search for
+neighbors in the datastore at every step. Through
+experiments on domain adaptation, we show that
+the combination of the proposed methods leads to a
+considerable speed-up (up to 2x) without harming
+the translation performance substantially.

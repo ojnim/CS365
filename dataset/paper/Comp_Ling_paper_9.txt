@@ -1,0 +1,52 @@
+1 Introduction
+Emotion is an important component of human daily
+communication. However, with the growing interest in human-computer interfaces, machines still
+lag in possessing and perceiving emotions. Understanding human emotional states in dialogue is
+crucial for building natural human-machine interaction, which aims to generate appropriate responses.
+Emotion classification (EMO) in the text is concentrated on projecting words, sentences, and documents to a set of emotions according to psychological models proposed by (Ekman, 1992), which is
+an interdisciplinary field of study that span psychology and computer science. This task has evolved from a purely research-oriented topic to play a role
+in various applications, including mental health assessment, intelligent agents, social media mining
+(Calvo et al., 2017; Rambocas and Pacheco, 2018).
+Therefore, emotion classification has become a hot
+topic in the field of natural language processing
+(NLP), and lots of research efforts have been devoted to its development.
+With the rapid development of artificial intelligence technology, especially deep learning, researchers have made substantial progress on EMO
+tasks over the past few decades. Before the era of
+deep learning, traditional EMO methods not only
+ignore the order of occurrence of words in written
+text, but are also limited by fixed input sizes. However, obtaining contextual relations between words
+from the sequence texts plays a crucial role in understanding the complete meaning of sentences.
+With the popularity of data-driven techniques, deep
+learning based methods improve the shortcomings
+of traditional methods and achieve superior EMO
+performance (Ran et al., 2018; Rajabi et al., 2020;
+Nandwani and Verma, 2021).
+More recently, the transformer self-attention architecture based (Vaswani et al., 2017) pre-trained
+models have been successfully applied for learning language representations by exploiting large
+amounts of unlabeled data. These models mainly
+include BERT (Devlin et al., 2018a), OpenAI GPT
+(Radford et al., 2018), RoBERTa (Liu et al., 2019).
+These architectures show superior performance
+when fine-tuning different downstream tasks, including machine translation (Imamura and Sumita,
+2019), text classification (Sun et al., 2019), emotion
+classification (Luo and Wang, 2019) and question
+answering (Garg et al., 2020). Recent works have
+shown that transformer-based pre-trained methods
+can achieve state-of-the-art performance in EMO
+tasks (Acheampong et al., 2021; Luo and Wang,
+2019). Motivated by this, we adopt the DeBERTa
+model (He et al., 2020) with continual pre-training method for the masked language model (MLM)
+(Devlin et al., 2018b) in this Track 2 to improve
+final downstream performance. More feasible training strategies are designed to improve the final results further. In this paper, we describe our work
+for Track 2 of the WASSA Shared Task 2022, addressing the issue of emotion classification.
+
+5 Conclusion
+This paper illustrates our contributions to the
+WASSA shared work on Emotion Classification.
+We use the DeBERTa pre-trained language model
+enhanced by the continual pre-training method
+(MLM) and some training strategies to improve the
+EMO performance. During the evaluation phase,
+our submission achieves Top-1 on all metrics for
+the Emotion Classification task. In the future, we
+will explore more efficient pre-training methods to further improve the final results.

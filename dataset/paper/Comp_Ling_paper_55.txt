@@ -1,0 +1,78 @@
+As automatic natural language generation systems
+improve, evaluating them is becoming more challenging for both human and automatic methods
+(Çelikyilmaz et al., 2020; Gehrmann et al., 2022).
+In machine translation, this has led to increased
+adoption of techniques such as MQM (Freitag et al.,
+2021a,b), an elaborate error-based methodology for
+scoring output, typically carried out by skilled human annotators. While MQM is more accurate than
+traditional crowd-based Likert-type scoring, it can
+also be significantly slower and more expensive,
+creating a strong incentive to reduce annotation
+time and cost.
+In this paper we investigate a simple solution to
+this problem, namely reducing the number of text
+segments that a human annotator must rate. We
+assume a basic scenario in which a single annotator
+is given a test set to rate, and the task is to predict
+the average MQM score they would assign to the
+whole set by having them rate only a selected subset. This is a natural and versatile way to deploy
+human annotation effort within a framework like
+MQM; it differs from the tasks considered by recent work with similar motivation, which focus on
+system ranking (Mendonça et al., 2021; Thorleiksdóttir et al., 2021) or combining human and metric
+scores without the express aim of predicting human
+performance (Hashimoto et al., 2019; Singla et al.,
+2021). Although our experiments are carried out
+with MQM-based scores, our methodology is applicable to any setting in which numerical scores
+are assigned to items for later averaging.
+We approach the task of choosing segments as a
+sampling problem, and investigate classical methods for reducing sample variance and bounding
+estimation error. To improve accuracy, we employ
+two sources of supplementary information. First, in
+keeping with recent practice, we assume segments
+are grouped into documents. This lets us exploit
+the tendency of segments within a document to be
+relatively homogeneous. Second, we make use of
+modern automatic metrics such as COMET (Rei
+et al., 2020) and BLEURT (Sellam et al., 2020)
+which correlate better at the segment level with
+human judgments than traditional surface-based
+metrics like BLEU (Papineni et al., 2002). These
+serve as a rough proxy for human scores.
+We show that document and metric information
+can be used to reduce average estimation error by
+up to 20% over a pure random sampling baseline.
+Due to high sample variance, it is difficult to reliably achieve a similar reduction in annotator effort
+for a given error tolerance. However, we suggest an
+alternative perspective in which our technique can
+be used to improve estimates made on the basis of a
+fixed rating budget. Although there is no guarantee
+of beating random sampling in any particular case,
+there is a high probability of improving on average. This improved estimator is easy to implement,
+and applicable to any human labeling task that produces numerical scores, and for which document
+membership and automatic metrics are available.
+Our work is most similar to that of Chaganty et al.
+(2018), which we extend in several ways. We adopt
+their use of control variates, but consider multiple
+metrics rather than just one, including learned metric combinations; we also employ modern neural
+metrics rather than metrics based on surface information. We combine control variates with stratified
+sampling using either proportional or optimal allocation, and additionally evaluate an incremental
+scenario in which sampling adapts to observed ratings. Finally, we investigate two analytical methods for bounding the error in our estimate.
+We investigate two classical variance-reduction
+techniques for improving the accuracy of sampled
+human ratings of MT output, measured against the
+mean of all ratings for a given test set. We find that
+stratified sampling and control variates are complementary, contributing about equally to gains of up
+to 20% in average absolute error reduction compared to random sampling. Exploiting this result
+to dynamically reduce annotator effort given a target error tolerance is not feasible due to the high
+variance in our data, but we propose that our techniques could instead be used to improve estimates
+made from a fixed annotation budget. Concrete
+recommendations for this scenario are provided in
+section 5. Our method is easy to implement, and
+can be applied to any setting involving averaged
+numerical item-wise scores where document (or
+other prior grouping) and automatic metric side
+information is available.
+In future work we look forward to delving into
+questions raised by our results: why doesn’t optimal allocation work better, particularly in the incremental setting; is there a better way to estimate variance from metrics; why aren’t metric combinations
+more helpful; and can error bounds be improved,
+perhaps with bootstrapping methods?

@@ -1,0 +1,54 @@
+As a salient part of argument mining (AM), the
+analysis of dialogical argumentation has received
+increasing research attention (Morio and Fujita,
+2018; Chakrabarty et al., 2019; Ji et al., 2021;
+Cheng et al., 2021; Yuan et al., 2021). Argument
+pair extraction (APE), proposed by Cheng et al.
+(2020), is a new task within this field that focuses
+on extracting interactive argument pairs from two
+interrelated documents (e.g., peer reviewer and rebuttal). Figure 1 presents an example of APE where
+two interrelated documents are segmented into arguments and non-arguments at sentence level. Two
+arguments from different documents that discuss
+the same issues are regarded as an argument pair.
+Previous works (Cheng et al., 2020, 2021) commonly address APE by decomposing it into two
+sentence-level subtasks, i.e., a sequence labeling
+task and a sentence relation classification task.
+These methods identify arguments by sentencelevel sequence labeling and determine whether two
+sentences belong to the same argument pair by
+sentence relation classification. Afterwards, the
+argument pairs are inferred indirectly by certain
+rules combining the results of the two subtasks.
+However, such a paradigm only considers sentencelevel relations, while the holistic argument-level
+relations can not be well modeled.
+In this paper, we argue that APE can be considered as a multi-turn machine reading comprehension (MRC) task with two phases, i.e., an AM
+phase and an APE phase. Specifically, in the first
+turn, a special AM query is employed to identify
+all the arguments in the first document (AM phase).
+Afterwards, in each subsequent turn, every identified argument is treated as an APE query to extract
+its paired arguments from the second document
+(APE phase). Similarly, this process can also be
+performed in another direction, that is, using the
+arguments identified in the second document as
+queries to extract the paired arguments from the
+first document. We train these two phases jointly
+in a single MRC model, allowing them to benefit
+each other. By considering arguments as queries,
+our proposed MRC framework can better capture
+the interactions between each query argument and
+the queried document, thus extracting the argument
+pairs at the argument level. In addition, considering the long length of the documents, we utilize
+Longformer (Beltagy et al., 2020) to model longer
+contexts.
+We evaluate our method on the large benchmark
+dataset (Cheng et al., 2020). Results show that our
+proposed method significantly outperforms the current state-of-the-art method by 7.11% in F1 score.
+In this paper, we propose to frame the argument
+pair extraction (APE) task as a machine reading
+comprehension (MRC) task. Our MRC framework
+addresses APE through two phases with two types
+of queries, that is, argument mining (AM) query
+and argument pair extraction (APE) query. Our
+proposed method can better model the argumentlevel interactions, thus facilitating the extraction
+of argument pairs. Experimental results on a large
+benchmark dataset demonstrate that our proposed
+method achieves state-of-the-art performance.

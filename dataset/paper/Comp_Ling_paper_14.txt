@@ -1,0 +1,75 @@
+1 Introduction
+The importance of language modeling in recent
+years has grown considerably, as methods based
+on large pre-trained neural language models (LMs)
+have become the state-of-the-art for many problems
+(Devlin et al., 2019; Radford et al., 2019). However,
+these neural LMs are based on general architectures
+and therefore do not explicitly model linguistic
+constraints, and have been shown to capture only
+a subset of the syntactic representations typically
+found in constituency treebanks (Warstadt et al.,
+2020). An alternative line of LM research aims
+to explicitly model the parse tree in order to make
+the LM syntax-aware. A representative example of
+this paradigm, reccurent neural network grammar
+(RNNG, Dyer et al., 2016), is reported to perform
+better than sequential LMs on tasks that require
+complex syntactic analysis (Kuncoro et al., 2019;
+Hu et al., 2020; Noji and Oseki, 2021).
+The aim of this paper is to extend LMs that inject
+syntax to the multilingual setting. This attempt is
+important mainly in two ways. Firstly, English has
+been dominant in researches on syntax-aware LM.
+While multilingual LMs have received increasing
+attention in recent years, most of their approaches
+do not explicitly model syntax, such as multilingual
+BERT (mBERT, Devlin et al., 2019) or XLM-R
+(Conneau et al., 2020). Although these models have
+shown high performance on some cross-lingual
+tasks (Conneau et al., 2018), they perform poorly
+on a syntactic task (Mueller et al., 2020). Secondly,
+syntax-aware LMs have interesting features other
+than their high syntactic ability. One example is
+the validity of RNNG as a cognitive model under
+an English-based setting, as demonstrated in Hale
+et al. (2018). Since human cognitive functions are
+universal, while natural languages are diverse, it
+would be ideal to conduct this experiment based on
+multiple languages.
+The main obstacle for multilingual syntax-aware
+modeling is that it is unclear how to inject syntactic information while training. A straightforward approach is to make use of a multilingual
+treebank, such as Universal Dependencies (UD,
+Nivre et al., 2016; Nivre et al., 2020), where trees
+are represented in a dependency tree (DTree) formalism. Matthews et al. (2019) evaluated parsing
+and language modeling performance on three typologically different languages, using a generative
+dependency model. Unfortunately, they revealed
+that dependency-based models are less suited to
+language modeling than comparable constituencybased models, highlighting the apparent difficulty
+of extending syntax-aware LMs to other languages
+using existing resources.
+This paper revisits the issue of the difficulty of
+constructing multilingual syntax-aware LMs, by exploring the performance of multilingual language
+modeling using constituency-based models. Since
+our domain is a multilingual setting, our focus
+turns to how dependency-to-constituency conversion techniques result in different trees, and how
+these trees affect the model’s performance. We
+obtain constituency treebanks from UD-formatted
+dependency treebanks of five languages using nine
+tree conversion methods. These treebanks are in
+turn used to train an RNNG, which we evaluate on
+perplexity and CLAMS (Mueller et al., 2020).
+Our contributions are: (1) We propose a methodology for training multilingual syntax-aware LMs
+through the dependency tree conversion. (2) We
+found an optimal structure that brings out the potential of RNNG across five languages. (3) We
+demonstrated the advantage of our multilingual
+RNNG over sequential/overparameterized LMs.
+7 Conclusion
+In this paper, we propose a methodology to learn
+multilingual RNNG through dependency tree conversion. We performed multiple conversions to
+seek the robust structure which works well multilingually, discussing the effect of multiple structures.
+We demonstrated the superiority of our model over
+baselines in capturing syntax in a multilingual setting. Since our research is the first step for multilingual syntax-aware LMs, it is necessary to conduct
+experiments on more diverse languages to seek a
+better structure. We believe that this research would
+contribute to the field of theoretical/cognitive linguistics as well because an ultimate goal of linguistics is finding the universal rule of natural language. Finding a reasonable structure in engineering would yield useful knowledge for that purpose.

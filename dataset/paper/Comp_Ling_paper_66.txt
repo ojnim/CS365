@@ -1,0 +1,55 @@
+International Classification of Diseases (ICD) is a
+classification and terminology that provides diagnostic codes with descriptions for diseases1
+. The
+task of ICD coding refers to assigning ICD codes to
+electronic medical records (EMRs) which is highly
+related to clinical tasks or systems including patient similarity learning (Suo et al., 2018), medical
+billing (Sonabend et al., 2020), and clinical decision support systems (Sutton et al., 2020). Traditionally, healthcare organizations have to employ
+specialized coders for this task, which is expensive, time-consuming, and error-prone. As a result,
+many methods have been proposed for automatic
+ICD coding since the 1990s (de Lima et al., 1998).
+Recent methods treat this task as a multi-label
+classification problem (Xie and Xing, 2018; Li and
+Yu, 2020; Zhou et al., 2021), which learn deep
+representations of EMRs with an RNN or CNN encoder and predict codes with a multi-label classifier.
+Recent state-of-the-art methods propose label attention that uses the code representations as attention
+queries to extract the code-related representations2
+(Mullenbach et al., 2018). Following this idea,
+many works further propose using code hierarchical structures (Falis et al., 2019; Xie et al., 2019;
+Cao et al., 2020) and descriptions (Cao et al., 2020;
+Song et al., 2020) for better label representations.
+In this work, we argue that the synonyms of
+codes can provide more comprehensive information. For example, the description of code 244.9
+is “Unspecified hypothyroidism” in ICD. However,
+this code can be described in different forms in
+EMRs such as “low t4” and “subthyroidism”. Fortunately, these different expressions can be found in
+the Unified Medical Language System (Bodenreider, 2004), a repository of biomedical vocabularies
+that contains various synonyms for all ICD codes.
+Therefore, we propose to leverage synonyms of
+codes to help the label representation learning and
+further benefit its matching to the EMR texts.
+To model the synonym and its matching to EMR
+text, we further propose a Multiple Synonyms
+Matching Network (MSMN)
+3
+. Specifically, we
+first apply a shared LSTM to encode EMR texts
+and each synonym. Then, we propose a novel
+multi-synonyms attention mechanism inspired by
+the multi-head attention (Vaswani et al., 2017),
+which considers synonyms as attention queries to
+extract different code-related text snippets for codewise representations. Finally, we propose using a
+biaffine-based similarity of code-wise text representations and code representations for classification.
+We conduct experiments on the MIMIC-III
+dataset with two settings: full codes and top-50
+codes. Results show that our method performs better than previous state-of-the-art methods.
+In this paper, we propose MSMN to leverage code
+synonyms from UMLS to improve the automatic
+ICD coding. Multi-synonyms attention is proposed
+for extracting different related text snippets for
+code-wise text representations. We also propose
+a biaffine transformation to calculate similarities
+among texts and codes for classification. Experiments show that MSMN outperforms previous
+methods with label attention and achieves state-ofthe-art results in the MIMIC-III dataset. Ablation
+studies show the effectiveness of multi-synonyms
+attention and biaffine-based similarity.

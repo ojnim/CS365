@@ -1,0 +1,52 @@
+Recent approaches to knowledge-intensive NLP
+tasks combine neural network based models with a
+retrieval component that leverages dense vector representations (Guu et al., 2020; Lewis et al., 2020;
+Petroni et al., 2021). The most straightforward example is question answering, where the retriever
+receives as input a question and returns relevant
+documents to be used by the reader (both encoder
+and decoder), which outputs the answer (Chen,
+2020). The same approach can also be applied in
+other contexts, such as fact-checking (Tchechmedjiev et al., 2019) or knowledgable dialogue (Dinan
+et al., 2018). Moreover, this paradigm can also
+be applied to systems that utilize e.g. caching of
+contexts from the training corpus to provide better
+output, such as the k-nearest neighbours language
+model proposed by Khandelwal et al. (2019) or
+the dynamic gating language model mechanism by
+Yogatama et al. (2021). All these pipelines are generalized as retrieving an artefact from a knowledge
+base (Zouhar et al., 2021) on which the reader is
+conditioned together with the query.
+Crucially, all of the previous examples rely on
+the quality of the retrieval component and the
+knowledge base. The knowledge base is usually
+indexed by dense vector representations1
+and the
+retrieval component performs maximum similarity search, commonly using the inner product or
+the L
+2 distance, to retrieve documents2
+from the
+knowledge base. Only the index alone takes up a
+large amount of size of the knowledge base, making deployment and experimentation very difficult.
+The retrieval speed is also dependent on the dimensionality of the index vector. An example of a
+large knowledge base is the work of Borgeaud et al.
+(2021) which performs retrieval over a database of
+1.8 billion documents.
+This paper focuses on the issue of compressing
+the index through dimensionality and precision reduction and makes the following contributions:
+• Comparison of various unsupervised index
+compression methods for retrieval, including
+random projections, PCA, autoencoder, precision reduction and their combination.
+• Examination of effective pre- and postprocessing transformations, showing that centering and normalization are necessary for
+boosting the performance.
+• Analysis on the impact of adding irrelevant
+documents and retrieval errors. Recommendations for use by practicioners.
+In Section 3, we describe the problem scenario
+and the experimental setup. We discuss the results
+of different compression methods in Section 4. We
+provide further analysis in Section 5 and conclude
+with usage recommendations in Section 6. The
+repository for this project is available open-source.
+In this work, we examined several simple unsupervised methods for dimensionality reduction for
+retrieval-based NLP tasks: random projections,
+PCA, autoencoder and precision reduction and their
+combination. We also documented the data requirements of each method and their reliance on preand post-processing.

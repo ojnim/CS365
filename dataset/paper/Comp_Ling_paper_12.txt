@@ -1,0 +1,80 @@
+1 Introduction
+Masked language models (MLMs) such as
+BERT (Devlin et al., 2019) have revolutionized
+natural language processing (NLP). These models exploit the idea of self-supervision where sequences of unlabeled text are masked and the
+model is tasked to reconstruct them. Knowledge
+acquired during this stage of denoising (called pretraining) can then be transferred to downstream
+tasks through a second stage (called fine-tuning).
+Although pre-training is general, does not require
+labeled data, and is task agnostic, fine-tuning is narrow, requires labeled data, and is task-specific. For
+a class of tasks τ , some of which we may not know
+in the present but which can become desirable in
+the future, it is unclear how we can bridge the learning objective mismatch between these two stages.
+In particular, how can we (i) make pre-training
+more tightly related to downstream task learning
+objective; and (ii) focus model pre-training representation on an all-encompassing range of concepts
+of general affinity to various downstream tasks?
+We raise these questions in the context of learning a cluster of tasks to which we collectively refer as social meaning. We loosely define social
+meaning as meaning emerging through human interaction such as on social media. Example social
+meaning tasks include emotion, irony, and sentiment detection. We propose two main solutions
+that we hypothesize can bring pre-training and finetuning closer in the context of learning social meaning: First, we propose a particular type of guided
+masking that prioritizes learning contexts of tokens
+crucially relevant to social meaning in interactive
+discourse. Since the type of “meaning in interaction” we are interested in is the domain of linguistic
+pragmatics (Thomas, 2014), we will refer to our
+proposed masking mechanism as pragmatic masking. We explain pragmatic masking in Section 3.1.
+Second, we propose an additional novel stage of
+fine-tuning that does not depend on gold labels but
+instead exploits general data cues possibly relevant
+to all social meaning tasks. More precisely, we leverage proposition-level user assigned tags for
+intermediate fine-tuning of pre-trained language
+models. In the case of Twitter, for example, hashtags naturally assigned by users at the end of posts
+can carry discriminative power that is by and large
+relevant to a wide host of tasks. Although cues such
+as hashtags and emojis have been previously used
+as surrogate lables before for one task or another,
+we put them to a broader use that is not focused
+on a particular (usually narrow) task that learns
+from a handful of cues. In other words, our goal
+is to learn extensive concepts carried by tens of
+thousands of cues. A model endowed with such
+a knowledge-base of social concepts can then be
+further fine-tuned on any narrower task in the ordinary way. We refer to this method as surrogate
+fine-tuning (Section 3.2). Another migration from
+previous work is that our methods excel not only in
+the full-data setting but also for few-shot learning,
+as we will explain below.
+In order to evaluate our methods, we present a social meaning benchmark composed of 15 different
+datasets crawled from previous research sources.
+We perform an extensive series of methodical experiments directly targeting our proposed methods.
+Our experiments set new state-of-the-art (SOTA)
+in the supervised setting across different datasets.
+Moreover, our experiments reveal a striking capacity of our models in improving downstream task
+performance in few-shot and severely few-shot settings (i.e., as low as 1% of gold data), and even the
+zero-shot setting on languages other than English
+(i.e., as evaluated on six different datasets from
+three languages in Section 6).
+To summarize, we make the following contributions: (1) We propose a novel pragmatic masking
+strategy that makes use of social media cues akin to
+improving social meaning detection. (2) We introduce a new effective surrogate fine-tuning method
+suited to social meaning that exploits the same simple cues as our pragmatic masking strategy. (3)
+We report new SOTA on eight out of 15 supervised
+datasets in the full-data setting. (4) Our methods
+are remarkably effective for few-shot and zero- and
+learning. We now review related work.
+
+8 Conclusion
+We proposed two novel methods for improving
+transfer learning with PLMs, pragmatic masking
+and surrogate fine-tuning, and demonstrated the
+effectiveness of these methods on a wide range of
+social meaning datasets. Our models exhibit remarkable performance in the few-shot setting and
+even the severely few-shot setting. Our models
+also establish new SOTA on eight out of fifteen
+datasets when compared to tailored, task-specific
+models with access to external resources. Our proposed methods are also language independent, and
+show promising performance when applied in zeroshot settings on six datasets from three different
+languages. In future research, we plan to further
+test this language independence claim. We hope
+our methods will inspire new work on improving
+language models without use of much labeled data.

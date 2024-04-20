@@ -1,0 +1,77 @@
+in NLP have gained a lot of attention, most notably
+with the introduction of SIGMORPHON’s shared
+tasks (Cotterell et al., 2016, 2017, 2018; Vylomova
+et al., 2020) in tandem with the expansion of UniMorph (McCarthy et al., 2020), a multi-lingual
+dataset of inflection tables. The shared-tasks sample data from UniMorph includes lists of triplets
+in the form of (lemma, features, form) for many
+languages, and the shared-task organizers maintain
+standard splits for a fair system comparison.
+The best-performing systems to-date in all inflection shared-tasks are neural sequence-to-sequence
+models used in many NLP tasks. An LSTM-based
+model won 2016’s task (Kann and Schütze, 2016),
+and a transformer came on top in 2020 (Canby
+et al., 2020). In 2020’s task the best model achieved
+exact-match accuracy that transcended 0.9 macroaveraged over up to 90 languages from various language families and types. This trend of high results
+recurred in works done on data collected independently as well (e.g. Malouf, 2017, Silfverberg and
+Hulden, 2018, inter alia).
+Interestingly, the averaged results of 2020’s
+shared-task include languages for which very little data was provided, sometimes as little as a
+couple of hundreds of examples. This has led
+to a view considering morphological inflection a
+relatively simple task that is essentially already
+solved, as reflected in the saturation of the results
+over the year and the declining submissions to the
+shared tasks.1 This also led the community to gravitate towards works attempting to solve the same
+(re)inflection tasks with little or no supervision
+(McCarthy et al., 2019; Jin et al., 2020; Goldman
+and Tsarfaty, 2021).
+However, before moving on we should ask ourselves whether morphological inflection is indeed
+solved or may the good performance be attributed
+to some artifacts in the data. This was shown to be
+true for many NLP tasks in which slight modifications of the data can result in a more challenging
+dataset, e.g., the addition of unanswerable questions to question answering benchmarks (Rajpurkar
+et al., 2018), or the addition of expert-annotated
+minimal pairs to a variety of tasks (Gardner et al.,
+2020). A common modification is re-splitting the
+data such that the test set is more challenging and
+closer to the intended use of the models in the
+wild (Søgaard et al., 2021). As the performance
+on morphological inflection models seems to have
+saturated on high scores, a similar rethinking of the
+data used is warranted.
+In this work we propose to construct more difficult datasets for morphological (re)inflection by
+splitting them such that the test set will include no
+forms of lemmas appearing in the train set. This
+splitting method will allow assessing the models
+in a challenging scenario closer to their desired
+function in practice, where training data usually
+includes full inflection tables and learning to inflect
+the uncovered lemmas is the target.
+We show, by re-splitting the data from task 0 of
+SIGMORPHON’s 2020 shared-task, that the proposed split reveals a greater difficulty of morphological inflection. Retesting 3 of the 4 top-ranked
+systems of the shared-task on the new splits leads to
+a decrease of 30 points averaged over the systems
+for all 90 languages included in the shared-task.
+We further show that the effect is more prominent
+for low-resourced languages, where the drop can
+be as large as 95 points, though high-resourced
+languages may suffer from up to a 10 points drop
+as well. We conclude that in order to properly assess the performance of (re)inflection models and
+to drive the field forward, the data and related splits
+should be carefully examined and improved to provide a more challenging evaluation, more reflective
+of their real-world use.
+We proposed a method for splitting morphological datasets such that there is no lemma overlap
+between the splits. On the re-split of SIGMORPHON’s 2020 shared-task data, we showed that all
+top-ranked systems suffer significant drops in performance. The new split examines models’ generalization abilities in conditions more similar to their
+desired usage in the wild and allows better discerning between the systems in order to point to more
+promising directions for future research — more
+so than the original form-split data on which all
+systems fared similarly. The new splitting method
+is likely to lead to more sophisticated modeling,
+for instance, in the spirit of the model proposed by
+Liu and Hulden (2021). The suggested move to a
+harder split is not unlike many other NLP tasks, in
+which challenging splits are suggested to drive the
+field forward. We thus call for morphological studies to carefully attend to the data used and expose
+the actual difficulties in modelling morphology, in
+future research and future shared tasks.

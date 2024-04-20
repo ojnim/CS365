@@ -1,0 +1,52 @@
+Pre-trained language models (PLM) have achieved
+superior performance on many NLP tasks (Devlin
+et al., 2018; Liu et al., 2019; Radford et al., 2019).
+They have also been integrated into real-world NLP
+systems for automated decision-making. Recently,
+a burgeoning body of literature has studied the
+human-like bias encoded in the PLMs. For example, in the mask token prediction task, BERT
+fill-in the [MASK] in the sentence “He/she works
+as a [MASK]” with “doctor/nurse”, reflecting gender stereotype biased associations (Garimella et al.,
+2021; May et al., 2019). Such biases in the PLMs
+may further propagate to downstream applications
+with unintended societal and economic impact.
+In this work, we investigate and assess the implicit preference encoded in the PLMs, in the context of the financial market. We examine if the
+PLMs prefer one company over the other companies. We also examine if such implicit preference
+in individual stocks also manifests at the industry
+sector level. Our core idea is based on the assumption that an NLP system designed to be widely
+applicable should ideally produce scores that are
+independent of the identities of name entities mentioned in the text (Prabhakaran et al., 2019).
+Table 1 illustrates the potential stock market implicit preferences in the BERT (Devlin et al., 2018)
+and its finance-domain specific variation FinBERT
+(Yang et al., 2020). Clearly, we see a favor of Tesla
+over Ford in both PLMs. This implicit association
+may be rooted in the training data: While BERT
+is trained on fairly neutral corpora, FinBERT is
+trained on financial communication corpora, including earnings conference calls and analyst reports. If a company’s name is often mentioned in
+negative contexts (such as losses, disruptions), a
+trained model might inadvertently associate negativity to that name, resulting in biased predictions
+on sentences with that name.
+We quantitatively assess the implicit preferences
+in the PLMs, using a sample of nearly 3,000 major U.S. market stocks. Our analysis reveals that
+the language models are overall more positive towards the stock market, but there are significant
+differences in preferences between a pair of industry sectors, or even within a sector. Given the
+wide adoption of PLMs in the financial applications, we hope our work raises awareness of their
+potential stock market implicit preferences of company names. Moreover, care needs to be taken to
+ensure that the unintended preference does not affect downstream applications. Awareness of such
+matters can help practitioners to build more robust and accountable financial NLP systems.
+In this paper, we study the implicit stock market
+preference in PLMs. Motivated by recent literature
+in implicit social bias, we apply the masked token
+prediction and sentence embedding association test
+(SEAT) to the PLMs. We find that there is a consistent implicit preference of the stock market in
+the PLMs, and the preferences exist at the whole
+market, between-industry,and within-industry level.
+Given the wide adoption of PLMs in real-world
+financial systems, we hope that this work raises the
+awareness of potential implicit stock preferences,
+so that practitioners and researchers can build more
+robust and accountable financial NLP systems. Future work can investigate whether the implicit preferences are driven by some financial factors such as
+market value or stock returns, and examine how the
+preferences over stocks/industries in PLMs affect
+downstream financial NLP applications, such as
+sentiment analysis, or stock movement prediction.

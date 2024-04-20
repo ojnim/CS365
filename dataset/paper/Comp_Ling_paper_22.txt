@@ -1,0 +1,85 @@
+1 Introduction
+Question answering (QA) systems based on pretrained language models such as BERT (Devlin
+et al., 2019) have recently achieved promising
+performance in machine reading comprehension.
+However, neural QA systems trained on one domain may not generalize well to another, leaving
+it challenging to deploy such systems on new domains that lack large-scale QA training data2
+. In
+this paper, we are interested in semi-supervised
+domain adaptation: we aim to build a target QA
+model with source-domain data and a small number
+of target-domain annotated QA pairs.
+Due to high annotation costs, existing work
+(Golub et al., 2017; Dong et al., 2019; Wang et al.,
+2019; Puri et al., 2020; Chen et al., 2020; Yue et al.,
+2021) proposes to synthesize target-domain QA
+pairs via neural question generation (QG) models. The synthetic data are then used to train a QA
+model on the target domain. In practice, however,
+the generated questions are often of low quality,
+such as being semantically mismatched with their
+paired answers or asking about simple facts (Figure 1). Including all such questions for QA training
+is less likely to bring substantial improvements.
+This inspires us to study a crucial problem:
+Given a set of target-domain synthetic QA pairs,
+how to select high-quality ones that are useful to
+improve target-domain QA training?
+To address the problem, Alberti et al. (2019)
+propose the Roundtrip Consistency (RTC) method,
+which filters3 questions that cannot be correctly
+answered by a pretrained QA model. Other work
+(Shakeri et al., 2020) considers using the generation log likelihood by the QG model (LM Score) as
+a metric to filter noisy questions (Figure 1, top). Although these filtering techniques have been shown
+to improve the question quality to some extent
+(Rennie et al., 2020), they are not directly optimized for selecting questions that can improve QA
+performance on the target domain. For example,
+some useful but difficult questions (e.g., the last example in Figure 1) may be filtered by the Roundtrip
+method, since they cannot be answered correctly
+by the pretrained QA model. However, these questions are often crucial to further improving QA
+performance when added into training.
+In this paper, we propose a question value estimator (QVE) (Figure 1, middle) to select questions
+that can improve QA performance on the target
+domain. QVE takes in generated QA examples and
+outputs real-valued scores (i.e., question values),
+which are expected to represent the usefulness of
+generated questions in terms of improving targetdomain QA performance. However, training the
+QVE model towards this goal is challenging due to
+the lack of supervision (i.e., true question values).
+To solve the problem, we propose to train the
+QVE with direct QA feedback from the target domain. Intuitively, if a batch of synthetic questions
+(when used for training) leads to increasing accuracy of the target-domain QA model, QVE should
+assign high values to them; the more the accuracy
+increases, the higher the question values should be.
+Thus, we optimize QVE with the target-domain QA
+performance gain after adding the selected questions into training. More formally, given the discrete and non-differentiable question selection process, we formulate the question selection of QVE
+as a reinforcement learning (Williams, 1992) problem (Figure 2). The QVE receives a batch of synthetic samples each time and learns to select highquality ones based on their estimated values. The
+selected samples are then used to train the targetdomain QA model, with the resulting performance
+gain (on the available target-domain annotations)
+as the reward. The reward guides the optimization
+of QVE such that it will eventually make proper
+question value estimation and selection.
+To evaluate the QVE model, we instantiate the
+QG and the QA model based on the pretrained
+BART (Lewis et al., 2020) and BERT (Devlin
+et al., 2019), respectively. By carrying out comprehensive experiments on four commonly-used reading comprehension datasets (Trischler et al., 2017;
+Joshi et al., 2017; Yang et al., 2018; Kwiatkowski
+et al., 2019), we show that: (1) our QVE model
+trained with the target-domain QA feedback substantially outperforms the question selection techniques trained without direct QA feedback (Alberti
+et al., 2019; Shakeri et al., 2020). (2) When using
+our QVE model to select synthetic questions, QA
+models can achieve comparable performance to
+fully-supervised baselines while using only 15% of
+the full target-domain annotations, which indicates
+that our method can greatly alleviate human annotation effort in practice. (3) To understand why QVE
+brings superior improvement, we conduct human
+evaluation and find that QVE can better identify
+semantically-matched and difficult questions.
+7 Conclusion
+We propose a question value estimator to estimate
+the usefulness of synthetic questions and select
+useful ones for improving target-domain QA training. We optimize QVE with the target-domain QA
+performance gain after adding the selected questions into training. Our comprehensive experiments
+demonstrate the superiority of QVE compared with
+other question selection methods. Additionally, using the synthetic questions selected by QVE and
+only around 15% of the human annotated data on
+each target domain, we can achieve comparable
+performance to the fully-supervised baselines.

@@ -1,0 +1,66 @@
+1 Introduction
+Empathy is an important interpersonal function
+in communication settings from conversations between friends and family, to educational, medical, or other goal-oriented dialogues. In natural
+language processing research, automatic empathy
+recognition and generation are explored for motivations such as improved experiences with opendomain dialogue agents (Rashkin et al., 2019; Majumder et al., 2020; Lin et al., 2020), analyzing
+supportive interactions in online forums (Zhou and
+Jurgens, 2020; Sharma et al., 2020; Lahnala et al.,
+2021), and for the development of educational
+and evaluative tools for counselor training (Gibson et al., 2015; Pérez-Rosas et al., 2017; Zhong
+et al., 2020) in addition to other educational domains (Wambsganss et al., 2021). Yet empathy prediction is a challenge for current language technologies due to resource availability and difficulty defining a gold standard for the complex phenomenon.
+The lack of proper resources for empathy modeling limits the ability of the NLP community to
+more widely explore it. Many studies, for instance,
+are on sensitive data that cannot be made public.
+There are some datasets that are publicly available
+that are built on social media platforms, or through
+specific data collection tasks, however, these are
+few and far between, and each have limitations
+due to inherent challenges in the collection and
+annotation process.
+A general challenge with studying empathy is
+how to define the concept concretely enough to
+obtain consistent and relevant gold standard annotations, as there are many highly varied definitions
+in psychology research (Cuff et al., 2016). Furthermore, empathy datasets in NLP are almost always
+annotated by others rather than the person having
+an empathetic experience (Buechel et al., 2018) or
+the person on the receiving end. Such annotations
+thus indicate particular aspects of language identified by a removed observer, rather than provide
+insight into the effect that particular empathetic
+experiences have on language.
+Toward this issue, Buechel et al. (2018) developed the EMPATHETICREACTIONS dataset, which
+contains empathic concern and personal distress
+ratings based on self-evaluations of individuals’
+own empathetic experiences at the time of writing
+the text. These reactions are short essays in which
+the author describes their feelings as they would to
+a friend after reading an article meant to evoke empathy. This data may then enable analysis into the
+way the empathetic experiences impact or relate to
+produced language. The EMPATHETICREACTIONS
+dataset is used for predicting empathy and distress
+in the WASSA 2022 Shared Task, enabling a large
+group of people to research empathy prediction on
+a standard and public set of data.
+In this paper, we present our experiments for
+empathy and distress prediction as part of WASSA
+2022. We explore adapters for the task since it
+is more efficient than full fine-tuning, which so
+far has not been explored for empathy prediction.
+Following work on domain transfer, we also build
+a system leveraging additional empathy data, as the
+amount of empathy data is still sparse.
+6 Conclusion
+We presented our models for empathy and distress
+prediction on the EMPATHETICREACTIONS dataset
+for the WASSA 2022 shared task. We found that a
+stacked adapter composition with the WASSA task
+adapter stacked on a pre-trained emotion adapter
+(EMOTIONSTACK) outperformed other methods.
+This approach mitigates the costs of full fine-tuning
+while achieving comparable results. Furthermore,
+this method required no additional features beyond
+the empathetic reaction text. We further discussed
+challenges of researching empathy in natural language processing. In future work, we could explore
+incorporating the personal features provided for the
+shared task. We plan to further explore the use of
+different empathy datasets together for empathy
+prediction.

@@ -1,0 +1,79 @@
+Large, pretrained neural models have advanced Natural Language Generation (NLG)
+performance across a variety of use cases, including text summarization, translation,
+and dialogue. Yet, generative neural models are known to hallucinate often, lacking
+faithfulness to underlying sources—for example, in summarization or in grounded
+dialogue systems. Accurate evaluation with respect to these issues is important.
+In this article, we develop a framework for the evaluation of attribution, by which
+we mean the accurate use of source documents to support generated text. Attribution
+is closely related to issues of hallucination and faithfulness (see §2 for discussion). As a
+key motivating example, consider a dialogue with a system that generates responses to
+a user’s sequence of questions:
+U SER : what was George Harrison’s first solo album?
+S YSTEM : it was “Wonderwall Music”, released in November 1968.
+U SER : how old was he when it was released?
+S YSTEM : he was 25 years old
+
+If such a system, in addition to generating responses, could attribute its statements to
+source documents, that is, provide sufficient and concise evidence that acts as corroboration for its claims, system designers and users alike could more readily ascertain
+the extent to which the information it provides is supported by underlying sources.
+Prior work in NLG spanning diverse use cases such as summarization, dialogue response generation, and data-to-text generation has investigated issues of faithfulness
+and “hallucination”, but has not provided a uniform and formally expressed framework
+to measure these errors. We discuss the relationship of our work to related work in §2.
+In §3, we introduce our evaluation framework, Attributable to Identified Sources
+(AIS), that can be used to assess whether statements in natural language made by
+a system are corroborated by a given underlying source.
+
+Large neural models have brought a new challenge to natural language generation (NLG): It
+has become imperative to ensure the safety and reliability of the output of models that generate
+freely. To this end, we present an evaluation framework, Attributable to Identified Sources
+(AIS), stipulating that NLG output pertaining to the external world is to be verified against an
+independent, provided source. We define AIS and a two-stage annotation pipeline for allowing
+annotators to evaluate model output according to annotation guidelines. We successfully validate
+this approach on generation datasets spanning three tasks (two conversational QA datasets,
+a summarization dataset, and a table-to-text dataset). 
+
+
+In this article, we define a new evaluation framework called Attributable to Identified
+Sources, which allows us to inspect whether information in generated text can be supported by source documents. We provide formal definitions of AIS and descriptions of
+how it can be applied to three different NLG tasks (conversational QA, summarization,
+and table-to-text generation). We validate this evaluation framework quantitatively
+on human evaluation studies, in which annotators rated the AIS of model output as
+part of a two-stage annotation pipeline. The results of the human evaluation studies
+demonstrate that high-quality AIS ratings can be obtained empirically. The results shed
+light on some of the ongoing challenges in training NLG models; having solid AIS is the
+basis for addressing them.
+
+think that a separate annotation framework would be best-suited to diagnose these,
+which we leave to future work.
+AIS is limited to propositions that can be judged with the “according to” framework. AIS is not applicable to questions (without presuppositions) or imperatives
+(commands and requests). There are also scenarios where strict attribution contradicts
+other desirable output characteristics (e.g., chit-chat systems). We did not examine AIS
+on such data. How to evaluate hybrid systems that mix entertaining and informative
+communicative goals—capturing the attribution of the informative portion but ignoring
+the rest—is unclear, as is the question of whether systems with blurry boundaries
+between what is and is not subject to attribution should exist at all. To investigate the
+feasibility of the AIS annotations and properly calibrate annotator responses, we have
+focused on tasks where the grounding source is explicitly defined, though this could
+be extended to more indirect grounding tasks as well (e.g., tasks that require more
+background knowledge).
+We have purposefully limited the availability of context in our definition. Practical
+human–computer interactions may actually take place in context beyond the shared
+time t that is used in the definition (Section 3), perhaps because the communication
+channel is richer than a text-based conduit of transmission, and because it may be
+further extended by multi-session interaction history. It is important that annotators
+remain aware of the notion of explicature, resolving explicit references and implicit
+topics available to the communicators. It is possible that the use of models that perform
+this task (Choi et al. 2021) can improve the performance of annotators. We are also aware
+that this task requires close reading, which is challenging to implement on crowdsourcing platforms where speed, efficiency, and cost are incentivized instead. Again, models
+may be useful in extracting explicit, elementary propositions from complex statements,
+making this task easier for annotators.
+Another approach for reducing the workload would be to use an automatic evaluation model to help score easier system outputs and only rely on humans for evaluating
+the more challenging ones. N-gram overlap or NLI models may work reasonably well
+as starting points in automatic AIS evaluation, particularly where the output is very
+extractive. However, such simple modeling approaches are not as feasible for evaluating
+very abstractive output (Dziri et al. 2022), and may not be as suitable to cases where the
+attributed source is long or requires extra context. Therefore, using automatic systems
+in conjunction with (or instead of) human annotations will require the development of
+more nuanced automatic AIS detection approaches. Our annotated data could be useful
+in evaluating the quality of such automatic AIS evaluation systems. We will examine
+such approaches in future work.

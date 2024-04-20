@@ -1,0 +1,16 @@
+State-of-the-art machine learning models are
+prone to adversarial attacks: Maliciously
+crafted inputs to fool the model into making
+a wrong prediction, often with high confidence.
+While defense strategies have been extensively
+explored in the computer vision domain, research in natural language processing still lacks
+techniques to make models resilient to adversarial text inputs. We adapt a technique from
+computer vision to detect word-level attacks
+targeting text classifiers. This method relies
+on training an adversarial detector leveraging
+Shapley additive explanations and outperforms
+the current state-of-the-art on two benchmarks.
+Furthermore, we prove the detector requires
+only a low amount of training samples and, in
+some cases, generalizes to different datasets
+without needing to retrain.

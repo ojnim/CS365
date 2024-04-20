@@ -1,0 +1,13 @@
+This paper describes the LingJing team’s
+method to the Workshop on Computational Approaches to Subjectivity, Sentiment & Social
+Media Analysis (WASSA) 2022 shared task
+on Personality Prediction (PER) and Reactivity Index Prediction (IRI). In this paper, we
+adopt the prompt-based method with the pretrained language model to accomplish these
+tasks. Specifically, the prompt is designed to
+provide knowledge of the extra personalized information for enhancing the pre-trained model.
+Data augmentation and model ensemble are
+adopted for obtaining better results. Extensive
+experiments are performed, which shows the
+effectiveness of the proposed method. On the final submission, our system achieves a Pearson
+Correlation Coefficient of 0.2301 and 0.2546
+on Track 3 and Track 4 respectively. We ranked 1st on both sub-tasks.

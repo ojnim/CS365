@@ -1,0 +1,10 @@
+Contextual word embedding techniques for semantic shift detection are receiving more and
+more attention. In this paper, we present What
+is Done is Done (WiDiD), an incremental approach to semantic shift detection based on
+incremental clustering techniques and contextual embedding methods to capture the changes
+over the meanings of a target word along a diachronic corpus. In WiDiD, the word contexts
+observed in the past are consolidated as a set
+of clusters that constitute the “memory” of the
+word meanings observed so far. Such a memory is exploited as a basis for subsequent word
+observations, so that the meanings observed in
+the present are stratified over the past ones.

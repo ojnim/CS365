@@ -1,0 +1,43 @@
+In this paper we explore a principled approach
+to solve entity linking (EL) jointly with coreference resolution (coref). Concretely, we formulate
+coref+EL as a single structured task over directed
+trees that conceives EL and coref as two complementary components: a coreferenced cluster can
+only be linked to a single entity or NIL (i.e., a nonlinkable entity), and all mentions linking to the
+same entity are coreferent. This contrasts with previous attempts to join coref+EL (Hajishirzi et al.,
+2013; Dutta and Weikum, 2015; Angell et al., 2021)
+where coref and EL models are trained separately
+and additional logic is required to merge the predictions of both tasks.
+Our first approach (Local in Fig. 1(a)) is motivated by current state-of-the-art coreference resolution models (Joshi et al., 2019; Wu et al., 2020) that
+predict a single antecedent for each span to resolve.
+We extend this architecture by also considering entity links as potential antecendents: in the example
+of Fig. 1, the mention “Alliance” can be either connected to its antecedent mention “NATO” or to any
+of its candidate links (Alliance or Alliance,_Ohio).
+While straightforward, this approach cannot solve
+cases where the first coreferenced mention does not
+include the correct entity in its candidate list (e.g.,
+if the order of “NATO” and “Alliance” mentions
+in Fig. 1 would be reversed). We therefor propose
+a second approach, Global, which by construction
+overcomes this inherent limitation by using bidirectional connections between mentions. Because that
+implies cycles could be formed, we resort to solving a maximum spanning tree problem. Mentions
+that refer to the same entity form a cluster, represented as a subtree rooted by the single entity they
+link to. To encode the overall document’s clusters
+in a single spanning tree, we introduce a virtual
+root node (see Fig. 1(b)).2
+This paper contributes: (i) 2 architectures (Local
+and Global) for joint entity linking (EL) and
+corefence resolution, (ii) an extended AIDA dataset
+(Hoffart et al., 2011), adding new annotations of
+linked and NIL coreference clusters, (iii) experimental analysis on 2 datasets where our joint
+coref+EL models achieve up to +5% F1-score on
+both tasks compared to standalone models. We
+also show up to +50% in accuracy for hard cases
+of EL where entity mentions lack the correct entity
+in their candidate list.
+
+We propose two end-to-end models to solve entity
+linking and coreference resolution tasks in a joint
+setting. Our joint architectures achieve superior performance compared to the standalone counterparts.
+Further analysis reveals that this boost in performance is driven by more coherent predictions on
+the level of mention clusters (linking to the same
+entity) and extended candidate entity coverage.

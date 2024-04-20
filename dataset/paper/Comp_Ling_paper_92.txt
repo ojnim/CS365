@@ -1,0 +1,62 @@
+The use of question answering for testing learning
+often relies on characterizing questions on aspects
+such as difficulty and discrimination1
+. For example, ordering questions by difficulty can enable
+curriculum learning (Bengio et al., 2009). Similarly, discrimination is used in standardized exams
+such as the SAT to ensure that questions are varied
+enough to discriminate between high-ability and
+low-ability respondents. Item Response Theory
+(IRT) (Wright and Stone, 1979; Lord, 1980) has
+been a widely applied framework to jointly estimate such parameters for questions (or items) and
+the abilities of respondents. While IRT has its inception in psychometrics and has traditionally been
+used with human respondents, recently, it has been
+explored for analyzing predictions from an ‘artificial crowd’ of ML models (Prudêncio et al., 2015;
+Plumed et al., 2016; Martínez-Plumed et al., 2019;
+Lalor et al., 2019; Vania et al., 2021; Rodriguez
+et al., 2021).
+While it can be helpful to know which questions are difficult/discriminatory, it can be equally
+important to be able to determine a question’s difficulty/discrimination parameters without having
+to use it in a testing environment (as is required to
+estimate IRT parameters). Some recent work, such
+as Ha et al. (2019), has explored using features
+derived from the text of a question to predict the
+difficulty in the context of multiple-choice medical exams. While others (Benedetto et al., 2020)
+have used tf-idf features to predict the difficulty
+of questions as measured by IRT. We differ from
+these works in two ways: Firstly, while Ha et al.
+(2019); Benedetto et al. (2020) both predict the difficulty of items for humans, we are interested in predicting the difficulty (and discrimination) of items
+for QA models. Secondly, we choose a questionanswering dataset, HotpotQA (Yang et al., 2018),
+as our testbed. We utilize this dataset to generate a
+rich and varied feature set across each item’s question, answer, and associated contexts. We can then
+employ these features to analyze our difficulty and
+discrimination predictions, giving us insights into
+both our underlying QA model and factors that can
+increase the difficulty/discrimination of a question.
+Our analysis shows significant variations among
+questions and reveals some surprising patterns. We
+show that it is possible to predict both difficulty
+and discrimination of natural language questions,
+which can have multiple applications in education
+and pedagogy. Additionally, we see that different
+surface-level features are associated with high discrimination and high difficulty, which can inform
+new evaluation methods and the creation of new
+datasets. Further, we identify attributes for predicting difficulty and discrimination that are general
+enough to be adapted to various QA datasets.
+In this paper, we explored QA datasets through the
+lens of Item Response Theory. We have demonstrated a way to build regression models that can
+describe the difficulty and discrimination of a question. We note that our work is limited in two important ways: firstly, we only use the DFGN model
+in our artificial crowd, which may have introduced
+a bias in which some factors that make questions
+difficult/discriminatory are only applicable to this
+model. Secondly, we only explore the HotPotQA
+dataset, which may further limit our analysis to
+only be applicable to HotPotQA or similar datasets.
+Future work could incorporate multiple models and
+datasets to explore a more easily generalizable difficulty/discrimination prediction pipeline. We also
+note that our analysis here focused on QA. However, there are many NLP tasks in which the difficulty or discrimination of an item may be important.
+Our work here could naturally extend to these domains. Finally, automatically predicting these traits
+without relying on user responses can engender a
+host of creative educational applications. Future
+work can also leverage such predictive models to
+explore more efficient strategies for learning and
+evaluation.

@@ -1,0 +1,70 @@
+1 Introduction
+Reproduction studies are becoming more common
+in Natural Language Processing (NLP), with the
+first shared tasks being organised, including REPROLANG (Branco et al., 2020) and ReproGen
+(Belz et al., 2021b). In NLP, reproduction studies
+generally address the following question: if we create and/or evaluate this system multiple times, will
+we obtain the same results?
+To answer this question for a given specific system, typically (Wieling et al., 2018; Arhiliuc et al.,
+2020; Popovic and Belz ´ , 2021) an original study
+is selected and repeated more or less closely, before comparing the results obtained in the original
+study with those obtained in the repeat, and deciding whether the two sets of results are similar
+enough to support the same conclusions.
+This framing, whether the same conclusions can
+be drawn, involves subjective judgments and different researchers can come to contradictory conclusions: e.g. the four papers (Arhiliuc et al., 2020;
+Bestgen, 2020; Caines and Buttery, 2020; Huber
+and Çöltekin, 2020) reproducing Vajjala and Rama
+(2018) in REPROLANG all report similarly large
+differences, but only Arhiliuc et al. conclude that
+reproduction was unsuccessful.
+There is no standard way of going about a reproduction study in NLP, and different reproduction
+studies of the same original set of results can differ
+substantially in terms of their similarity in system
+and/or evaluation design (as is the case with the Vajjala and Rama (2018) reproductions, see Section 4
+for details). Other things being equal, a more similar reproduction can be expected to produce more
+similar results, and such (dis)similarities should
+be factored into reproduction analysis and conclusions, but NLP lacks a method for doing so.
+Being able to assess reproducibility of results
+objectively and comparably is important not only
+to establish that results are valid, but to provide
+evidence about which methods have better/worse
+reproducibility and what may need to be changed to
+improve reproducibility. To do this, assessment has
+to be done in a way that is also comparable across
+reproduction studies of different original studies,
+e.g. to develop common expectations of how similar original and reproduction results should be for
+different types of system, task and evaluation.
+In this paper, we (i) describe a method for quantified reproducibility assessment (QRA) directly derived from standard concepts and definitions from
+metrology which addresses the above issues, and
+(ii) test it on diverse sets of NLP results. Following
+a review of related research (Section 2), we present
+the method (Section 3), tests and results (Section 4),
+discuss method and results (Section 5), and finish
+with some conclusions (Section 6).
+
+6 Conclusion
+We have described an approach to quantified reproducibility assessment (QRA) based on concepts
+and definitions from metrology, and tested it on 18
+system and evaluation measure combinations involving diverse NLP tasks and types of evaluation.
+QRA produces a single score that quantifies the
+degree of reproducibility of a given system and
+evaluation measure, on the basis of the scores from,
+and differences between, multiple reproductions
+of the same original study. We found that the approach facilitates insights into sources of variation
+
+between reproductions, produces results that are
+comparable across different reproducibility assessments, and provides pointers about what needs to
+be changed in system and/or evaluation design to
+improve reproducibility.
+A recent survey (Belz et al., 2021a) found that
+just 14% of the 513 original/reproduction score
+pairs analysed were exactly the same. Judging the
+remainder simply ‘not reproduced’ is of limited
+usefulness, as some are much closer to being the
+same than others. At the same time, assessments
+of whether the same conclusions can be drawn
+on the basis of different scores involve subjective
+judgments and are prone to disagreement among
+assessors. Quantifying the closeness of results as in
+QRA, and, over time, establishing expected levels
+of closeness, seems a better way forward.

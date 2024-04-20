@@ -1,0 +1,45 @@
+1 Introduction
+Emotion Detection is an important task for Natural
+Language Processing and for Affective Computing. Indeed, several resources and models have
+been proposed (Alm et al., 2005; Abdul-Mageed
+and Ungar, 2017; Nozza et al., 2017; Xia and Ding,
+2019; Demszky et al., 2020, inter alia) for this task.
+These models can be used by social and computational scientists (Verma et al., 2020; Kleinberg
+et al., 2020; Huguet Cabot et al., 2020) to better
+understand how people react to events through the
+use of social media. However, these methods often require large training sets that are not always
+available for low-resource languages. Nonetheless, multilingual methods (Wu and Dredze, 2019)
+have risen across the entire field showing powerful
+few-shot and zero-shot capabilities (Bianchi et al.,
+2021b; Nozza, 2021).
+In this short paper, we introduce a new resource:
+XLM-EMO. XLM-EMO is a model for multilingual emotion prediction on social media data. We
+collected datasets for emotion detection in 19 different languages and mapped the labels of each
+dataset to a common set {joy, anger, fear, sadness}
+that is then used to train the model. We show that
+XLM-EMO is capable of maintaining stable performances across languages and it is competitive
+against language-specific baselines in zero-shot settings.
+We believe that XLM-EMO can be of help to the
+community as emotion prediction is becoming an
+interesting and relevant task in NLP; the addition
+of a multilingual model that can perform zero-shot
+emotion prediction can be of help for many lowresource languages that still do not have a dataset
+for emotion detection.
+Contributions We release XLM-EMO which is
+a multilingual emotion detection model for social
+media text. XLM-EMO shows competitive zeroshot capabilities on unseen languages. We release
+the model in two versions a base and a large to
+adapt to different possible use-cases. We make
+the models1
+and the code to train it freely available under a Python package that can be directly
+embedded in novel data analytics pipelines.
+
+5 Conclusion
+In this short paper, we propose XLM-EMO, a novel
+resource for emotion detection. The model shows
+stable performance across 19 languages and it is
+competitive in a zero-shot setting, supporting its
+usage in low-resource contexts. We plan to enrich
+this model with more languages as soon as we
+find them so that we can continually improve these
+results and offer better methods to the community.

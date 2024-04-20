@@ -1,0 +1,51 @@
+Relation extraction is a fundamental task in Natural Language Processing (NLP) that predicts the
+semantic relation between two entities in a given
+sentence. It has attracted considerable research
+effort as it plays a vital role in many NLP applications such as Information Extraction (Tran et al.,
+2021a,b) and Question Answering (Xu et al., 2016).
+Most recent studies (Tran et al., 2019; Tian et al.,
+2021) treated this task in a fully supervised manner
+and achieved excellent performance. However, the
+supervised models cannot extract relations that are
+not predefined or observed during training, while
+many new relations always exist in real-world scenarios. Thus, it is worth enabling models to predict
+new relations that have never been seen before.
+Such a task is considered as zero-shot learning
+(Xian et al., 2019), where a key to achieving high
+performance is how to generalize a model to unseen
+classes by using a limited number of seen classes.
+However, there are only a few existing studies
+on zero-shot relation extraction (ZSRE). Levy et al.
+(2017) tackled this task by using reading comprehension models with predefined question templates.
+Obamuyide and Vlachos (2018) simply reduced
+ZSRE to a text entailment task, utilizing existing
+textual entailment models. Recently, Chen and
+Li (2021) presented ZS-BERT, which projects sentences and relations into a shared space and uses the
+nearest neighbor search to predict unseen relations.
+The previous studies overlooked the importance
+of learning discriminative embeddings. In essence,
+the discriminative learning helps models to better
+distinguish relations, especially on similar relations.
+Our study focuses on this aspect and demonstrates
+its significance for improving ZSRE. Specifically,
+we propose a new model that incorporates discriminative embedding learning (Han et al., 2021) for
+both sentences and semantic relations, which is inspired by contrastive learning (Chen et al., 2020)
+commonly used in computer vision. In addition,
+instead of using distance metrics to predict unseen
+relations as done by Chen and Li (2021), we use a
+self-adaptive comparator network to judge whether
+the relationship between a sentence and a relation
+is consistent. This verification process helps the
+model to learn more discriminative embeddings.
+Experimental results on two datasets showed that
+our method significantly outperforms the existing
+methods for ZSRE.
+In this work, we present a new model to solve the
+ZSRE task. Our model aims to enhance the discriminative embedding learning for both sentences and
+relations. It boosts inter-relation separability and
+intra-relation compactness of sentence embeddings
+and maximizes distances between different relation
+embeddings. In addition, a comparator network is
+used to validate the consistency between a sentence
+and a relation. Experimental results on two benchmark datasets demonstrated the superiority of the
+proposed model for ZSRE.

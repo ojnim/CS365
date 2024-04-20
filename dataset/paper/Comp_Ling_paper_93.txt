@@ -1,0 +1,120 @@
+Semantic parsing is a promising technique for enabling natural language user interfaces (Ge and
+Mooney, 2005; Artzi and Zettlemoyer, 2013; Berant et al., 2013; Wang et al., 2015). However, a key
+challenge facing semantic parsing is the richness of
+human language, which can often encode concepts
+(e.g., “circle”) that do not exist in the underlying
+system or are encoded using different language
+(e.g., “ball”). Thus, human users can have trouble
+providing complex compositional commands in the
+form of natural language to such systems.
+One approach to addressing this issue is to develop increasingly powerful models for understanding natural language (Gardner et al., 2018; Yin and
+Neubig, 2018). While there has been enormous
+progress in this direction, there remains a wide gap
+between what these models are capable of compared to human understanding (Lake and Baroni,
+2018), manifesting in the fact that these models can
+fail in unexpected ways (Ribeiro et al., 2016). This
+gap can be particularly problematic for end users
+who do not understand the limitations of machine
+learning models, since it encourages the human
+user to provide complex commands, but then performs unreliably on such commands.
+Thus, an important problem is to devise techniques for explaining these models. Generally
+speaking, a range of techniques have recently been
+developed for explaining machine learning models. The first technique is to use models that are
+intrinsically explainable, such as linear regression
+or decision trees. However, in the case of semantic parsing, such models may achieve suboptimal
+performance, and furthermore it is not clear that
+the structure of these models would be useful to
+end users. A second technique is to train a blackbox model, and then approximate it using an interpretable model. Then, the interpretable model
+can be shown to the human user to explain the
+high-level decision-making process underlying the
+blackbox model. However, this approach also suffers from the fact that showing a decision tree or
+regression model is likely not useful to an end user.
+Instead, we consider an alternative form of
+explanation called a counterfactual explanation (Wachter et al., 2017). These explanations
+are designed to describe alternative outcomes to
+the user. In particular, given a prediction for a specific input, they tell the user how they could have
+minimally modified that input to achieve a different
+outcome. As an example, suppose a bank is using
+a machine learning model to help decide whether
+to provide a loan to an individual; if that individual
+is denied the loan, then the bank can provide them
+with a counterfactual explanation describing how
+they could change their covariates (e.g., increase
+their income) to qualify for a loan.
+We propose a novel algorithm for computing
+counterfactual explanations for semantic parsers.
+In particular, suppose that a user provides a command in the form of a natural language utterance.
+If the natural language interface fails to provide the
+desired result, then our goal is to explain how the
+user could have modified their utterance to achieve
+the desired result. To this end, we have the human
+additionally provide the desired result. Then, we
+compute an alternative utterance that the semantic
+parser correctly processes while being as similar
+as possible to the original utterance. Intuitively,
+this explanation enables the user to modify their
+language to reliably achieve their goals in future
+interactions with the system.
+We evaluate our approach on the BabyAI environment (Chevalier-Boisvert et al., 2018), where
+the human can provide a virtual agent with commands to achieve complex tasks such as “pick up
+the green ball and place it next to the blue box”. We
+perform two user studies, which demonstrate that
+our approach both produces correct explanations
+(i.e., match the user’s desired intent), and that it
+substantially improves the user’s ability to provide
+valid commands.
+Example. In Figure 1, we show an example of a
+BabyAI task along with a user-provided utterance
+commanding the agent to go to the blue ball. The
+first command corresponds to a valid program, but
+cannot be understood by the semantic parser due to
+the use of the terminology “circle” instead of “ball”.
+The second command uses the construct “top right”
+that does not exist in the language. In both cases,
+the user provides a demonstration where the agent
+navigates next to the blue ball, upon which our
+approach generates the explanation shown.
+Related work. There has been a great deal of recent interest in providing explanations of blackbox machine learning models, focusing on explaining why the model makes an individual prediction (Ribeiro et al., 2016; Lei et al., 2016; Ribeiro
+et al., 2018; Alvarez-Melis and Jaakkola, 2018;
+Liu et al., 2018), or achieving better understanding
+of the limitations of models (Wallace et al., 2019;
+Ribeiro et al., 2020). In contrast, our goal is to
+explain how the input can be changed to achieve
+a desired outcome, which is called a counterfactual explanation (Wachter et al., 2017; Ustun et al.,
+2019). There has been interest in improving the
+performance of semantic parsers through interaction (Wang et al., 2016, 2017); our approach is
+complementary to this line of work, since it aims
+to make the system more transparent to the user.
+There has also been work on leveraging natural language descriptions to help generate counterfactual
+explanations for image classifiers (Hendricks et al.,
+2018), but not tailored at counterfactual predictions
+for natural language tasks; specifically, while their
+approach produces counterfactual explanations in
+natural language, they are for image predictions
+rather than text predictions.
+For natural language processing tasks, a key challenge is that the input space is discrete (e.g., a natural language utterance); for such settings, there
+has been work on algorithms for searching over
+combinatorial spaces of counterfactual explanations (Ross et al., 2021b; Wu et al., 2021; Ross
+et al., 2021a). However, even for these approaches,
+the output space is typically small (e.g., a binary
+sentiment label). In contrast, semantic parsing has
+highly structured outputs (i.e., programs), requiring
+significantly different search procedures to find an
+explanation that produces the correct output. To address this challenge, we define a search space over
+counterfactual explanations for semantic parsing
+such that search is tractable.
+We have proposed a technique for explaining how
+users can adapt their utterances to interact with
+a natural language interface. Our experiments
+demonstrate how our explanations can be used
+to significantly improve the usability of semantic
+parsers when they are limited in terms of their semantic understanding. While any explanations are
+already very useful, we show that personalizing
+explanations can further improve performance.
+A key design choice in our approach is to construct a synthetic grammar from which counterfactual explanations are generated. In a realistic application, the semantic parsing model can be trained
+on a combination of synthetic data and real-world
+data, enabling our approach to be used in conjunction with the synthetic grammar. A key direction
+for future work is extending our approach to settings where such a grammar is not available. In our
+experience, a key challenge in this setting is that
+the generated text can be unnatural, possibly due
+to the constraints imposed on the search space.

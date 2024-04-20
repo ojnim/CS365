@@ -1,0 +1,47 @@
+Text style transfer is the task of rewriting text to
+incorporate additional or alternative stylistic elements while preserving the overall semantics and
+structure. Although style transfer has garnered increased interest due to the success of deep learning, these approaches usually require a substantial
+amount of labeled training examples, either as parallel text data (Zhu et al., 2010; Rao and Tetreault,
+2018) or non-parallel text data of a single style. (Li
+et al., 2018; Jin et al., 2019; Liu et al., 2020; Krishna et al., 2020). Even bleeding-edge approaches
+that tackle the challenging problem of label-free
+style transfer are limited in that they require at least
+several exemplar sentences that dictate a given target style (Xu et al., 2020; Riley et al., 2021). Hence,
+recent survey papers have identified a need for new
+methods that both reduce the training data requirements and expand the scope of styles supported
+(Jin et al., 2020; Hu et al., 2020).
+In this work, we present augmented zero-shot
+learning, a prompting method that allows large
+language models to perform text style transfer to
+arbitrary styles, without any exemplars in the target
+style. Our method builds on prior work showing
+that sufficiently large LMs such as GPT-3 can perform various tasks ranging from classification to
+translation, simply by choosing a clever prompt to
+prepend to the input text for which the model is
+asked to continue (Brown et al., 2020; Branwen,
+2020). Using a single prompt that provides several demonstrations of sentences being “rewritten”
+to meet a desired condition, language models can
+extrapolate and rewrite text in unseen styles. We
+are thus able to perform style transfer to arbitrary
+styles such as “make this sentence more comic” or
+“include the word balloon.”
+Augmented zero-shot learning is simple and facilitates the application of style transfer to a wider
+range of styles than existing work. Our contributions are the following.
+1. We propose a recipe for style transfer using large
+LMs that is label-free, training-free, and intuitively controllable.
+2. Via human evaluation, we find that our method
+achieves strong performance on both standard
+and non-standard style transfer tasks. We also
+compare our approach for sentiment transfer
+with prior methods using automatic evaluation.
+3. We explore real-world desired style transfers
+generated from users of a text editing UI that
+implements our method.
+
+We introduced augmented zero-shot learning,
+which we find shows shows strikingly promising performance considering its simplicity. This
+prompting paradigm moves the needle in text style
+transfer by expanding the range of possible styles
+beyond the currently limited set of styles for which
+annotated data exists. More broadly, we also hope
+that the strategy of prompting a large LM with nontask specific examples can inspire new inferenceonly methods for other NLP tasks.

@@ -1,0 +1,74 @@
+1 Introduction
+In many NLG tasks, it is important to be able to generate multiple diverse outputs from a model. Tasks
+like summarization (Mani, 2001; Nenkova and
+McKeown, 2011) and question generation (Zhou
+et al., 2017) exhibit one-to-many relationships;
+there can be multiple semantically diverse summaries or questions for the same source, and it
+may be useful for a model to be able to generate
+multiple outputs. Yet, the primary focus of recent
+research in NLG has been on improving the quality
+of single-best outputs (Raffel et al., 2019; Lewis
+et al., 2019; Dong et al., 2019; Zhang et al., 2020a;
+Narayan et al., 2021), while diversity remains an
+unsolved problem (Hashimoto et al., 2019; Zhang
+et al., 2021). This is particularly challenging in conditional generation, where diversity in the target
+sequence should not come at the cost of correctness
+or faithfulness; for example, alternate summaries
+are not valuable if they are unfaithful to the input
+document(s) (Maynez et al., 2020; Kryscinski et al.,
+2020). In this work, we investigate decoding methods for generating semantically diverse text which
+is also faithful to its input focusing on two tasks,
+namely summarization and question generation.
+Beam search (Li et al., 2016; Wiseman et al.,
+2017) has proven successful for single-best generation (Rush et al., 2015; Barrault et al., 2020;
+Meister et al., 2020), but struggles to generate diverse output (Vijayakumar et al., 2016). Stochastic
+sampling strategies, such as top-k sampling (Fan
+et al., 2018) and nucleus sampling (Holtzman et al.,
+2020), are better at generating diverse sequences
+but are not suitable for conditional generation as
+they degenerate,1 producing output that is not faithful to the source. Figure 1 exposes degeneration in
+summary output using nucleus sampling.
+To address these shortcomings, we propose Composition Sampling, a simple but effective hybrid
+decoding method for diverse and faithful conditional generation. It builds on recently proposed
+generation models (Narayan et al., 2021) that are
+trained to first plan a semantic composition of the
+target and then generate the text conditioned on the
+composition and the input. Composition sampling
+first samples a composition in the form of an entity
+chain and then uses beam search to generate the
+best possible sequence grounded to the sampled
+entity chain. Unlike top-k or nucleus sampling, it
+avoids degeneration by instilling diversity in composition, rather than directly on the surface form.
+Our contributions can be summarized as follows:
+(a) we introduce Composition Sampling, a simple
+yet effective decoding method for diverse conditional generation, which combines planning with
+stochastic sampling; (b) we propose several metrics to compute semantic diversity in generated text;
+our metrics are complementary to lexical diversity
+(e.g., Self-BLEU; Zhu et al. 2018; Alihosseini et al.
+2019) and assess whether a set of diverse outputs
+are contextually dissimilar (Self-BERTscore; Zhang
+et al. 2020b) or non-entailing (Self-Entailment);
+and (c) finally, we introduce, EDNA, a novel metric
+aiming to “Evaluate Diversity aNd fAithfulness”
+for summarization by quantifying whether summaries in a diverse set are faithful to their input
+without entailing each other.
+Evaluation on two popular summarization tasks,
+namely highlight generation (CNN/DailyMail; Hermann et al. 2015) and extreme summarization
+(XSum; Narayan et al. 2018), and question generation (SQuAD; Rajpurkar et al. 2016; Zhou et al.
+2017), shows that composition sampling is most
+effective in generating diverse summaries or questions. When assessed by humans, composition
+sampled summaries are as faithful as the best summaries produced with beam search. In comparison,
+nucleus sampled summaries can be as diverse but
+far less faithful. Taken together our results demonstrate that Composition Sampling is currently the
+best available decoding strategy for generating diverse and meaningful output.
+
+6 Conclusion
+We proposed Composition Sampling, a simple yet
+effective decoding method for faithful and diverse
+conditional generation. Our method is straightforward to implement and does not require any external system to augment the input during inference.
+Our experiments demonstrate that it is currently
+the best available decoding strategy for generating
+diverse and meaningful output. We also introduced
+Self-Entailment and Self-BERTScore, to automatically compute semantic diversity in summaries,
+and, EDNA, for jointly measuring faithfulness and
+diversity.

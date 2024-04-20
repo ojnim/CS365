@@ -1,0 +1,62 @@
+Text simplification aims to rewrite complex texts in
+order to make them easier to read and understand.
+This task can benefit vast low literacy readers, including children, language learners and people with
+aphasia, and has recently attracted increasing attention from the research community (Xu et al.,
+2016; Zhao et al., 2018; Martin et al., 2019; Dong
+et al., 2019). However, most previous research has
+focused on sentence-level text simplification and
+aim to simplify one sentence at a time. As a result,
+few discourse-level phenomena have been examined or understood for achieving document-level
+text simplification.
+Sentence deletion is a commonly used strategy
+to achieve intense simplification (Drndarevic and
+Saggion, 2012; Woodsend and Lapata, 2011), i.e.,
+some less important sentences from an original
+article are simply deleted and ignored for simplification. While professional re-writers may consider
+many factors and use several measures of importance to decide if a sentence should be deleted,
+some discourse structures provide automated measures to derive importance for sentences in a document. In particular, functional discourse structures categorize text units (sentences or paragraphs)
+based on their contents and their function roles in
+serving the purpose of a specific text-genre, such
+as scientific papers (Teufel et al., 1999; Liakata
+et al., 2012) and news articles (Yarlott et al., 2018;
+Choubey et al., 2020), and are therefore, expected
+to directly reveal the importance of a sentence
+within a document.
+In this work, we explore the use of news genrespecific functional structures for predicting sentence deletions in news documents. Specifically,
+we use news discourse profiling structure, which
+categorizes contents of news articles around the
+main news event, constructed through a publicly
+available system (Choubey et al., 2020)
+1
+. This system labels each sentence with one of eight content
+types reflecting common discourse roles of a sentence in telling a news story, including two content
+types for sentences describing the main news event
+and its immediate consequences (main content),
+two content types for sentences providing contextinforming contents and four content types for sentences providing further supportive information in
+a news article.
+We perform experiments using the Newsela corpus (Xu et al., 2015), a widely used dataset for
+text simplification research that contains 1492 English news articles and four simplified versions
+for each news article targeting audience of different reading levels (from elementary to high school
+students). Since we aim to achieve maximal simplification, we predict sentence deletions for target reading level corresponding to the elementary
+school students. We first build a document-level
+neural network as the basic model for predicting
+sentence deletions. We then incorporate content
+types of sentences into the prediction system using
+two methods, 1) by using content type labels as additional features to enrich sentence representations,
+and 2) by jointly predicting both sentence deletion
+labels and discourse content type labels. Experimental results show that, with little to no drop on
+precision, both methods for incorporating sentence
+content type information improve the recall (F1
+score) on the sentence deletion prediction task by
+6.5% (3.6%) and 10.7% (4.3%) respectively. Analysis on the development set shows that the additional deletions correctly recognized by our system
+are all sentences providing context-informing or
+supportive contents.
+We study sentence deletion prediction to achieve
+document-level text simplification. We have
+showed that a genre-specific functional discourse
+structure improves the prediction performance by
+large margins, when incorporated into a neural net
+model either as new features or for joint learning. For future work, we will study other useful
+discourse-level factors for sentence deletion prediction, we will also investigate multi-task learning
+to benefit both sentence deletion prediction and
+discourse parsing tasks.

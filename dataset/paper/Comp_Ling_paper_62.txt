@@ -1,0 +1,69 @@
+Relation Extraction (RE) identifies the relation r
+between a pair of entities (e1, e2) given some text
+mentioning both of them. To avoid large manual
+annotation, RE is often trained via distant supervision (DS-RE) (Mintz et al., 2009). DS-RE uses
+facts r(e1, e2) in an existing KB to associate a label r with the bag containing all sentences that
+mention e1 and e2. Research in DS-RE has been
+mostly monolingual and limited to English. Our
+goal is to study multilingual RE via distant supervision (Multi DS-RE). We expect multilingual RE
+models to have several benefits over monolingual
+RE. First, training data from multiple languages
+may be pooled to create a large dataset, enabling
+cross-lingual knowledge transfer (Zoph et al., 2016;
+Feng et al., 2020). Second, it may encourage RE
+models to be consistent across languages (Lin et al.,
+2017), e.g., extraction of a fact already seen in one
+language should be easier in another.
+To the best of our knowledge, RELX-Distant
+(Köksal and Özgür, 2020) is currently the only
+dataset available for Multi DS-RE, but even so, it
+has never been evaluated as a benchmark for the
+task. Our analysis reveals that it suffers from a
+poor selection of relation classes. Firstly, there are
+no examples of NA class (sentences with no relation between the two entities). Therefore, a model
+trained on RELX-Distant would find limited utility
+in any real world setting. Secondly, its choice of
+relation classes is highly disjoint, resulting in an
+absence of instances with multiple labels (unusual
+for a DS-RE dataset). Finally, it is highly imbalanced – even though it has 24 relation classes, over
+50% bags belong to just one “country” relation.
+Owing to these attributes, we observe that models trained on RELX-Distant end up classifying the
+instances of the minority class based on just the entity type information. Due to high skew, such mistakes have negligible impact on evaluation scores
+and the model achieves an AUC of 0.99 after only 5
+training epochs. Such numbers are unheard of, especially when compared to benchmarking datasets
+in mono-lingual RE (mono-lingual variant of the
+same architecture obtains an AUC of 0.83 when
+trained and tested on the GDS dataset (Jat et al.,
+2018).
+In response, we contribute a more realistic benchmark dataset for the task called DiS-ReX. Our
+dataset has over 1.8 million sentences in four languages: English, French, Spanish and German. It
+has 37 relation types including 1 No-Relation (NA)
+class and also has instances with multiple labels
+similar to the widely-used New York Times (NYT)
+dataset for English DS-RE (Riedel et al., 2010),
+thus comparing favorably to RELX-Distant.
+We also adopt state-of-the-art DS-RE models
+in the multilingual setting by using the mBERT
+encoder (Devlin et al., 2019), to create a strong
+baseline for this task.
+We achieve an AUC of 0.82 and a Micro-F1 of
+0.76, suggesting that the dataset is not trivial to
+optimize on, and could act as a good benchmark
+for the task. We publicly release DiS-ReX and the
+baseline.
+We propose DiS-ReX, a novel dataset for Multi
+DS-RE in 4 languages. We show that it is a more
+realistic and challenging benchmark compared to
+the existing dataset. DiS-ReX has a fairly wellrepresented distribution of relation types, includes
+instances with no-relation between entity-pairs and
+the relation-types selected show several real-world
+characteristics like inverse relations, different relations with high overlap, etc. We also publish
+first baseline numbers on the task of Multi DS-RE
+by extending existing state-of-the-art models. A
+detailed analysis of model performance suggests
+several research challenges for future: (1) learning language-agnostic sentence embeddings, (2)
+robustness to related relations (inverse; overlapping but semantically different), and (3) handling
+multi-label entity-pairs. Recently, Rathore et al.
+(2022) develop a multilingual DS-RE model named
+PARE, which reports improved performance on the
+DiS-ReX dataset.

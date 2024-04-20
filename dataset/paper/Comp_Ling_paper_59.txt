@@ -1,0 +1,52 @@
+With the growing interest in the human-computer
+interface, emotions are considered for listing differences between machines and living beings. Humans’ inherent knowledge of these emotions is
+hard to pass on to machines. Hence, the introduced
+WASSA 2022 shared task of Empathy Detection,
+Emotion Classification, and Personality Detection
+is challenging. Although some research has been
+done by Gibson et al. (2015) and Khanpour et al.
+(2017), they have several important shortcomings,
+such as the simplistic definition of empathy and the
+lack of these corpora in the public domain.
+The WASSA 2022 Shared Task consists of the
+following four major sub-tasks:
+• Track 1: Empathy Prediction (EMP): predict
+both the empathy concern and the personal
+distress scores at the essay-level
+• Track 2: Emotion Classification (EMO): categorize an essay into the correct emotion class
+• Track 3: Personality Prediction (PER): predict the personality of an author across five
+primary personality traits.
+• Track 4: Interpersonal Reactivity Index Prediction (IRI): predict the four primary aspects
+of empathy of an author.
+In our approach, we have used a pre-trained language model to extract the features from the textual
+input (essay) and develop - (A). a multi-task system
+to predict empathic concern and personal distress
+score jointly (for Track 1), (B). a multi-task system
+that categorizes an essay into appropriate emotion
+class and also detects the presence or absence of
+empathy and distress in it. For tracks 3 and 4, we
+solely consider the demographic information in
+the dataset to predict various personality traits and
+interpersonal reactivity index scores.
+This paper presents our approaches to address
+the various tasks introduced in the WASSA 2022
+shared task for empathy detection, emotion classification, and personality detection. To exploit
+the commonality among correlated tasks such as
+empathy and distress and emotion with empathy
+and distress, we developed multi-task systems built
+on pre-trained BERT models for - (A) empathy
+and distress detection tasks; (B). emotion classification (primary task) and empathy and distress
+classification (auxiliary tasks). We also presented
+SVM algorithms trained on various demographic
+features to predict personality traits and interpersonal reactivity index scores. We empirically observed how jointly learning correlated tasks such as
+empathy and distress, emotion with empathy and
+distress, helps to improve overall system performance. Our developed systems achieved average
+Pearson scores of 0.483, 0.05, and 0.08 for Track 1,
+3 and 4, respectively, and a macro F1 score of 0.524
+for Track 2 on the test set. We ranked 8th, 11th, 2nd
+and 2nd for the tracks 1, 2, 3 and 4 respectively.
+We want to improve our multi-tasking-based systems in the future by adding lexicon features from
+available lexical resources alongside textual input
+for the EMP and EMO tasks. We also want to
+develop an effective technique for combining contextual information from an author’s essays with
+demographic data to predict PER and IRI scores.

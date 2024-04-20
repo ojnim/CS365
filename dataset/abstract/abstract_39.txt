@@ -1,0 +1,18 @@
+Deep Neural Networks (DNN) models have
+achieved acceptable performance in sentiment
+prediction of written text. However, the output
+of these machine learning (ML) models cannot be natively interpreted. In this paper, we
+study how the sentiment polarity predictions
+by DNNs can be explained and compare them
+to humans’ explanations. We crowdsource a
+corpus of Personal Narratives and ask human
+judges to annotate them with polarity and select
+the corresponding token chunks - the Emotion
+Carriers (EC) - that convey narrators’ emotions
+in the text. The interpretations of ML neural
+models are carried out through Integrated Gradients method and we compare them with human annotators’ interpretations. The results of
+our comparative analysis indicate that while the
+ML model mostly focuses on the explicit appearance of emotions-laden words (e.g. happy,
+frustrated), the human annotator predominantly
+focuses the attention on the manifestation of
+emotions through ECs that denote events, persons, and objects which activate narrator’s emotional state.

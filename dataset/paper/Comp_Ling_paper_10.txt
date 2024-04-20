@@ -1,0 +1,70 @@
+1 Introduction
+The concern to facilitate users’ decision-making is
+common in most e-commerce platforms. The possibility for customers to publicly provide product
+reviews is one of the consequences of this concern.
+This functionality allows future customers to read
+reviews from other customers and take their buying
+decision. Despite being useful, the amount of generated data is very large, making it impossible for
+a human to read them all. Moreover, a large part
+of this data can be considered unwanted, containing poorly written texts, vague opinions and texts
+of dubious quality (Kim et al., 2006), making it
+difficult to find relevant content.
+The helpfulness voting functionality that some
+e-commerce platforms adopt tries to address the
+above problem, ranking the reviews and showing
+the most helpful ones to the customers. However,
+manual voting has some drawbacks, as new helpful
+reviews take time to get enough votes and gain a
+visible position. The solution is to automatically
+predict the helpfulness of reviews.
+Despite the usefulness of the task of helpfulness
+prediction and its practical implications, literature
+has shown that it is a challenging open issue in Natural Language Processing (NLP). Performance results vary drastically across domains and there are
+several different features and classification methods in the area, as discussed in (Sousa and Pardo,
+2021).
+This paper aims to investigate such issues and
+to identify relevant features and methods for helpfulness prediction. We provide a qualitative and
+quantitative study of the impact of key content features in two different domains (apps and movies).
+By content features, we mean those that are related
+to the information that can be extracted directly
+from the review, such as the text and the “stars”
+given by the author. We also perform a comparative study of various classical and deep machine
+learning classifiers. We show that simple features
+and classical classification methods may be powerful for the task, but they are largely outperformed
+by a convolutional neural network-based approach,
+which reaches a f1-score of 0.90 for apps and 0.74
+for movies. It is also relevant to cite that we run our
+experiments for a low resource language – Brazilian Portuguese –, bringing relevant contributions
+for NLP for Portuguese and establishing a benchmark for the task.
+The rest of the paper is organized as follows.
+Section 2 shows the main related work. In Section
+3, we describe the experimental setting adopted in
+this work. Section 4 reports the achieved results
+and Section 5 brings some final remarks.
+
+5 Final Remarks
+This paper synthesized a series of experiments on
+predicting review helpfulness, showing some relevant learned lessons and contributions (in particular,
+for Brazilian Portuguese, which is considered a low
+resource language). However, a lot remains to be
+investigated. We highlight two issues that concern
+us the most at this time.
+Firstly, the different performances for different
+domains (across different classification methods)
+keep intriguing us. This is a known behavior in
+the sentiment analysis area, and we corroborate it
+by testing new domains in this paper. We wonder
+whether new methods or features should be tested,
+
+maybe focusing on those that are more domain
+independent, or whether we should “transform” our
+data, “eliminating” domain specific traits.
+The other issue refers to the helpfulness prediction task itself. Although the literature (including us) have exhaustively tried with this task, it
+is a highly subjective task that (indirectly) incorporate several other tasks, as subjectivity 
+classification (more “personal” reviews look to be more
+interesting), polarity classification (more “radical”
+opinions call more attention), aspect identification
+(as reviews that directly cite some aspects look to
+be more useful), and detection of user information need (ultimately, a review is helpful only if
+it attends the information need of the user). Future efforts might explore such supporting tasks for
+helpfulness prediction.

@@ -1,0 +1,90 @@
+This paper aims to stimulate further convergence
+between Cognitive Linguistics approaches to language change and computational methods for semantic change. Cognitive Linguistics is a contemporary linguistic paradigm that assumes that linguistic knowledge is rooted in general cognitive capabilities, that language is shaped by usage and that
+meaning entails conceptualization (Dabrowska and
+Divjak, 2015). It pays particular attention to the interaction between semasiological change, whereby
+a word’s meaning changes over time, and onomasiological change, whereby the semantic configuration of a set of (near-)synonyms is reorganized
+over time. In this paper we focus on a single set of
+Dutch near-synonyms, vernielen and vernietigen,
+roughly translated as ‘to destroy’. We replicate the
+analysis of these verbs from Geeraerts (1997) with
+distributional models. The analysis, which tracks
+the meaning of both words in a corpus of 16th-20th
+century prose data, shows that both lexical items
+have undergone semantic change led by differences
+in their prototypical semantic core, as predicted by
+Geeraerts’ work.
+The models for the four subcorpora show how the
+relationship between the near-synonyms vernielen
+and vernietigen has changed over time. Semasiologically, vernielen was the major variant in the
+16th and 17th century, occurring in tokens related
+to the death of persons and concrete, natural objects.
+Over the course of the 18th century, it developed its
+prototypical meaning related to the destruction of
+(parts of) buildings, often by fire, and this meaning
+remained its core usage in the 19th century. By the
+20th century, the verb had decreased in frequency
+and its prototypical core was no longer distinguishable from the data. Vernietigen, in contrast, was
+the less frequent variant in the 16th and 17th century and at that time, there were no clear contexts
+yet where the verb occurred. It was mostly found
+in a semantically diverse cluster where its nearsynonym vernielen was possible as well. From the
+18th century onwards, the verb started to increase
+in frequency and it developed its prototypical sense
+of being used with abstract objects. In the 19th
+century, it also started to invade contexts where
+vernielen was preferred before (specifically related
+to the death of persons and to war). In the 20th
+century data, we also found a syntactic cluster, consisting of function words that often occur in the
+context of vernietigen.
+Onomasiologically, the analysis showcased how
+the nuances in the concept ‘to destroy’ evolve over
+time and have become more outspoken. For instance, the clusters related to the destruction of
+parts of buildings are not yet visible in the oldest
+data but they are important clusters in the more
+recent datasets. Similarly, the cluster with abstract
+objects is not yet distinguished by the analysis for
+the 16th and 17th century, but these objects form
+a cluster on their own in the 18th and 19th century data. Moreover, the analysis also showed how
+these particular nuances of meaning are typically
+expressed by a particular verb. In the visualization, for instance, there is clearly less overlap (or
+interchangeability) between the verbs in the later
+periods (except in the 20th century data, where
+vernielen is infrequent).
+Thus, this case-study showcases an example of
+how formal onomasiological variation and conceptual onomasiological variation can interact. On the
+one hand, vernielen and vernietigen serve as formal
+alternatives in the largest cluster from the 16th and
+17th century data. However, from the 18th century onwards, each verb increasingly retreats to its
+prototypical core. Arguably, they should therefore
+be considered conceptually distinct, prototypically
+referring to different nuances of meaning, even
+though they remain nearly synonymous.
+Methodologically, our usage of distributional
+models combined with a cluster analysis and the
+method, developed in Montes (2021), to analyze
+the context words that are good representatives for
+the clusters, allowed us to show how both verbs
+changed semantically over time. The procedure
+employed was quite straightforward, using a single set of parameter settings to model tokens from
+four diachronic subcorpora. With this procedure,
+we extended the analyses in Montes et al. (2021)
+and Geeraerts (1997) to a much longer time span.
+Despite the fact that we used a completely different
+dataset (a continuous diachronic corpus rather than
+dictionary citations from the 19th century only) and
+analysis method (an automatic procedure rather
+than a manual linguistic analysis), the hypotheses outlined in Geeraerts (1997) were mostly confirmed. Further, this method allowed us to track
+semasiological change and to investigate how this
+interacts with onomasiological variation over time.
+One shortcoming of the approach is that the ideal
+settings for the parameters need not be the same
+for other near-synonyms or for a comparable linguistic alternation in other languages. In fact, this
+is one of the major findings of Montes (2021), who
+showed that there is no direct link between a choice
+of parameters and the linguistic phenomena that are
+revealed by a model constructed with the method
+proposed by Schütze (1998). Therefore, while in
+this contribution we focus on a single set of parameters settings that were shown to be useful in
+analyses of the same linguistic example in another
+century, an alternative approach, that has been successfully employed in Montes (2021), is to consider
+a broader number of parameter settings to analyze
+linguistic phenomena.

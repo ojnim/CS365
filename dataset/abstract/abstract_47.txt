@@ -1,0 +1,14 @@
+Languages around the world employ classifier
+systems as a method of semantic organization
+and categorization. These systems are rife with
+variability, violability, and ambiguity, and are
+prone to constant change over time. We explicitly model change in classifier systems as the
+population-level outcome of child language acquisition over time in order to shed light on the
+factors that drive change to classifier systems.
+Our research consists of two parts: a contrastive
+corpus study of Cantonese and Mandarin childdirected speech to determine the role that ambiguity and homophony avoidance may play in
+classifier learning and change followed by a series of population-level learning simulations of
+an abstract classifier system. We find that acquisition without reference to ambiguity avoidance
+is sufficient to drive broad trends in classifier
+change and suggest an additional role for adults
+and discourse factors in classifier death.

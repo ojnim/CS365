@@ -1,0 +1,8 @@
+We build a system that leverages adapters, a
+light weight and efficient method for leveraging
+large language models to perform the task Empathy and Distress prediction tasks for WASSA
+2022. In our experiments, we find that stacking
+our empathy and distress adapters on a pretrained emotion classification adapter performs
+best compared to full fine-tuning approaches
+and emotion feature concatenation. We make
+our experimental code publicly available

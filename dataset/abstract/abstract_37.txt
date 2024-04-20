@@ -1,0 +1,15 @@
+Masked language models (MLMs) are pretrained with a denoising objective that is in
+a mismatch with the objective of downstream
+fine-tuning. We propose pragmatic masking
+and surrogate fine-tuning as two complementing strategies that exploit social cues to drive
+pre-trained representations toward a broad set
+of concepts useful for a wide class of social
+meaning tasks. We test our models on 15 different Twitter datasets for social meaning detection. Our methods achieve 2.34% F1 over
+a competitive baseline, while outperforming
+domain-specific language models pre-trained
+on large datasets. Our methods also excel in
+few-shot learning: with only 5% of training
+data (severely few-shot), our methods enable
+an impressive 68.54% average F1. The methods are also language agnostic, as we show in
+a zero-shot setting involving six datasets from
+three different languages.

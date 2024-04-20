@@ -1,0 +1,51 @@
+1 Introduction
+Empathy and Distress are quite important regarding human health. Emotion classification in natural
+languages has been studied for over two decades,
+and many applications successfully used emotion
+as their principal component. Empathy utterances
+can be emotional. Therefore, examining emotion
+in text-based empathy has a significant impact on
+predicting empathy. Empathic concern and personal distress are empathic responses that may result when observing someone in discomfort (Fabi
+et al., 2019). Some news stories are also displayed
+in this task, and people have reacted to them. The
+news is disturbing or discomforting to some people. And hence, regarding that, their empathy and
+distress are noted. This paper presents the WASSA
+2022 Shared Task: Predicting Empathy and Emotion in Reaction to News Stories. This shared task
+included four individual tasks where teams developed models to predict Emotions, empathy, and
+personality in essays in which people expressed
+their empathy and distress in reaction to news articles in which an individual or a group of people
+were harmed. Additionally, the dataset also included the demographic information of the authors
+of the essays, such as age, gender, ethnicity, income, education level, and personality information.
+The shared task consisted of four tracks (optional):
+Track 1: Empathy Prediction (EMP) task consists
+of predicting both the empathy concern and the
+personal distress. (Evaluation based on an average
+of Pearson correlation (Benesty et al., 2009) of empathy and distress).
+Track 2: Emotion Classification (EMO) consists
+of predicting the emotion (sadness, joy, disgust,
+surprise, anger, or fear, taken from the six basic
+emotions (Ekman and Friesen, 1971) also including neutral) at the essay-level (Evaluation based on
+the macro F1-score).
+Track 3: Personality Prediction (PER), which
+consists in predicting the personality of the essay
+writer, knowing all their essays and the news article from which they reacted (Evaluation based on
+the average of Pearson correlation over Personality
+values (Komarraju et al., 2011) - conscientiousness,
+Openness, Extraversion, Agreeableness, and Stability).
+Track 4: Interpersonal Reactivity Index Prediction (IRI) consists of predicting the personality of
+the essay writer. (Evaluation based on an average
+of Pearson correlation over IRI values - fantasy,
+perspective taking, empathetic concern, personal
+distress).
+We participated in only the first two tasks.
+6 Conclusion
+This paper describes our submission to the WASSA
+2022 shared task, where we have used the already
+trained RoBERTa model on a large dataset and
+then used its power by just finetuning on the given
+dataset. By the approach we have used, it can also
+be deduced that text augmentation and upsampling
+helped in emotion classification and predicting the
+empathy and distress scores as most of the time, the
+larger amount of data helps improve the training
+process of a model.

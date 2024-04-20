@@ -1,0 +1,7 @@
+Before entering the neural network, a token is
+generally converted to the corresponding onehot representation, which is a discrete distribution of the vocabulary. Smoothed representation is the probability of candidate tokens
+obtained from a pre-trained masked language
+model, which can be seen as a more informative substitution to the one-hot representation. We propose an efficient data augmentation method, termed text smoothing, by converting a sentence from its one-hot representation to a controllable smoothed representation. We evaluate text smoothing on different
+benchmarks in a low-resource regime. Experimental results show that text smoothing outperforms various mainstream data augmentation methods by a substantial margin. Moreover, text smoothing can be combined with
+those data augmentation methods to achieve
+better performance.

@@ -1,0 +1,13 @@
+Language change has often been conceived
+as a competition between linguistic variants.
+However, language units may be complex organizations in themselves, e.g. in the case of
+schematic constructions, featuring a free slot.
+Such a slot is filled by words forming a set
+or ’paradigm’ and engaging in inter-related
+dynamics within this constructional environment. To tackle this complexity, a simple
+computational method is offered to automatically characterize their interactions, and visualize them through networks of cooperation
+and competition. Applying this method to the
+French paradigm of quantifiers, I show that this
+method efficiently captures phenomena regarding the evolving organization of constructional
+paradigms, in particular the constitution of competing clusters of fillers that promote different
+semantic strategies overall.

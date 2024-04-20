@@ -1,0 +1,59 @@
+The diversity of generated texts is an important
+evaluation aspect for dialogue generation models
+since most dialogue models tend to produce general and trivial responses (e.g. "I don’t know" or
+"Me too") (Li et al., 2016; Zhao et al., 2017). Several metrics have been proposed to evaluate the text
+diversity, and the Distinct score (Li et al., 2016) is
+the most widely applied metric due to its intuitive
+nature and convenient calculation. It has become
+a de facto standard to report the Distinct score to
+compare the performance of different models in
+terms of response diversity (Liu et al., 2016; Fan
+et al., 2018; Sabour et al., 2022; Wu et al., 2021c;
+Zhou et al., 2021; Wu et al., 2021b; Zhang et al.,
+2020; Zheng et al., 2020; Wang et al., 2020; Liu
+et al., 2021). Most previous works follow the initial
+approach of Li et al. (2016) to calculate the Distinct
+score, i.e., dividing the number of unique tokens
+(n-grams) by that of all tokens (n-grams). However,
+although reported to be effective, we surprisingly
+find that this naive approach tends to introduce a
+higher penalty for longer texts and lead to inaccurate evaluation of text diversity.
+We argue that the scaling factor of Distinct requires a comprehensive discussion for two reasons. First, prior research in non-computational
+linguistics has demonstrated the shortcomings of
+Distinct’s scaling approach (Malvern et al., 2004).
+We found that early applications of Distinct exist in psycholinguistics, where researchers leveraged this metric to assess the language diversity of
+children with communication disorders (Chotlos,
+1944). Their research showed that as a child speaks
+more words, Distinct experiences an adverse decline since each extra word that the child utters adds
+to the total number of words, yet it would only increase the number of distinct words if the word had
+not been used before (Malvern et al., 2004; Chotlos,
+1944). Second, we also discovered an uncommon
+decline of this metric on both a natural corpus and a
+designated distribution sampler when the total number of words increases. As illustrated in Figure 1,
+the original Distinct cannot produce a stable value
+and experiences a sharp decrease with increasing
+utterance length in both natural and designated distributions. However, as a qualified metric needs to
+support quantitative comparison among different
+methods, its value should stay invariant when the
+distribution of the words appearing is determined.
+This result is consistent with the findings of psychologists, indicating an unfair penalty does exist
+in such a scaling method.
+Our contributions are summarized as follows:
+1. We investigate the performance of the original Distinct and demonstrate that this metric is not
+sufficiently fair due to its scaling method. We also
+highlight the risks of using this metric for evaluating response diversity.
+2. We propose Expectation-Adjusted Distinct
+(EAD), an improved version of Distinct based on
+that the scaling factor should be the expectation of
+the number of distinct tokens instead.
+3. Human evaluation shows that our metric correlates better with human judgments. We further
+discuss the drawbacks of this metric and suggest
+its feasible applications in practice.
+In this paper, we present an improved variation of
+the Distinct metric, which is a widely-used measure
+for evaluating response diversity in dialog systems.
+We provide the theoretical formulation and empirical evaluation of our proposed metric (ExpectationAdjusted Distinct). The results demonstrated that
+Expectation-Adjusted Distinct has a higher correlation with human evaluation in comparison with
+other metrics. The proposed metric is not limited
+to dialogue generation models but also suitable to
+evaluate text generation tasks where diversity matters.

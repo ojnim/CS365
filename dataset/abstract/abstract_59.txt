@@ -1,0 +1,17 @@
+Computational comprehension and identifying
+emotional components in language have been
+critical in enhancing human-computer connection in recent years. The WASSA 2022 Shared
+Task introduced four tracks and released a
+dataset of news stories: Track-1 for Empathy
+and Distress Prediction, Track-2 for Emotion
+classification, Track-3 for Personality prediction, and Track-4 for Interpersonal Reactivity
+Index prediction at the essay level. This paper
+describes our participation in the WASSA 2022
+shared task on the tasks mentioned above. We
+developed multi-task deep learning methods to
+address Tracks 1 and 2 and machine learning
+models for Track 3 and 4. Our developed systems achieved average Pearson scores of 0.483,
+0.05, and 0.08 for Track 1, 3, and 4, respectively, and a macro F1 score of 0.524 for Track
+2 on the test set. We ranked 8th, 11th, 2nd and
+2
+nd for tracks 1, 2, 3, and 4 respectively.

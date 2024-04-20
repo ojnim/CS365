@@ -1,0 +1,275 @@
+
+In highly multilingual natural language processing (NLP) systems covering hundreds
+or even thousands of languages, one must deal with a considerable portion of the
+total diversity present in the world’s approximately 7,000 languages. This goes far
+beyond the standard training resources for most tasks, even after the advent of highly
+multilingual resources such as the Universal Dependencies Treebanks and UniMorph and
+unsupervised representation learning models such as multilingual BERT (Devlin et al.
+2019, 104 languages), mT5 (Xue et al. 2021, 101 languages), and XLM-R (Conneau et al.
+2020, 100 languages). The discrepancy between the total set of languages and available
+NLP resources is even greater if one considers the diversity of languages. To take one
+representative example, the mT5 model of Xue et al. (2021) contains 101 languages
+from 16 families, of which only 3 are mainly spoken outside Eurasia. This is to be
+compared to the 424 spoken natural language families in the Glottolog database of
+languages (Hammarström et al. 2022), of which the vast majority are predominantly
+spoken outside Eurasia. Reducing this discrepancy is one of the most challenging and
+
+
+From the beginning of the statistical NLP era, researchers have attempted to bridge
+the gap between the few languages with digital resources, and those without. Early
+attempts were based on annotation projection (e.g., Yarowsky and Ngai 2001; Hwa et al.
+2005), followed by different types of transfer learning using, for instance, multilingual
+word embeddings (a comprehensive overview can be found in Søgaard et al. 2019),
+multilingual neural models (e.g., Ammar et al. 2016), and more recently, multilingual
+pre-trained language models that achieved a breakthrough with the multilingual BERT
+model (Devlin et al. 2019).
+    Even after large language models such as GPT-3 (Brown et al. 2020) and PaLM
+(Chowdhery et al. 2022) have demonstrated human-like performance in an increasing
+number of natural language problems for some languages, similar models still have
+severe problems with handling data in low-resource, predominantly non-Eurasian,
+languages (Blasi, Anastasopoulos, and Neubig 2022). As an illustrative example, we
+consider the evaluation of Ebrahimi et al. (2022), who developed and applied an
+XLM-R (Conneau et al. 2020) based Natural Language Inference (NLI) model on a newly
+created dataset for 10 languages from the Americas, ranging from large languages such
+as Quechua and Guaraní with millions of speakers, to languages such as Shipibo-
+Konibo (Panoan, 35,000 speakers) that are closer to the median of the distribution of
+speaker counts among the world’s languages. Their best system manages to achieve a
+mean accuracy of 49% (range over languages: 41%–62%), as compared to a 33% random
+baseline and 85% in English.
+    Our focus in this work is not to directly improve the state of the art in any specific
+NLP application, but rather to explore the properties of massively multilingual (1,000+
+languages) neural models.
+
+
+As the number of languages one wishes to study grows, it becomes increasingly important to consider the systematic differences and similarities between languages. This is
+the object of study in the field of linguistic typology (e.g., Croft 2002; Shopen 2007), and
+a growing body of research aims to transfer insights back and forth between linguistic
+typology and natural language processing. Below, we discuss three main directions:
+predicting typological features, applying typological information to improve NLP, and
+applying NLP to obtain typological information.
+
+Traditionally, typological databases have been constructed manually,1 where collaborations of linguistics
+researchers classify languages according to a predetermined set of typological parameters. This is a slow and costly process, and often leaves large gaps where language
+documentation is missing or incomplete, or where there has been insufficient researcher
+time or interest to perform the analysis for some languages.
+     Researchers have long attempted to collect or infer the values of typological features
+from existing data sources. In particular, parallel text has been an important resource,
+and has been applied to multiple domains of linguistic typology: tense markers (Dahl
+2007; Asgari and Schütze 2017), semantic categories of motion verbs (Wälchli and Cysouw 2012), word order (Östling 2015), colexification patterns (Östling 2016), and
+affixation (Hammarström 2021). All these methods rely on some type of word or mor-
+pheme alignment (for an overview, see, e.g., Tiedemann 2011) combined with manually
+specified, feature-specific rules. For instance, given a parsed text and word alignments
+to other languages, one can construct rules for estimating word order properties in
+those languages. Apart from being a time-consuming process, this also means one has
+to know beforehand which features to look for before hand-crafting rules to estimate
+their values. In contrast, our interest in this work is to investigate models that are not
+“aware” of the existence of specific typological parameters, but rather has to discover
+them from data.
+     A different but somewhat similar method is text mining of grammatical descriptions. Hammarström (2021) uses such an approach to investigate affixing tendencies
+in 4,287 languages with digital or digitized grammars, which makes this one of very
+few studies using a majority of the world’s languages as its sample. He searches for
+terms describing suffixing or prefixing in the language of the description, and reports
+an overall binary agreement of 75% over the 917 language subset that is also present in
+the manually collected database of Dryer (2013f).
+
+This line of work is looking at finding methods
+for predicting which features we would expect a given language to have, given its
+known relatives, location in the world, typological properties of genealogically and/or
+geographically close languages, as well as other (known) features of the same language.
+     Murawaki (2019) designed a Bayesian model to infer latent representations that
+explain observable typological features. Based on universal tendencies, for instance,
+that noun–adjective order tends to imply noun–relative clause order, combined with
+spatial and phylogenetic information, this model is able to accurately predict typological feature values outside the training data.
+     Bjerva et al. (2019) designed a probabilistic model that learns a set of latent language
+representations along with a mapping to binary typological feature vectors. They apply
+this to fill gaps in a language–feature matrix given information from related languages
+and/or other features in the same language, and find that this can be done with near-perfect accuracy as long as a sufficient amount of information is provided.
+
+      The shared task on predicting typological features (Bjerva et al. 2020) brought
+together a number of different approaches of the same general direction. The best-performing system (Vastl, Zeman, and Rosa 2020) combines a simple method based
+on directly exploiting correlations between features, with a neural network predicting
+missing feature values from known values as well as spatial information.
+      Our interest is in a sense opposite to this line of work, since we are interested in
+how typological generalizations can be made from language data alone. Rather than
+exploiting genealogical and geographical information along with correlations between
+typological features, we treat them as confounding variables to be controlled for. After
+all, the most interesting aspects of languages are not the ones that are identical to their
+neighboring relatives, but rather those that are in some aspect unique or divergent. We
+do, however, note that if one, for whatever reason, is obliged to provide a “best guess”
+for the value of a certain feature without actually studying any language data, the
+methods described above are useful. It would also be possible to combine this with our
+line of research, in order to compare the expected to actual feature values, and hopefully
+identify those interesting cases.
+
+As multilingual NLP became more
+established, several authors attempted to use existing typological information to in-
+form models for the purpose of improving their accuracy (overviews can be found in
+O’Horan et al. 2016; Ponti et al. 2019).
+     Such research predates the neural era and modern representation learning. For
+instance, Naseem, Barzilay, and Globerson (2012) used a feature-rich model with sparse
+indicator features depending on a number of typological parameters from the World
+Atlas of Language Structures (WALS) database (Dryer and Haspelmath 2013), which
+results in parameter sharing between structurally similar languages. They observed
+substantial gains in parsing accuracy using this approach.
+     In their multilingual neural parser covering seven related European languages,
+Ammar et al. (2016) attempted to insert typological features from the WALS database.
+However, they saw less benefit from this than learning language embeddings by only
+providing a language identifier for each example. This work was an early demonstration
+of the usefulness of learning language representations. While Ammar et al. (2016)
+showed that language embeddings improve parsing accuracy, they did not investigate
+whether the language embeddings learned to generalize over languages rather than
+simply using the embeddings to identify each language. A generalization relevant to
+a parser would be, for instance, whether adjectives tend to precede or to follow the
+noun that they modify. To say that the model has made this generalization, we would
+need evidence that the information on adjective/noun order is somehow consistently
+encoded in the embedding of each language. In contrast, even random language embed-
+dings could serve to identify each language, so that for instance the (random) German
+embedding is simply used to activate some opaquely coded German syntactic model in
+the parser’s neural network.
+     Bjerva and Augenstein (2021) hypothesize that one reason for the modest performance improvement when adding typological features to neural multilingual NLP
+systems could be that the systems are already capable of making the necessary generalizations. They show that blinding such models to typological information, by adding
+a gradient reversal layer that ensures the representations predict typological features
+poorly, yields somewhat reduced performance across a range of NLP tasks.
+     A different direction was taken by Wang, Ruder, and Neubig (2022), who use
+artifical data generated from lexical resources to adapt pretrained multilingual language
+models to languages with only a lexicon available. This allows some coverage even
+for the thousands of languages with no other digital resources than a lexicon. While
+potentially useful for some NLP applications, we do not consider this line of research
+further since it is not useful for studying structural features of languages.
+
+
+focuses on identifying how multilingual language models encode structural properties
+across languages, and in particular to what extent those representations are common
+across typologically similar languages.
+     Östling and Tiedemann (2017) trained a character-level LSTM language model
+on translated Bible text from 990 different languages, also conditioned on language
+embeddings, and showed that the resulting embeddings can be used to reconstruct
+language genealogies. Similar results have later been obtained using a variety of multilingual neural machine translation (NMT) models that learn either language embed-
+dings (Tiedemann 2018; Platanios et al. 2018), or language representations derived from
+encoder activations (Kudugunta et al. 2019), or both (Malaviya, Neubig, and Littell
+2017). In the following we will use the term language representations to refer to vector
+representations of languages, regardless of how they were estimated.
+     The property that similar languages (i.e., languages that share many properties)
+have similar vector representations is a basic requirement of any useful language representation whose purpose is to generalize across languages. It is generally sufficient
+to improve practical NLP models, especially when evaluated on datasets with many
+similar languages. However, an aggregate measure of language similarity contains
+relatively little information. With only similarity information it is impossible to capture
+the differences between otherwise similar languages, for instance, when one language
+differs from its close relatives in some aspect. Even worse, we have no way to learn
+properties of languages that are not similar to other languages in our data, for instance,
+isolates such as Basque or Burushaski.
+     Starting with Malaviya, Neubig, and Littell (2017), several authors have attempted
+to probe directly whether the language representations learned by neural models en-
+code the same types of generalizations across languages that have been studied in the
+field of linguistic typology. Malaviya, Neubig, and Littell (2017) used logistic regression classifiers to probe whether typological features can be predicted from language
+representations derived from a multilingual NMT system trained on Bible translations
+in 1,017 languages. They used features from the URIEL database (Littell et al. 2017),
+which contains typological data sourced from Dryer and Haspelmath (2013), Moran and
+McCloy (2019), and Eberhard, Simons, and Fennig (2019). Based on their classification
+experiments, they conclude that their language representations have generalized in
+several domains of language, from phonological to syntactic features. This finding was
+later supported by Oncevay, Haddow, and Birch (2020), who compared the original representations of Malaviya, Neubig, and Littell (2017) with a novel set of representations
+that combined Malaviya’s with URIEL features using canonical correlation analysis
+(CCA).
+     Similar results have been reported by Bjerva and Augenstein (2018a), who use the
+language embeddings from Östling and Tiedemann (2017) and fine-tune them using
+specific NLP tasks of several types: grapheme-to-phoneme conversion (representing
+phonology), word inflection (morphology), and part-of-speech tagging (syntax). Using a k-nearest-neighbors (kNN) classifier for probing, they conclude that typological
+features from all three domains of language that were investigated (phonology, morphology, syntax) are present in the language representations.
+     Another, smaller-scale, study on the same topic is that of He and Sagae (2019).
+They use a denoising autoencoder to reconstruct sentences in 27 languages, using a
+multilingual dictionary so that the model is presented only with English vocabulary.
+Based on a syntactic feature classification task, they report that properties of verbal
+categories, word order, nominal categories, morphology, and lexicon were encoded in
+the language embeddings learned by their autoencoder. They did not see any difference
+from baseline classification accuracy for features relating to phonology and nominal
+syntax, a fact that they ascribe to the small number of languages available for their
+evaluation.
+     In their study of multilingual semantic drift, Beinborn and Choenni (2020) demonstrate that similarities in the multilingual sentence representations of Artetxe and
+Schwenk (2019) as well as word representations from Conneau et al. (2018) follow
+language phylogenies when applied to multilingual concept lists. Similarly, Rama,
+Beinborn, and Eger (2020) extract the internal representations of multilingual BERT
+(Devlin et al. 2019) for each of 100 languages, obtained by encoding a single word at
+a time from multilingual concept lists. As expected, given the lack of input beyond the
+word level, they find a low correlation between the language representations obtained
+and structural properties of the languages studied, although the language representations correlate well with language phylogeny. Such methods could potentially be useful
+within lexical typology, which studies the systematic variation between languages in the
+structure of their semantic spaces. A more direct approach in this direction was taken by
+Östling (2016), who projected multilingual concept lists through parallel texts for direct
+study of lexical colexification, semantically distinct concepts referred to by the same
+word form.
+     Chi, Hewitt, and Manning (2020) use the structural probing technique of Hewitt
+and Manning (2019) to find a syntactic subspace in multilingual BERT encodings of
+different languages, which allows a direct look at how the model encodes syntactic
+relations rather similarly across languages. Similarly, Stanczak et al. (2022) investigate
+morphosyntactic properties encoded by the multilingual BERT and XLM-R models, by
+analyzing their encodings of data from the Universal Dependency treebanks (Nivre
+et al. 2018). They find that the same morphosyntectic categories are encoded by sets
+of neurons that overlap to a significantly above-chance degree. While these studies
+suggest that pretrained multilingual language models to some degree make typological
+abstractions, they are limited to a relatively small and biased sample of languages.
+     Recently, Choenni and Shutova (2022) performed an in-depth investigation of how
+typological information is stored in the LASER Artetxe and Schwenk (2019), multilingual BERT (Devlin et al. 2019), XLM (Conneau and Lample 2019), and XLM-R models
+Conneau et al. (2020). They use seven pairs of (pairwisely) closely related languages
+from four different branches of the Indo-European family, and train simple two-layer
+perceptron classifiers from encoded sentences to typological feature values. These classifiers obtain high F1 classification scores on a sentence level, although at a language
+level many features are consistently predicted incorrectly (Choenni and Shutova 2022,
+Figure 1). Given the small and highly biased set of languages, it is difficult to draw
+solid conclusions about how well structural properties are encoded in general across
+the languages of the world.
+     In summary, the results of previous work (Malaviya, Neubig, and Littell 2017;
+Bjerva and Augenstein 2018a; Oncevay, Haddow, and Birch 2020; He and Sagae 2019;
+Stanczak et al. 2022; Choenni and Shutova 2022) indicate that a range of neural models
+can learn language representations, which in most cases capture a range of generalizations in multiple domains of language.
+     A potential problem with the studies listed above is that the method for probing
+whether a certain feature is captured by some language representations varies, and in
+several cases is vulnerable to false positives due to the high correlation between features
+in similar languages. For instance, suppose that a classifier correctly predicts from the
+Dutch language representation that it tends to use adjective–noun order. Is this because
+the order of adjective and noun is coded in the language representation space, or because the language representations indicate that Dutch (in the test set) is lexically similar
+to German (in the training set), which also uses adjective–noun order? Some authors do
+not control for this correlation between typological features and genealogical or areal
+connections between languages at all (He and Sagae 2019) or only partially (Oncevay,
+Haddow, and Birch 2020); others provide the baseline classifiers with genealogical and
+geographic information (Malaviya, Neubig, and Littell 2017). Bjerva and Augenstein
+(2018a) hold out the largest single language family for each feature as a test set.2 No
+attempt was made to control for correlations due to language contact. We also note that
+only a limited set of neural models have been explored in previous work, with most
+studies relying on the language representations from Östling and Tiedemann (2017) or
+Malaviya, Neubig, and Littell (2017).
+
+We expect that two types of readers will benefit from our work: those working with
+highly multilingual NLP applications, and those interested in using automatic means
+for studying the diversity of human languages.
+     From the NLP practitioner’s point of view, we expect that some of our published
+data will be of particular interest. For instance, our artificially produced paradigms
+could be used as pre-training for morphological inflection models where annotated
+data is sparse. There is also evidence that language representations can be useful for
+guiding multilingual NLP systems including machine translation (Oncevay, Haddow,
+and Birch 2020) and dependency parsing (Üstün et al. 2020), and our set of language
+representations with different properties provides a rich collection of representations
+for future experiments.
+     Broadening the perspective, we show that if a neural machine learning system is
+given the right kind of task to perform on a very large set of languages, and given
+only a small number of parameters to summarize the differences between languages,
+it uses those parameters to encode some of the same types of features that human
+linguists have long studied. From the point of view of the typologist, our research has                                         
+resulted in a large amount of fine-grained data on several features related to word order
+and affix position. Not only do we find the dominant patterns, but also the amount
+of variation within each language. Such information has been used in token-based
+typological studies of word order variability (Levshina 2019), but restricted to much
+smaller samples of languages than what we now publish. We provide two complementary methods to obtain this information: annotation projection, and regression models
+from our learned language representations. As discussed in Section 8.4 and shown in
+Table 4, the agreement with typological databases is particularly high in the subset of
+languages where both of these sources point in the same direction. Importantly, unlike
+previous methods for typological feature prediction that utilize language relatedness
+and correlations between features for prediction (Murawaki 2019), we use entirely data-driven methods based on raw text data in each language, and are thus better positioned
+for finding unexpected properties of languages.
+     As an important direction of future work, we see that the granularity of the predicted features could be reduced. Due to lack of suitable token-level gold standard data
+for most of our language samples, we have been restricted to binary feature classifiers in
+this work (although token-based counts are still available from the projection method).
+In addition to a move toward fully token-based typology, we also see the need for
+investigating individual constructions and specific factors triggering variation within
+languages. For instance, our current work does not differentiate between word order in
+main clauses and in subordinate clauses. Achieving this level of detail for a geographically and typologically diverse sample of over a thousand languages would be a very
+valuable tool for typological research.

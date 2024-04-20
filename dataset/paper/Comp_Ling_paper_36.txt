@@ -1,0 +1,31 @@
+1 Introduction
+Even after engineering a 175B parameter language
+model like GPT-3 (Brown et al., 2020) we are far
+from artificial general intelligence. Emotion is a
+concept that is challenging to describe. However,
+as human beings, we understand the emotional effect that situations could have on other people. It
+is interesting to see how we can infuse this knowledge into machines. This work explores whether it
+is possible for machines to map emotions to situations consciously. Emotion in text has been
+studied for a while and has given interesting insights. The dataset that we are using is an extended
+version of the (Ekman, 1992) dataset. Our team,
+MPA_ED, participated in the WASSA 2022 Shared
+Task on Empathy Detection and Emotion Classification, Track 2: Emotion Classification (EMO),
+which consists of predicting the emotion at the
+essay level. This paper has the following contributions:
+We propose three new datasets generated using
+various sampling techniques which overcome the
+class imbalance. We present our ensemble based solution consisting of multiple ELECTRA and BERT
+(Devlin et al., 2018) models to solve the emotion
+classification task. We provide a detailed analysis
+of the performance of the cluster of models and reflect on the shortcomings of the models as well as
+the dataset generated that affected the performance.
+7 Conclusion
+In this work, we have explored an application of
+BERT and ELECTRA as a means to the task of
+emotion classification. Various data sampling techniques were used to overcome the large imbalance
+in data. In the end the best metrics were achieved
+by using majority voting of the 4 best models as an
+ensemble. We foresee multiple future directions,
+including multi-task learning of multiple tasks with
+a shared backbone, pretraining on the entire GoEmotions dataset, as well as studying and rectifying
+spurious behaviour of "anger" and "disgust" labels.

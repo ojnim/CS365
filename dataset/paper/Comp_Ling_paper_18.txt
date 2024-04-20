@@ -1,0 +1,74 @@
+1 Introduction
+Multilingual text representations are becoming increasingly important in science as well as the business community. However how universal and versatile they truly are? Can we use them to train
+one, multilingual, production-ready sentiment classifier? To verify this research question, we gathered
+a massive collection of sentiment analysis datasets
+and evaluated 11 different models on them. We
+want to assess the performance of fine-tuning languages models as well as language models as feature extractors for simpler, even linear models.
+Sentiment analysis is subjective and both domain and language-dependent, hence there is an
+even greater need to understand the behaviour and
+performance of the multilingual setup. We focused
+on multilingual sentiment classification because
+our business use cases involve the analysis of texts
+in multiple languages across the world. Moreover,
+one universal model in a production environment is
+much easier to deploy, maintain, monitor, remove
+biases or improve the model’s fairness - especially
+in cases when the load differs between languages
+and could change over time. We want to compare state-of-the-art multilingual embedding methods and select the ones with the best performance
+across languages.
+The main objective of this article is to answer
+the following Research Questions: (RQ1) Are we
+able to create a single multilingual sentiment classifier, that performs equally well for each language?
+(RQ2) Does fine-tuning of transformer-based models significantly improve sentiment classification
+results? (RQ3) What is the relationship between
+model size and performance? Is bigger always
+better?
+Our main contribution includes 3 main points.
+Firstly, we perform a large scoping review of published sentiment datasets. Using a set of rigid inclusion and exclusion criteria, we filter the initial pool
+of 342 datasets down to 80 high-quality datasets
+representing 27 languages. Secondly, we evaluated
+how universal and versatile multilingual text representations are for the sentiment classification problem. Finally, we compared many deep learningbased approaches with fine-tuning and without it
+for multilingual sentiment classification.
+The remainder of this paper is organized as follows: Section 2 presents a literature review on the
+topic of multilingual sentiment analysis; Section 3
+describes the language models, datasets, and our
+evaluation methodology; Section 4 describes the
+conducted experiments and summarizes the results;
+Section 5 discusses the results in terms of research
+questions; Section 6 presents conclusions and describes further works.
+
+6 Conclusions and Further Works
+In this work we evaluated multilingual text representations for the task of sentiment classification
+by comparing multiple approaches, using different
+deep learning methods. In the process, we gathered
+the biggest collection of multi-lingual sentiment
+datasets - 80 datasets for 27 languages. We evaluated 11 models (language models and text vectorization techniques) in 3 different scenarios. We
+found out that it is possible to create one model
+which achieves the best or most competitive results
+in all languages in our collected dataset, but there
+is no statistical difference between top-performing
+models. We found out that there is a significant benefit from fine-tuning transformer-based language
+models and that a model size is correlated with
+performance.
+While conducting experiments we identified
+further issues which we find worth addressing.
+Dataset quality assessment is in our opinion the
+most important one and we are planning to address
+it in further works. Meanwhile, we used datasets
+with a literature background and trust that they
+were carefully prepared and have decent quality
+annotations. We also found out that it is difficult to
+propose a coherent experiments methodology with
+such imbalance in languages and datasets sizes.
+Moreover, analyzing results is difficult, when one
+must address dimensions of datasets, languages,
+data sources, models, and experiments scenarios.
+Finally, we found out that when sub-sampling
+a dataset for experiments, seeds play a significant
+role (see results in Figure 4). To analyze this phenomenon, we intend to launch further research and
+use noise ratio (Northcutt et al., 2021) and data cartography (Swayamdipta et al., 2020) to understand
+how this split differs from the others. This will
+be, in our opinion, a good start to a comprehensive
+analysis of datasets quality for the multi-lingual
+sentiment classification task which we intend to
+perform.

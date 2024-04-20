@@ -1,0 +1,18 @@
+End-to-end speech translation relies on data
+that pair source-language speech inputs with
+corresponding translations into a target language. Such data are notoriously scarce,
+making synthetic data augmentation by backtranslation or knowledge distillation a necessary ingredient of end-to-end training. In this
+paper, we present a novel approach to data
+augmentation that leverages audio alignments,
+linguistic properties, and translation. First,
+we augment a transcription by sampling from
+a suffix memory that stores text and audio
+data. Second, we translate the augmented transcript. Finally, we recombine concatenated
+audio segments and the generated translation.
+Besides training an MT-system, we only use
+basic off-the-shelf components without finetuning. While having similar resource demands
+as knowledge distillation, adding our method
+delivers consistent improvements of up to 0.9
+and 1.1 BLEU points on five language pairs
+on CoVoST 2 and on two language pairs on
+Europarl-ST, respectively

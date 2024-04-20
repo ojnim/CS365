@@ -1,0 +1,54 @@
+Dependency parsers (Dozat et al., 2017; Ma et al.,
+2018; Strzyz et al., 2019) already achieve accurate
+results for certain setups (Berzak et al., 2016). Yet,
+they require large amounts of data to work, which
+hurts low-resource (LR) scenarios. In this line, authors have studied how to overcome this problem.
+On data augmentation, recent approaches have
+replaced subtrees of sentences to generate new
+ones (Vania et al., 2019; Dehouck and GómezRodríguez, 2020). On cross-lingual learning, authors have explored delexicalized approaches from
+rich-resource (RR) treebanks. (McDonald et al.,
+2011; Falenska and Çetinoglu ˘ , 2017). Wang and
+Eisner (2018) permuted constituents of distant treebanks to generate synthetic ones that resembled
+the target language. Vilares et al. (2016); Ammar
+et al. (2016) merged treebanks to train multilingual parsers that sometimes could outperform the
+equivalent monolingual version, which has applications for less-resourced parsing. In the context of
+multilingual representations, Mulcaire et al. (2019)
+trained a zero-shot parser on top of a polyglot language model, relying on merged RR treebanks too.
+In other matters, morphological inflection (Cotterell et al., 2016; Pimentel et al., 2021) generates
+words from lemmas and morphological feats (e.g.
+look → looking). Also, it is known that morphology helps parsing and that morphological complexity relates to the magnitude of the improvements
+(Dehouck and Denis, 2018). Yet, as far as we know,
+there is no work on cross-lingual morphological inflection as a data augmentation method for parsing.
+Here, we propose a technique that lies in the intersection between data augmentation, cross-lingual
+learning, and morphological inflection.
+Contribution We introduce a method that uses
+cross-lingual morphological inflection to generate ‘synthetic creole’ treebanks, which we call
+x-inflected treebanks. To do so, we require a
+source language treebank from a closely-related
+language (for which lemmas and morphological
+feats are available), and a morphological inflection
+system trained for the target language. This way,
+we expect to generate x-inflected treebanks that
+should resemble to a certain extent the target language (see Figure 1). The goal is to improve the
+parser’s performance for languages for which little
+or no annotated data are available, but for which
+we can train an accurate morphological inflection
+system that can be later applied to a related RR
+treebank and resemble the target language.
+
+By cross-inflecting a rich-resource UD treebank
+using an inflector from a low-resource related language, we can obtain silver, syntactically annotated
+data to train dependency parsers. Although containing noise and grammatical imperfections, we
+aimed to test whether the approach could boost performance. The results show that it is possible to
+obtain improvements (but also decreases) both for
+zero- and few-shot setups.
+About this, we could not clearly identify what aspects make the approach succeed or fail. Although
+we identified moderate correlations between scores
+and the amount of available UM data for the target
+language, we hypothesize that other aspects that
+are hard to measure could be playing a role: (i)
+incorrect/incomplete feature conversion from UM
+to UD schemata that might make the cross-lingual
+inflections carry different information that the inflections in the original language, or (ii) unknown
+input features for a given inflector due to differences in exhaustiveness between the UM and UD
+annotations.

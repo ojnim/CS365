@@ -1,0 +1,11 @@
+In this paper, we aim to introduce a Cognitive
+Linguistics perspective into a computational
+analysis of near-synonyms. We focus on a single set of Dutch near-synonyms, vernielen and
+vernietigen, roughly translated as ‘to destroy’,
+replicating the analysis from Geeraerts (1997)
+with distributional models. Our analysis, which
+tracks the meaning of both words in a corpus of
+16th-20th century prose data, shows that both
+lexical items have undergone semantic change,
+led by differences in their prototypical semantic
+core.

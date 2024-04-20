@@ -1,0 +1,69 @@
+Negation is an important construct in language for
+reasoning over the truth of propositions (Heinemann, 2015), garnering interest from philosophy
+(Horn, 1989), psycholinguistics (Zwaan, 2012),
+and natural language processing (NLP) (Morante
+and Blanco, 2020). While transformer language
+models (TLMs) (Vaswani et al., 2017) have
+achieved impressive performance across many
+NLP tasks, a great deal of recent work has found
+that they do not process negation well, and often
+make predictions that would be trivially false in
+the eyes of a human (Rogers et al., 2020; Ettinger,
+2020; Laverghetta Jr. et al., 2021).
+In developmental psychology, there has likewise
+been a great deal of interest in how a child’s ability to comprehend negation emerges in the early
+years of life (Nordmeyer and Frank, 2013, 2018b;
+Reuter et al., 2018; Grigoroglou et al., 2019). Unlike in NLP, which typically treats negation as representing a single monolithic competency, this research has long understood that there are many
+kinds of negation used in everyday interactions
+(Bloom, 1970; Pea, 1982). This ranges from using
+negation to express a child’s rejection of something
+to clarifying a child’s knowledge. These “developmental” categories of negation do not emerge
+simultaneously; children tend to start using certain
+kinds before others (Nordmeyer and Frank, 2018a).
+Given that these categories represent some of
+the earliest uses of negation among humans, understanding how well TLMs can master them is
+important for building more human-like models of
+language processing. Understanding how well models perform on different categories will indicate
+whether they have mastery of some forms of negation, while also helping to identify failure points.
+Another interesting question is whether the proficiency of TLMs on these categories is at all related
+to competencies in human children (e.g., is the category which models consistently perform the best
+on the same that children most frequently employ?).
+However, to our knowledge, no prior work in NLP
+has focused on how well models perform on the
+forms of negation of interest to developmental psychology.
+In this short paper, we investigate how well a
+suite of TLMs can process developmental negation,2 by framing the problem as a natural language inference (NLI) task. We develop a rulebased parser to extract problems from existing NLI
+datasets, and evaluate our models on each category, in order to determine (i) whether certain categories are more solvable by our models than others, and (ii) what relationships exist among the
+categories. We find that models can consistently
+achieve stronger performance only on certain categories, and that training on combinations or sequences of these categories does not substantially
+improve a model’s downstream performance.
+In this paper, we have explored how well transformers process categories of developmental negation. We find that performance rankings across categories are generally consistent, but that the categories seem to test for orthogonal skills in the majority of LMs. In BabyBERTa, we see significant
+similarities with the order of negation acquisition
+in children. Two of the best performing categories
+are R and L, while two of the worst are EX and
+P R, which aligns quite well to the order observed
+by Liu and Jasbi (2021). It thus seems that TLMs
+do at least partially reflect the order of negation
+acquisition observed in children, although more
+experiments would be needed to understand the
+extent of this correlation. That we found category
+rankings to generally be consistent across LMs may
+have interesting implications, and understanding
+why LMs struggle with certain categories may help
+to improve the ability of LMs to process negation.
+Future work can build on these experiments in
+several ways. In Experiments 2 and 3, we modeled
+interactions among the negation categories in either
+a pairwise or sequential fashion, which is unlikely
+to reflect how children are exposed to negation.
+More experiments, mixing all of the categories at
+once in various proportions, might yield a more
+realistic model of cognitive development. Our approach also requires that each category fits into a
+specific structure, which limits the amount of examples that can be extracted. Future work will need
+to expand our ruleset to include more variations
+in the negated utterances covered. Finally, while
+we primarily focus on finetuning, pre-training is
+likely to impact the proficiency of our models on
+the categories as well. Future work should precisely
+control the prevalence of each category in the pretraining corpus, to observe what effect this has on
+downstream performance.

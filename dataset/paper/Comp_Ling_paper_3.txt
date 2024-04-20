@@ -1,0 +1,105 @@
+1 Introduction
+While large-scale pre-trained language models exhibit remarkable performances on various NLP
+benchmarks, their excessive computational costs
+and high inference latency have limited their usage in resource-limited settings. In this regard,
+there have been various attempts at improving the
+efficiency of BERT-based models (Devlin et al.,
+2019), including knowledge distilation (Hinton
+et al., 2015; Sanh et al., 2019; Sun et al., 2019,
+2020; Jiao et al., 2020), quantization (Gong et al.,
+2014; Shen et al., 2020; Tambe et al., 2021), weight
+⋆ Equal Contribution.
+† Work done as a Master’s student at IUST.
+pruning (Han et al., 2016; He et al., 2017; Michel
+et al., 2019; Sanh et al., 2020), and progressive
+module replacing (Xu et al., 2020). Despite providing significant reduction in model size, these
+techniques are generally static at inference time,
+i.e., they dedicate the same amount of computation
+to all inputs, irrespective of their difficulty.
+A number of techniques have been also proposed
+in order to make efficiency enhancement sensitive
+to inputs. Early exit mechanism (Schwartz et al.,
+2020b; Liao et al., 2021; Xin et al., 2020; Liu et al.,
+2020; Xin et al., 2021; Sun et al., 2021; Eyzaguirre et al., 2021) is a commonly used method
+in which each layer in the model is coupled with
+an intermediate classifier to predict the target label. At inference, a halting condition is used to
+determine whether the model allows an example
+to exit without passing through all layers. Various halting conditions have been proposed, including Shannon’s entropy (Xin et al., 2020; Liu et al.,
+2020), softmax outputs with temperature calibration (Schwartz et al., 2020b), trained confidence
+predictors (Xin et al., 2021), or the number of agreements between predictions of intermediate classifiers (Zhou et al., 2020).
+Most of these input-adaptive techniques compress the model from the depth perspective (i.e.,
+reducing the number of involved encoder layers).
+However, one can view compression from the
+width perspective (Goyal et al., 2020; Ye et al.,
+2021), i.e., reducing the length of hidden states.
+(Ethayarajh, 2019; Klafka and Ettinger, 2020).
+This is particularly promising as recent analytical
+studies showed that there are redundant encoded
+information in token representations (Klafka and
+Ettinger, 2020; Ethayarajh, 2019). Among these
+redundancies, some tokens carry more task-specific
+information than others (Mohebbi et al., 2021),
+suggesting that only these tokens could be considered through the model. Moreover, in contrast
+to layer-wise pruning, token-level pruning does not
+
+
+come at the cost of reducing model’s capacity in
+complex reasoning (Sanh et al., 2019; Sun et al.,
+2019). PoWER-BERT (Goyal et al., 2020) is one of
+the first such techniques which reduces inference
+time by eliminating redundant token representations through layers based on self-attention weights.
+Several studies have followed (Kim and Cho, 2021;
+Wang et al., 2021); However, they usually optimize
+a single token elimination configuration across the
+entire dataset, resulting in a static model. In addition, their token selection strategies are based on
+attention weights which can result in a suboptimal
+solution (Ye et al., 2021).
+In this work, we introduce Adaptive Length
+Reduction (AdapLeR). Instead of relying on attention weights, our method trains a set of Contribution Predictors (CP) to estimate tokens’ saliency
+scores at inference. We show that this choice results in more reliable scores than attention weights
+in measuring tokens’ contributions. The most related study to ours is TR-BERT (Ye et al., 2021)
+which leverages reinforcement learning to develop
+an input-adaptive token selection policy network.
+However, as pointed out by the authors, the problem has a large search space, making it difficult for
+RL to solve. To mitigate this, they resorted to extra
+heuristics such as imitation learning (Hussein et al.,
+2017) for warming up the training of the policy network, action sampling for limiting the search space,
+and knowledge distillation for transferring knowledge from the intact backbone fine-tuned model.
+All of these steps significantly increase the training cost. Hence, they only perform token selection
+at two layers. In contrast, we propose a simple
+but effective method to gradually eliminate tokens
+in each layer throughout the training phase using
+a soft-removal function which allows the model
+to be adaptable to various inputs in a batch-wise
+mode. It is also worth noting in contrast to our approach above studies are based on top-k operations
+for identifying the k most important tokens during
+training or inference, which can be expensive without a specific hardware architecture (Wang et al.,
+2021).
+In summary, our contributions are threefold:
+• We couple a simple Contribution Predictor
+(CP) with each layer of the model to estimate
+tokens’ contribution scores to eliminate redundant representations.
+• Instead of an instant token removal, we gradually mask out less contributing token representations by employing a novel soft-removal
+function.
+• We also show the superiority of our token
+selection strategy over the other widely used
+strategies by using human rationales.
+
+6 Conclusion
+In this paper, we introduced AdapLeR, a novel
+method that accelerates inference by dynamically
+identifying and dropping less contributing token
+representations through layers of BERT-based models. Specifically, AdapLeR accomplishes this by
+training a set of Contribution Predictors based on
+saliencies extracted from a fine-tuned model and
+applying a gradual masking technique to simulate
+input-adaptive token removal during training. Empirical results on eight diverse text classification
+tasks show considerable improvements over existing methods. Furthermore, we demonstrated that
+contribution predictors generate rationales that are
+highly in line with those manually specified by
+humans. As future work, we aim to apply our
+technique to more tasks and see whether it can be
+adapted to those tasks that require all token representations to be present in the final layer of the
+model (e.g., question answering). Additionally,
+combining our width-based strategy with a depthbased one (e.g., early exiting) might potentially
+yield greater efficiency, something we plan to pursue as future work.

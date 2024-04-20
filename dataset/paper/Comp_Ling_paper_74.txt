@@ -1,0 +1,52 @@
+Increasing computational power along with the design and development of large and sophisticated
+models that can take advantage of enormous corpora has drastically advanced NLP. For many tasks,
+finetuning pretrained transformer-based language
+models (Vaswani et al., 2017; Devlin et al., 2019;
+Radford et al., 2018) has improved the state of
+the art considerably. Language models acquire
+knowledge during pretraining that is utilized during task-specific finetuning. On benchmarks that
+were introduced to encourage development of models that do well on a diverse set of NLU tasks
+(e.g., GLUE (Wang et al., 2018) and SuperGLUE
+(Wang et al., 2019)), these models now achieve
+superhuman performance (He et al., 2020). The
+pretrain-then-finetune approach usually requires a
+great amount of labeled data, which is often not
+available or expensive to obtain, and results in specialized models that can perform well only on a
+single task. Recently, it was shown that generative language models can be applied to many tasks
+without finetuning when the task is formulated as
+text generation and the PLM is queried with a natural language prompt (Radford et al., 2019; Brown
+et al., 2020).
+Motivated by recent progress in zero-shot learning with generative models as well as the need for
+more challenging benchmarks that test language
+understanding of language models, we introduce
+CoDA21 (Context Definition Alignment), a difficult benchmark that measures NLU capabilities of
+PLMs for the English language. Given a definition and a context each for k words, but not the
+words themselves, the task is to align the k definitions with the k contexts. In other words, for
+each definition, the context in which the defined
+word is most likely to occur has to be identified.
+This requires (i) understanding the definitions, (ii)
+understanding the contexts, and (iii) the ability to
+match the two. Since the target words are not given,
+a model must be able to distinguish subtle meaning
+differences between different contexts/definitions
+to be successful. To illustrate the difficulty of the
+task, Figure 1 shows a partial example for k = 4
+(see Table 5 in the supplementary for the full example). We see that both complex inference (e.g.,
+<XXX> can give rise to a cloud by being kicked up
+⇒ <XXX> must be dry ⇒ <XXX> can be dust, but
+not soil) and world knowledge (what materials are
+typical for monuments?) are required for CoDA21.
+We formulate the alignment task as a text prediction task and evaluate, without finetuning, three
+PLMs on CoDA21: BERT (Devlin et al., 2019),
+RoBERTa (Liu et al., 2019) and GPT-2 (Radford
+et al., 2019). Poor performance of the PLMs and a
+large gap between human and PLM performance
+suggest that CoDA21 is an important benchmark
+for designing models with better NLU capabilities.
+We introduced CoDA21, a new challenging benchmark that tests natural language understanding capabilities of PLMs. Performing well on CoDA21
+requires detailed understanding of contexts, performing complex inference and having world
+knowledge, which are crucial skills for NLP. All
+models we investigated perform clearly worse than
+humans, indicating a lack of these skills in the current state of the art in NLP. CoDA21 therefore is a
+promising benchmark for guiding the development
+of models with stronger NLU competence.

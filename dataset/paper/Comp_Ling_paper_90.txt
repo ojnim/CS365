@@ -1,0 +1,54 @@
+Pretrained language models are getting bigger
+and so does their capacity to memorize data
+from the training phase (Carlini et al., 2021). A
+rising concern regarding these models is “data
+contamination”—when downstream test sets find
+their way into the pretrain corpus. For instance,
+Dodge et al. (2021) examined five benchmarks and
+found that all had some level of contamination in
+the C4 corpus (Raffel et al., 2020); Brown et al.
+(2020) flagged over 90% of GPT-3’s downstream
+datasets as contaminated. Eliminating this phenomenon is challenging, as the size of the pretrain
+corpora makes studying them difficult (Kreutzer
+et al., 2022; Birhane et al., 2021), and even deduplication is not straightforward (Lee et al., 2021). It
+This paper proposes a principled methodology
+to address this question in a controlled manner
+(Fig. 1). We focus on classification tasks, where
+instances appear in the pretrain corpus along with
+their gold labels. We pretrain a masked language
+modeling (MLM) model (e.g., BERT; Devlin et al.,
+2019) on a general corpus (e.g., Wikipedia) combined with labeled training and test samples (denoted seen test samples) from a downstream task.
+We then fine-tune the model on the same labeled
+training set, and compare performance between
+seen instances and unseen ones, where the latter
+are unobserved in pretraining. We denote the difference between seen and unseen as exploitation. We
+also define a measure of memorization by comparing the MLM model’s performance when predicting the masked label for seen and unseen examples.
+We study the connection between the two measures.
+We apply our methodology to BERT-base and
+large, and experiment with three English text classification and NLI datasets. We show that exploitation exists, and is affected by various factors, such
+as the number of times the model encounters the
+contamination, the model size, and the amount of
+Wikipedia data. Interestingly, we show that memorization does not guarantee exploitation, and that
+factors such as the position of the contaminated
+data in the pretrain corpus and the learning rate
+affect these two measures. We conclude that labels
+seen during pretraining can be exploited in downstream tasks and urge others to continue developing
+better methods to study large-scale datasets. As far
+as we know, our work is the first work to study the
+level of exploitation in a controlled manner.
+We presented a method for studying the extent
+to which data contamination affects downstream
+fine-tuning performance. Our method allows to
+quantify the explicit memorization of labels from
+the pretraining phase and their exploitation in finetuning. Recent years have seen improvements in
+prompt-based methods for zero- and few-shot learning (Shin et al., 2020; Schick and Schütze, 2021;
+Gu et al., 2021). These works argue that masked
+language models have an inherent capability to perform classification tasks by reformulating them as
+fill-in-the-blanks problems. We have shown that
+given that the language model has seen the gold
+label, it is able to memorize and retrieve that label
+under some conditions. Prompt-tuning methods,
+which learn discrete prompts (Shin et al., 2020) or
+continuous ones (Zhong et al., 2021), might latch
+on to the memorized labels, and further amplify
+this phenomenon. This further highlights the importance of quantifying and mitigating data contamination.

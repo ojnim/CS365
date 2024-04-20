@@ -1,0 +1,144 @@
+In the current paper we aim to shed some light
+on the way concreteness and abstractness are represented in word embeddings. This might help
+to better understand the concept of concreteness
+that seems to be an important semantic property
+used to explain various phenomena in language
+and language understanding. Ultimately, it might
+also contribute a little bit to the understanding of
+the semantic spaces in which we embed words for
+many tasks.
+
+The first question we want to address is to what degree concreteness can be represented as a vector in
+the embedding space. Such a vector vconcr should
+have the property that either the cosine between a
+vector vw for a word w and vconcr or the length of
+the projection of vw on vconcr corresponds to the
+concreteness value w.
+The second question concerns the relation between concreteness and abstractness. Is abstractness characterized by a direction in the embeddings
+space in a similar way as concreteness is, or is abstractness just the absence of concreteness? The studies of Hill and Korhonen (2014) and Naumann
+et al. (2018) suggest that abstractness could go into
+many different directions and is quite different from
+concreteness since abstract words occur in more
+diverse contexts. On the other hand side, in all psycholinguistic studies concreteness and abstractness
+are treated as the two extremes on one scale.
+Finally, we want to know, whether concreteness
+is a property that can be added to or removed from
+words, like e.g. gender can be separated and used
+to explicitly relate words like king to queen. There
+seem to be many cases of regular polysemy in
+which one reading of the word is more concrete
+than the other one. Examples are the polysemy
+between buildings and institutions for words like
+school, church, parliament, theater, etc. or between
+process and the result of the process (like e.g. creation, that can either denote the process of creating
+something or the thing that is created) or between
+a function and the person holding that function. In
+all cases it is clear that one reading is more concrete than the other one. What we want to know
+is to which extend the difference between the two
+meanings is determined by concreteness.
+
+Concreteness is a core semantic property of words
+that has received a lot of attention in psycholinguistic research. Friendly et al. (1982) define concrete
+words as words that “refer to tangible objects, materials or persons which can be easily perceived
+with the senses”. Brysbaert et al. (2014) define
+concreteness as the degree to which the concept
+denoted by a word refers to a perceptible entity.
+Theijssen et al. (2011) point out that in general
+two concepts of concreteness are used that do not
+completely overlap, namely sensory perceivability
+and specificity. However, they also note that most
+subjects in tests interpret concreteness as sensory
+perceivability. Also in a corpus study they could
+show that in cases where concreteness plays a role
+
+in the choice of a syntactic construction, sensory
+perceivability is the best predictor.
+Various studies suggest that concrete and abstract words are represented and processed differently by the human brain (see a.o. Binder et al.
+(2005); Kousta et al. (2011); Borghi et al. (2017)).
+E.g. it is assumed that concreteness influences
+learning, recognition memory and the speed of
+visual recognition, reading and spelling (Spreen
+and Schulz, 1966; Hargis and Gickling, 1978; Sadoski et al., 2004; Palmer et al., 2013; Neath and
+Surprenant, 2020). Moreover, studies conducted
+on abstract and concrete words also found that
+the participants remembered concrete words better
+than the abstract words (for an overview of various
+studies see e.g. Yui et al., 2017). This difference
+is explained by the Dual Coding Theory (Paivio,
+1970) according to which concrete concepts are
+stored verbally and visually in mind while abstract
+concepts are only stored verbally. A difference in
+recognition ease and speed is explained by the Context Availability Hypothesis (Schwanenflugel and
+Shoben, 1983; Schwanenflugel, 2013). This hypothesis states that it is crucial to evoke the context
+of a word to access its meaning and that it is easier
+to construct the appropriate context for concrete
+than for abstract words.
+Among others Hill et al. (2014) and Naumann
+et al. (2018) have shown that abstract words occur
+in more broad and diverse contexts than concrete
+words. Furthermore, it was noted in several studies
+(see e.g. (Tanaka et al., 2013)) and investigated in
+detail by Frassinelli et al. (2017) and Naumann
+et al. (2018) that concrete words tend to occur in
+the context of other concrete words and abstract
+words in the context of other abstract words.
+Most studies that collected or predicted concreteness values for words either ignored the fact that
+many words have several senses or excluded ambiguous words. The statement of Gilhooly and
+Logie (1980) still seems to be valid: “The problem
+of word ambiguity has generally been overlooked
+in compiling lists of words measured on various
+attributes.” Only a few mostly smaller studies collected concreteness judgments for different word
+senses. These are, as far as we know, (Gilhooly
+and Logie, 1980) for English, (Hager, 1994) for
+German, and more recently (Ðurdevi ¯ c et al. ´ , 2017)
+for Serbian and both (Reijnierse et al., 2019) and
+(Scott et al., 2019) for English words.
+The remainder of the paper is organized as follows.
+In section 2 start with an overview of the few studies that try to identify concreteness in embedding
+spaces. In section 3 we describe the data we have
+used. In the following sections we present a series of experiments to get a better understanding
+of the representation of concreteness in embedding
+spaces: in section 4 we compare several possibilities to determine the direction of concreteness and
+abstractness in an embedding space, in section 5
+we compare the mutual similarity between concrete
+and abstract words and finally in section 6 we have
+a short look at the possibilities to represent the
+meaning of ambiguous words with a concrete and
+an abstract sense.
+
+We have seen that concreteness can be identified as
+a direction in the word embedding space. Various
+methods, based on many words with concreteness
+values or just on a view highly concrete words give
+almost the same vector for concreteness. Moreover,
+the cosine of these vectors with the embeddings
+of words correlates strongly with the concreteness
+judgments of human subjects of these words. Thus
+our first research question can be answered positively.
+Furthermore, we see that concreteness and abstractness are quite symmetric properties. We can compute vectors for concreteness and abstractness
+independently and found both for English and German that the angle between these vectors is almost
+180 degrees. Moreover, we do not see any indication that all concrete form one cluster while abstract
+words are distributed more uniformly through the
+embedding space or the other way around. Thus,
+we also can give a positive answer to the second
+research question.
+Finally, we hoped that we would find pairs of
+words that just differ w.r.t. the concreteness dimension, like the words king and queen only differ w.r.t.
+the gender dimension. At least we would like to
+find words with different senses, where the degree
+of concreteness is the main difference between the
+senses. Though there are many polysemous words,
+that seem to be good candidates and though we can
+make suggestive visualizations for selected examples, our last experiment is not very encouraging in
+this respect. In the first place it has to be noted that
+the evaluation is quite problematic since we do not
+know what the embedding of the specific senses of
+a word should be. Nevertheless, at least in the case
+of the building/institution ambiguity the senses the
+senses are clearly distinguished by concreteness,
+but there are many more differences between the
+senses than just this aspect. The last result does not
+mean that it is not possible to learn the relation between vectors for different senses of a word in the
+case of regular polysemy, but the relation is more
+complex than just linearly adding concreteness to
+the embedding.

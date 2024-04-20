@@ -1,0 +1,69 @@
+A key challenge in creating task-oriented conversational agents is gathering and labelling training
+data. Standard data gathering options include manual authoring and crowd-sourcing. Unfortunately,
+both of these options are tedious and expensive.
+Data augmentation is a widely used strategy to
+alleviate this problem of data acquisition.
+There are two particularly promising paradigms
+for data augmentation in natural language processing that use pretrained language models (LMs) (Peters et al., 2018; Devlin et al., 2018). The first family of methods fine-tunes an LM on task-specific
+data and generates new examples using the finetuned LM (Wu et al., 2018; Kumar et al., 2019,
+2021; Anaby-Tavor et al., 2020; Lee et al., 2021).
+A limitation of these methods is that, in a realworld scenario, task-specific data is scarce and finetuning an LM can quickly become the bottleneck.
+The second family of methods sidesteps this bottleneck by employing off-the-shelf pretrained LMs
+such as GPT-3 (Brown et al., 2020) to directly generate text without any task-specific fine-tuning. In
+particular, data generation by the GPT3Mix approach by Yoo et al. (2021) boosts performance
+on multiple classification tasks; however, they only
+consider tasks with few (up to 6) classes and easyto-grasp class boundaries (e.g., positive and negative).
+This work studies the applicability of massive
+off-the-shelf LMs, such as GPT-3 and GPT-J (Wang
+and Komatsuzaki, 2021) to perform effective data
+augmentation for intent classification (IC) tasks. In
+IC, the end goal is to predict a user’s intent given an
+utterance, i.e., what the user of a task-oriented chatbot wants to accomplish. Data augmentation for IC
+is particularly challenging because the generative
+model must distinguish between a large number
+(in practice up to several hundreds) of fine-grained
+intents that can be semantically very close to each
+other. Prior methods such as GPT3Mix prompt
+the model with the names of all classes as well
+as a few examples from randomly chosen classes.
+We test GPT3Mix for one and observe that such
+approaches are poorly suitable for intent classification tasks with tens or hundreds of possible intents.
+Instead, in this study, we use a simple prompt structure that focuses on a single seed intent (see Figure
+1) as it combines the intent’s name and all available
+examples.
+Our experiments primarily focus on few-shot IC
+on four prominent datasets: CLINC150 (Larson
+et al., 2019), HWU64 (Xingkun Liu and Rieser,
+2019), Banking77 (Casanueva et al., 2020), and
+SNIPS (Coucke et al., 2018). We also consider a
+partial few-shot setup to compare to the Example
+Extrapolation (Ex2) approach by Lee et al. (2021)
+who use a similar prompt but fine-tune the LM instead of using it as is. The main findings of our experiments are as follows: (1) GPT-generated samples boost classification accuracy when the considered intents are well-distinguished from each other
+(like in CLINC150, SNIPS). (2) On more granular datasets (namely HWU64 and Banking77),
+we find that GPT struggles in distinguishing between different confounding intents. (3) A smallscale study to further understand this behaviour
+suggests that GPT could be used as a classifier
+to filter out unfaithful examples and enhance the
+quality of the generated training set. Additionally, we investigate how valuable the generated data
+could be if relabelled by a human. Using an oracle
+model, we show that (4) the human labelling of
+GPT-generated examples can further improve the
+performance of intent classifiers, and that (5) LMgenerated data has a higher relabelling potential
+compared to edit-based augmentation techniques,
+such as Easy Data Augmentation (EDA) (Wei and
+Zou, 2019).
+We propose a prompt-based method to generate
+intent classification data with large pretrained language models. Our experiments show that generated data can be helpful as additional labelled data
+for some tasks, whereas, for other tasks, the generated data needs to be either relabelled or filtered
+to be helpful. We show that a filtering method that
+recasts the same GPT model as a classifier can be
+effective. Our filtering method, however, requires
+knowing the other intents that the generated data is
+likely to belong to instead of the seed intent. Future
+work can experiment with heuristics for approximately identifying the most likely actual intents
+for the generated utterances. This would complete
+a data generation and filtering pipeline that, according to our preliminary results in Section 4.2
+here, could be effective. Other filtering methods
+could also be applied, such as looking at the likelihood of the generated utterances as explored in
+a concurrent work by Meng et al. (2022). Lastly,
+an interesting future work direction is identifying
+which generated utterances most likely need a human inspection.

@@ -1,0 +1,14 @@
+Recent progress in large pretrained language
+models (LMs) has led to a growth of analyses examining what kinds of linguistic knowledge are encoded by these models. Due to
+computational constraints, existing analyses
+are mostly conducted on publicly-released LM
+checkpoints, which makes it difficult to study
+how various factors during training affect the
+models’ acquisition of linguistic knowledge.
+In this paper, we train a suite of small-scale
+Transformer LMs that differ from each other
+with respect to architectural decisions (e.g.,
+self-attention configuration) or training objectives (e.g., multi-tasking, focal loss). We evaluate these LMs on BLiMP, a targeted evaluation benchmark of multiple English linguistic phenomena. Our experiments show that
+while none of these modifications yields significant improvements on aggregate, changes
+to the loss function result in promising improvements on several subcategories (e.g., detecting adjunct islands, correctly scoping negative polarity items). We hope our work offers useful insights for future research into
+designing Transformer LMs that m

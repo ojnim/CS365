@@ -1,0 +1,85 @@
+1 Introduction
+The field of author profiling originally emerged
+from the study of stylometry (Lutoslawski, 1898)
+and, with the rise of social media (Bilan and
+Zhekova, 2016), now considers a variety of attributes, including demographic data such as age,
+sex, gender, nationality (Schwartz et al., 2013),
+personality traits (Golbeck et al., 2011), or psychological states such as emotions, or medical conditions like mental disorders (De Choudhury et al.,
+2013). Such automatic methods enable large-scale
+social media data analyses even for (combinations
+of) variables for which results from surveys are
+not available. Therefore, personality profiling in
+social media helps to paint a more comprehensive,
+complete, and timely picture for parts of a society.
+State-of-the-art models reconstruct personality
+traits or mental health states from posts of social
+media users by relying on ground-truth data that
+links such posts to the correct annotation (Guntuku
+et al., 2017). The ground-truth data is typically
+obtained by either (1) asking participants to complete a validated survey that measures the desired
+variable and asking the participants to share their
+social media profiles, (2), by relying on self-reports
+of users, e.g., disclosure of a condition in the user’s
+profile description, or (3), by having experts annotate profiles for particular properties. The quality
+of data obtained might therefore suffer from socialdesirability bias, from being a non-representative
+subsample, from a lack of validated diagnoses, or
+from noise stemming from the challenge that annotators do not have access to the actual characteristics of users (Ernala et al., 2019).
+We explore another route for which we hypothesize that it addresses these issues, but at the cost
+of only having access to very small data sets: We
+propose to leverage the existing set of high-quality,
+validated, and reliable psychometric instruments to
+measure psychological traits directly. Psychometric tests often come in the form of questionnaires
+which contain items, allowing a person to report
+about themselves. These items are sentences formulated as descriptions of the self (Table 1 shows
+some examples). This structure motivates our hypothesis that such psychometric tests can be used
+directly to induce classifiers that profile individuals in social media without the existence of designated, manually annotated in-domain training data.
+If indeed possible, this would lead to a straightforward route to develop a myriad of classifiers
+for all those concepts for which psychometric tests
+exist. To dampen the issue of these sets of items being comparably small, we make use of pre-trained
+language models (Howard and Ruder, 2018; Devlin
+et al., 2019; Brown et al., 2020) to transfer knowledge acquired through pretraining rich semantic
+representations. Some subtypes of such models
+can be considered few-shot learners (Brown et al.,
+2020; Ruder et al., 2019), however, the transfer
+might not be successful to data outside of the pretraining domain. Therefore, we evaluate if various
+data augmentation methods can further leverage
+the challenges coming with such small corpora.
+Thus, our contributions in this paper are that we
+(1) assemble a corpus from publicly available psychometric tests for the ‘Big Five’ variables of openness, conscientiousness, extraversion, agreeableness, and neuroticism (Costa and McCrae, 1992),
+which have been shown to be principled factors of
+personality (Cattell, 1945). Based on these data, we
+(2) fine-tune BERT (Devlin et al., 2019) and evaluate it on an existing personality trait corpus (Rangel
+et al., 2015). Furthermore, (3) we evaluate three
+data augmentation methods, namely paraphrasing
+with T5 (Raffel et al., 2020), and item generation
+with GPT-2 (Radford et al., 2019) and synonym
+replacements with Easy Data Augmentation (Wei
+and Zou, 2019). Our results, (4), show that the
+models perform en par with in-domain training for
+4/5 personality trait variables.
+5 Conclusion & Future Work
+We outlined a novel methodology for automatic
+author profiling in social media users without a
+costly collection of annotated social media data.
+Instead, we directly train on items from validated
+psychometric tests. This data selection procedure
+has some advantages: items of psychometric tests
+are carefully validated textual instances. Such corpora of such items constitute “small data”, but are
+available for a large number of concepts. Therefore,
+developing a method to induce classifiers directly
+from psychometric tests is also a promising avenue
+for future research.
+For the tasks of developing models measuring
+the big five personality traits, we tested on Twitter
+data that has been collected by asking users to fill
+out a (different) test. The transfer appears to be
+achievable, we obtain results for four out of five
+personality traits which are en par with in-domain
+models, using T5 data augmentation (except Openness, which has very few test instances).
+An important remaining research question is how
+models can be obtained that show consistently good
+results across concepts. In a real-world setup, test
+data from the target domain would not be available
+to make model selection decisions. One way to go
+might be to combine various augmentation methods. Another approach would be to use items as
+prompts in a zero-shot learning setup.

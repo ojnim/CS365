@@ -1,0 +1,14 @@
+Machine translation models struggle when
+translating out-of-domain text, which makes domain adaptation a topic of critical importance.
+However, most domain adaptation methods focus on fine-tuning or training the entire or part
+of the model on every new domain, which can
+be costly. On the other hand, semi-parametric
+models have been shown to successfully perform domain adaptation by retrieving examples from an in-domain datastore (Khandelwal
+et al., 2021). A drawback of these retrievalaugmented models, however, is that they tend
+to be substantially slower. In this paper, we
+explore several approaches to speed up nearest
+neighbor machine translation. We adapt the
+methods recently proposed by He et al. (2021)
+for language modeling, and introduce a simple
+but effective caching strategy that avoids performing retrieval when similar contexts have
+been seen before. Translation quality and runtimes for several domains show the effectiveness of the proposed solutions

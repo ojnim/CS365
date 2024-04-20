@@ -1,0 +1,61 @@
+Natural Language Understanding (NLU) models are used for different tasks such as questionanswering (Hirschman and Gaizauskas, 2001), machine translation (Macherey et al., 2001) and text
+summarization (Tas and Kiyani, 2007). These models are often trained on crowd-sourced data that
+may contain sensitive information such as phone
+numbers, contact names and street addresses. Nasr
+et al. (2019), Shokri et al. (2017) and Carlini et al.
+(2018) have presented various attacks to demonstrate that neural-networks can leak private information. We focus on one such class of attacks,
+called Model Inversion Attack (ModIvA) (Fredrikson et al., 2015), where an adversary aims to reconstruct a subset of the data on which the machinelearning model under attack is trained on. We
+also demonstrate that established ML practices (e.g.
+dropout) offer strong defense against ModIvA.
+In this work, we start with inserting potentially
+sensitive target utterances called ‘canaries’1
+along
+with their corresponding output labels into the training data. We use this augmented dataset to train an
+NLU model fθ. We perform a open-box attack on
+this model, i.e., we assume that the adversary has
+access to all the parameters of the model, including
+the word vocabulary and the corresponding embedding vectors. The attack takes the form of text
+completion, where the adversary provides the start
+of a canary sentence (e.g., ‘my pin code is’) and
+tries to reconstruct the remaining, private tokens
+of an inserted canary (e.g., a sequence of 4 digit
+tokens). A successful attack on fθ reconstructs all
+the tokens of an inserted canary. We refer to such a
+ModIvA as ‘Canary Extraction Attack’ (CEA). In
+such an attack, this token reconstruction is cast as
+an optimization problem where we minimize the
+loss function of the model fθ with respect to its
+inputs (the canary utterance), keeping the model
+parameters fixed.
+Previous ModIvAs were conducted on computer
+vision tasks where there exists a continuous mapping between input images and their corresponding
+embeddings. However, in the case of NLU, the discrete mapping of tokens to embeddings makes the
+token reconstruction from continuous increments
+in the embedding space challenging. We thus formulate a discrete optimization attack, in which the
+unknown tokens are eventually represented by a
+one-hot like vector of the vocabulary length. The
+token in the vocabulary with the highest softmax
+activation is expected to be the unknown token of
+the canary. We demonstrate that in our attack’s best
+configuration, for canaries of type “my pin code
+is k1k2k3k4", ki ∈ {0, 1, . . . , 9}, 1 ≤ i ≤ 4, we
+are able to extract the numeric pin k1k2k3k4 with
+an accuracy of 0.5 (a lower bound on this accuracy using a naive random guessing strategy for a
+combination of four digits equals 1 × 10−4
+). Since we present a new application of ModIvA
+to NLU models, defenses against them are an important ethical consideration to prevent harm and
+are explored in Section 6. We observe that standard training practices commonly used to regularize NLU models successfully thwart this attack.
+We formulate and present the first open-box
+ModIvA in a form of a CEA to perform text completion on NLU tasks. Our attack performs discrete
+optimization to select unknown tokens by optimizing over a set of continuous variables. We demonstrate our attack on three patterns of canaries and
+reconstruct their unknown tokens by significantly
+outperforming the ‘chance’ baseline.
+To ensure that the proposed attack is not misused
+by an adversary, we propose training NLU models with three commonplace modelling practices–
+dropout, early-stopping and including character
+level embeddings. We observe that the above practices are successful in defending against the attack
+as its accuracy and HDT values approach the random baseline. Future directions include ‘demystifying’ such attacks, and strengthening the attack for
+longer sequences with fewer repeats and a larger V0
+and investigating additional defense mechanisms,
+such as those based on differential privacy, and
+their effect on the model performance.

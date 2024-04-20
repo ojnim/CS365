@@ -1,0 +1,72 @@
+1 Introduction
+Transformer-based architectures have achieved remarkable results in many NLP tasks (Vaswani et al.,
+2017; Devlin et al., 2019; Brown et al., 2020). However, they also bring important computational and
+environmental concerns, caused by their quadratic
+time and memory computation requirements with
+respect to the sequence length. This comes in addition to the difficulty of interpreting their inner
+workings, caused by their overparametrization and
+large number of attention heads.
+There is a large body of work developing ways to
+“sparsify” the computation in transformers, either
+by imposing local or fixed attention patterns (Child
+et al., 2019; Tay et al., 2020; Zaheer et al., 2020), by
+applying low-rank kernel approximations to softmax (Wang et al., 2020; Choromanski et al., 2021),
+or by learning which queries and keys should be
+grouped together (Kitaev et al., 2019; Daras et al.,
+2020; Roy et al., 2021; Wang et al., 2021). Most
+of the existing work seeks to approximate softmaxbased attention by ignoring the (predicted) tails
+of the distribution, which can lead to performance
+degradation. An exception is transformers with
+entmax-based sparse attention (Correia et al.,
+2019), a content-based approach which is natively
+sparse – this approach has the ability to let each
+attention head learn from data how sparse it should
+be, eliminating the need for heuristics or approximations. The disadvantage of this approach is that
+it still requires a quadratic computation to determine the sparsity pattern, failing to take computational advantage of attention sparsity.
+In this paper, we propose Sparsefinder, which
+fills the gap above by making entmax attention
+more efficient (§4). Namely, we investigate three
+
+methods to predict the sparsity pattern of entmax
+without having to compute it: one based on metric
+learning, which is still quadratic but with a better
+constant (§4.3), one based on quantization (§4.4),
+and another based on clustering (§4.5). In all cases,
+the predictors are trained offline on ground-truth
+sparse attention graphs from an entmax transformer,
+seeking high recall in their predicted edges without
+compromising the total amount of sparsity. Figure 1
+illustrates our method.
+More precisely, to evaluate the effectiveness
+of our method across different scenarios, we perform experiments on two NLP tasks, encompassing
+encoder-only and decoder-only configurations: machine translation (MT, §5) and masked language
+modeling (MLM, §6), doing an extensive analysis
+of the tradeoff between sparsity and recall (i.e., performance on the attention graph approximation),
+and sparsity and accuracy (performance on downstream tasks). We compare our method with four
+alternative solutions based on efficient transformers: Longformer (Beltagy et al., 2020), Bigbird (Zaheer et al., 2020), Reformer (Kitaev et al., 2020),
+and Routing Transformer (Roy et al., 2021), along
+their entire Pareto curves. We complement these
+experiments by analyzing qualitatively what is selected by the different attention heads at the several
+layers and represented in different clusters/buckets.
+Overall, our contributions are:1
+• We propose a simple method that exploits learnable sparsity patterns to efficiently compute
+multi-head attention (§4).
+• We do an extensive analysis of the tradeoff between sparsity and recall, and sparsity and accuracy in MT (§5) and MLM (§6), showing that
+there is clear room for improvement in the design
+of efficient transformers.
+• We qualitatively analyze what is selected by the
+different attention heads at various layers and
+represented in different clusters/buckets.
+
+7 Conclusions
+We proposed Sparsefinder, a method to identify
+the sparsity pattern of entmax-based transformers
+while avoiding full computation of the score matrix.
+Our method learns a low-dimensional projection of
+queries and keys with a contrastive objective, and
+comes with three variants: distance, quantization,
+and clustering-based. We compared these variants
+against competing approaches on two tasks: machine translation and masked language modeling.
+We obtained favorable sparsity-recall and sparsityaccuracy tradeoff curves. Our theoretical sparsity
+provides a lower bound for how much computational sparsity can be achieved, and may guide
+future research on efficient transformers.

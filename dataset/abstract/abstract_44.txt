@@ -1,0 +1,12 @@
+In this paper we investigate how concreteness
+and abstractness are represented in word embedding spaces. We use data for English and
+German, and show that concreteness and abstractness can be determined independently and
+turn out to be completely opposite directions in
+the embedding space. Various methods can be
+used to determine the direction of concreteness,
+always resulting in roughly the same vector.
+Though concreteness is a central aspect of the
+meaning of words and can be detected clearly
+in embedding spaces, it seems not as easy to
+subtract or add concreteness to words to obtain other words or word senses like e.g. can be
+done with a semantic property like gender.

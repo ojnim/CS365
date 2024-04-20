@@ -1,0 +1,38 @@
+At the core of many natural language processing tasks are language models (LMs), which compute the probability distribution of the next token
+that follows a given input context. The Transformer (Vaswani et al., 2017), as one of the most
+popular architectures for language modeling, has
+been widely adopted for large-scale pre-training,
+such as in BERT (Devlin et al., 2019), GPT2 (Radford et al., 2019) and GPT-3 (Brown et al.,
+2020). The success of large-scale LM pretraining
+has propelled a surge of analysis on the linguistic
+knowledge encoded by language models.
+While prior works have uncovered many exciting facts regarding the linguistic capability of
+those pretrained LMs (Hewitt and Manning, 2019;
+Liu et al., 2019; Jawahar et al., 2019), most of
+these analyses are conducted on publicly-released
+model checkpoints, and thus the impact of various LM training configurations remains relatively unexplored, limited to LSTM LM configurations (Linzen et al., 2016) or varying training
+data size (Zhang et al., 2021).
+In this work, we focus on Transformer
+LMs (Vaswani et al., 2017) instead of LSTMs, and
+we investigate two aspects of LM training distinct
+from previous works – (1) the LM training objective, for which we experiment with the focal loss
+and multi-task training; and (2) the Transformer’s
+self-attention mechanism, which we restrict to a
+local window of tokens. We train a suite of Transformer LMs that minimally differ from each other
+in one of these two aspects, and evaluate the effect
+of these changes via non-parametric probing on
+BLiMP (Warstadt et al., 2020a), a targeted evaluation benchmark of multiple English linguistic
+phenomena (e.g., island effects, anaphor agreement). Experimental results demonstrate that none
+of these modifications yields significant gains on
+BLiMP in aggregate. However, we do observe
+that modified training objectives (e.g, using focal loss instead of standard cross entropy loss) result in improvements to specific subtypes of linguistic phenomena. Overall, our experiments suggest that it could be promising to scale up Transformer LMs with modified training objectives, as
+they may help improve syntactic generalization.
+To complement recent analyses on the linguistic
+knowledge encoded by released Transformer LM
+checkpoints, we investigate four Transformer language models, each trained with slightly different
+settings. We evaluate these variants on BLiMP, a
+targeted evaluation set to probe the language models’ capability of various linguistic phenomena.
+Our results show that although the averaged performance is similar after applying those changes,
+there are promising gains on local paradigms. We
+hope our work could shed light on future research
+into more effective learning of syntactic knowledge by Transformer language models.

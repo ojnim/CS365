@@ -1,0 +1,73 @@
+1 Introduction
+In a conversational scenario, the tone of voice used
+by interlocutors is a key aspect towards achieving
+fruitful, engaging, and natural user-agent interactions (Brown et al., 1987; Niu and Bansal, 2018).
+This is deeply rooted in the fact that discoursing in
+a polite manner, is a social trait of human conversations, that when left unattended by dialog agents,
+can lead to an immediate perception of artificial
+discourse and lack of intelligent behavior, which in
+turn leads to poor engagement.
+Task-oriented dialog agents require simultaneously keeping the user engaged while achieving the
+task goal, whether it is selling a product, booking a
+restaurant or simply providing assistance. This requires informative and correct answers, embedding
+domain-specific language, while keeping a polite
+tone of voice. Being able to accomplish this, has
+an impact that extrapolates isolated conversations.
+For example, in the fashion world, the tone and the
+way the customer is addressed are strongly linked
+to the brand culture (Sousa et al., 2021) (e.g. more
+eloquent vs. more casual and youthful discourse).
+While politeness is a deeply seeded cultural concept and difficult to fully generalize (Meier, 1995),
+it has been recently approached from a computational perspective (Danescu-Niculescu-Mizil et al.,
+2013; Niu and Bansal, 2018; Madaan et al., 2020)
+under the framework of (Brown et al., 1987), which
+divides politeness strategies in a) negative politeness - where polite discourse is achieved by expressing restraint, thus avoiding being direct - and
+b) positive politeness - where an explicit attempt
+of expressing solidarity, optimism and gratitude is
+made. Danescu-Niculescu-Mizil et al. (2013) took
+a pioneering approach and proposed to approximate these strategies by creating a human annotated politeness corpora, and training a classifier to
+capture general linguistic patterns of both negative
+and positive politeness. Recent works leverage on
+such classifier to develop either generative (Niu
+and Bansal, 2018; Firdaus et al., 2020) or rewritingbased (Madaan et al., 2020; Fu et al., 2020) approaches. Figure 1 contrasts these approaches, with
+respect to politeness strategies. While these have
+been applied to generic and domain-agnostic scenarios, it remains unclear how well such principles
+transfer to task-specific domains.
+In this work, we assess under a transfer-learning
+scenario, the applicability of both generative and
+rewriting politeness approaches to a novel domain.
+Specifically, we use the challenging fashion domain as a use case, given its vocabulary complexity
+and highly specific-nature 1
+. Namely, we propose
+to overcome the lack of labeled data by extending
+state-of-the-art generative (Niu and Bansal, 2018)
+and rewriting (Madaan et al., 2020) approaches, respectively, towards allowing each of them to overcome the domain-shift, and transferring linguistic
+politeness constructs to a novel (fashion) domain.
+This is one of the first works to study politeness
+approaches for task-oriented dialog agents, contributing with:
+• An adaptation of generative and rewriting politeness approaches (section 3), enabling transfer learning for specific domains.
+• Comprehensive experiments (section 5), leading to valuable insights regarding how politeness approaches deal with the contentpreservation vs. politeness improvement
+trade-off, in task-oriented dialog agents.
+• A user-centered study that supports and confirms the conclusions of the automatic evaluation (section 5).
+• Explored politeness on a novel domain, conversational assistants on the fashion domain (Saha et al., 2018), exposing the opportunities for improving politeness.
+6 Conclusion
+In this work, we address the research gap regarding the development of polite task-oriented dialog
+agents. We demonstrate that while politeness language constructs tend not to be domain-specific,
+their application is, requiring politeness approaches
+to cope with domain-specific vocabulary. Particularly, we show that when improving politeness in
+task-specific utterances, rewriting approaches consistently deliver better results, given that generative
+alternatives need to attend to two tasks.
+In summary, the key takeaways are:
+• Politeness through rewriting results in the
+most robust approach, providing a good balance between delivering polite utterances and
+preserving content.
+• Politeness answer generation is less stable. By
+definition, generation and politeness improvement need to be addressed jointly, which is
+too ambitious in a domain-transfer setting.
+• Bringing politeness to task-oriented dialog
+agents, characterized by operating over highly
+specific domains, is achievable with the proposed model domain adaptations.
+As future work, we plan to extend our work and
+research methods that select the best politeness
+strategies while accounting for the specificity of
+distinct conversation phases (e.g. greeting vs. product description utterances).

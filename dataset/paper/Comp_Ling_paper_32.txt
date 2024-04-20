@@ -1,0 +1,100 @@
+1 Introduction
+Text style refers to the attributes of text written
+in a particular form. Style transfer is the task of
+paraphrasing text into a target-style domain while
+retaining its content. In the domain of natural language generation, research on style transfer tasks
+(Li et al., 2018; Chawla and Yang, 2020) allows us
+to control the attributes of produced utterances.
+Recently, sentiment transfer (Fu et al., 2018;
+Prabhumoye et al., 2018) has attracted much attention as a subtask of style transfer, an example being ’The food here is delicious’ (Positive)
+→ ’The food here is gross’ (Negative). A styleindicative word is a word with a large contribution
+to style (Xu et al., 2018). In the above example,
+’delicious’ and ’gross’ are style-indicative words.
+A critical problem in sentiment transfer is the
+lack of available parallel data (Shen et al., 2017;
+Luo et al., 2019). As a result, related work has
+mainly focused on unsupervised learning. Among
+unsupervised approaches, those based on word
+modification have achieved state-of-the-art performance due to their ability to retain content words.
+This paper mainly focuses on sentiment transfer and follows two generative models: the TAG
+model (Madaan et al., 2020) and LEWIS model
+(Reid and Zhong, 2021). The TAG model calculates term frequency-inverse document frequency
+scores to identify style-indicative words and trains
+an autoregressive model to substitute those words.
+The LEWIS model removes style-indicative words
+to extract a content template and trains a generator
+to perform edit operations on the template.
+However, the aforementioned methods have the
+following drawbacks:
+(1) It is unnecessary to identify style-indicative
+words. The fact that style-indicative words contribute more to a style does not imply that styleindicative words correspond to the optimal positions to be modified. For a negative-to-positive
+transfer example, the sentence ’Even great restaurants have bad days’ should be rephrased as ’Great
+restaurants never have bad days’ according to a
+human reference. Here, both the deleted word
+’Even’ and inserted word ’never’ are far away
+from the style-indicative word ’bad’. Furthermore,
+word identification may be less effective for nondescriptive text. For example, if there are no styleindicative words in a sentence, such as ’If you are
+into sports, this is the place for you’(Positive), then
+identification will not be effective.
+(2) No rationale is provided for the collocation
+of operations used, and models that perform different edit operations are treated as different models
+(Li et al., 2018; Madaan et al., 2020). However,
+we propose that edit operations should be used automatically in different situations. When multiple
+solutions exist, a basis for selecting the solution
+should be provided.
+(3) It is redundant to rewrite style-independent
+words by using purely generative methods, as overlaps have been reported to be common between the
+input and output (Reid and Zhong, 2021). Rewriting all input words by using an end-to-end model
+increases the burden of the model and reduces its
+performance. In theory, additional learning of these
+words may be more likely to cause text degeneration (Holtzman et al., 2020).
+To address the above-mentioned drawbacks, we
+propose the following:
+(1) Tagging all words instead of identifying specific words. We employ edit operations to tag every
+word in an input sentence. To obtain a tagger without parallel data, we train a style classifier to score
+samples and build a conditional random field (CRF)
+(Lafferty et al., 2001). We use the classifier to calculate the probability distribution of tag sequences.
+(2) Using a language model (LM) to select operations. If an input sentence has multiple solutions,
+we propose that text fluency be the basis for selection. For example, a negative sentence ’I’m not a
+huge fan of them’ can be rephrased as ’I’m a huge
+fan of them’ or ’I’m not a small fan of them’. In this
+case, the former sounds more natural. To measure
+text fluency, we build an LM that scores sentences
+based on their perplexity. We use the score function
+as a joint feature function of the CRF.
+(3) Searching in the CRF instead of rewriting the
+entire sentence. As mentioned above, we train a
+classifier and LM to build the CRF. By searching in
+the CRF, we generate an operation sequence. We
+apply the operation sequence to the input sentence
+to obtain the output.
+In this paper, we first introduce our tagging strategy and a method we employed to implement edit
+operations (§ 3.1). Further, we introduce feature
+functions of the CRF (§ 3.2) and search strategies
+used (§ 3.3). We tested our model for transfer accuracy and content preservation on four data sets
+(§ 4) and analysed the experimental results of the
+automated evaluation (§ 5.1) and the experimental
+results of the manual evaluation (§ 5.2). In additional analysis (§ 5.3), we discussed the variances
+of sentence features in transformation.1
+Our contributions are as follows:
+• We propose a novel style transfer approach.
+To the best of our knowledge, this study is the
+first to apply CRFs to style transfer tasks.
+• We propose a bias for selecting edit operations.
+The calculation of perplexity theoretically prevents generated words from conflicting with
+their original context.
+• Experimental results show that our proposed
+model surpasses baselines in terms of accuracy or content retention on four data sets.
+7 Conclusion
+In this study, we proposed a probabilistic model for
+sentiment and style transfer on non-parallel data.
+We used a classifier and an LM to construct a CRF.
+Using dynamic programming search algorithms,
+we generated a tag sequence to modify the input
+sentences. The experimental results revealed that
+our proposed model outperformed the baselines in
+terms of accuracy by approximately 2%.
+Our future work will focus on the simplification
+of the search process. By using the policy gradient
+(Williams, 1992) of reinforcement learning, we
+might be able to speed up the transfer model.

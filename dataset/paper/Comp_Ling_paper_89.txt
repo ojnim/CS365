@@ -1,0 +1,45 @@
+There is a natural connection between information theory, the mathematical study of communication systems, and linguistics, the study of human
+language—the primary vehicle that humans employ to communicate. Researchers have exploited
+this connection since information theory’s inception (Shannon, 1951; Cherry et al., 1953; Harris,
+1991). With the advent of modern computing, the
+number of information-theoretic linguistic studies
+has risen, exploring claims about language such
+as the optimality of the lexicon (Piantadosi et al.,
+2011; Pimentel et al., 2021), the complexity of
+morphological systems (Cotterell et al., 2019; Wu
+et al., 2019; Rathi et al., 2021), and the correlation between surprisal and language processing
+time (Smith and Levy, 2013; Bentz et al., 2017;
+Goodkind and Bicknell, 2018; Cotterell et al., 2018;
+Meister et al., 2021, inter alia).
+In information-theoretic linguistics, a fundamental quantity of research interest is entropy. Entropy
+is both useful to linguists in its own right, and is
+necessary for estimating other useful quantities,
+e.g., mutual information. However, the estimation
+of entropy from raw data can be quite challenging (Paninski, 2003; Nowozin, 2015), e.g., in expectation, the plug-in estimator underestimates entropy (Miller, 1955). Linguistic distributions often
+present additional challenges. For instance, many
+linguistic distributions, such as the unigram distribution, follow a power law (Zipf, 1935; Mitzenmacher, 2004).1 Linguistics is not the only field
+with such nuances, and so a large number of entropy estimators have been proposed in other fields
+(Chao and Shen, 2003; Archer et al., 2014, inter
+alia). However, no work to date has attempted a
+practical comparison of these estimators on natural
+language data. This work fills this empirical void.
+Our paper offers a large empirical comparison of
+the performance of 6 different entropy estimators
+on both synthetic and natural language data, an example of which is shown in Figure 1. We find that
+Chao and Shen’s (2003) is the best estimator when
+very few data are available, but Nemenman et al.’s
+(2002) is superior as more data become available.
+Both are significantly better (in terms of meansquared error) than the naïve plug-in estimator. Importantly, we also show that two recent studies
+(Williams et al., 2021; McCarthy et al., 2020) show
+smaller effect sizes when a better estimator is employed; however, we are able to reproduce a significant effect in both replications. We recommend that
+future studies carefully consider their choice of entropy estimators, taking into account data availability and the nature of the underlying distribution.
+This work presents the first empirical study comparing the performance of various entropy estimators
+for use with natural language distributions. From
+experiments on synthetic data (appendix) and natural data (CELEX), and two replication studies of
+recent papers in information-theoretic linguistics,
+we find that the oft-employed plug-in estimator of
+entropy can cause misleading results, e.g., the overestimates of effect sizes seen in both replication
+studies. The recommendation of our paper is that
+researchers should carefully consider their choice
+of entropy estimator based on data availability and
+the nature of the underlying distribution.

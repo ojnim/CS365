@@ -1,0 +1,66 @@
+1 Introduction
+Personality can be defined as a set of characteristics
+(e.g., age, income, and hobby), which can reflect
+the differences of individuals in thinking, emotions,
+and behaviours (Vora et al., 2020). The power of
+personality is worth exploring and pervades human lives everywhere (Beck and Jackson, 2022).
+Personality prediction is an interdisciplinary field
+spanning from psychology to computer science.
+However, people’s personalities can’t be directly
+observed and measured, but are expressed in activity patterns, and thus can be inferred in that way.
+Humans tend to covey their personalities through
+language because it is the most prominent way in
+such an Internet society. Meanwhile, written text is
+one of the most important appearances of language.
+Consequently, the involvement of machinelearning-based methods in predicting the personality of individuals seems necessary. Over the past 20
+years, much progress has been made in natural language processing (NLP), which is faced with a revolution. Especially, with the development of deep
+learning and transfer learning, automatically and
+accurately predicting the personality is an emerging
+topic in NLP. Classical text representation methods
+and pre-trained word representation approach both
+make the personality prediction research area more
+attractive and competitive. Even though how to
+compute and predict someone’s personality based
+on texts is still an open question, attracting more
+and more researchers to focus on it.
+The approaches of personality prediction have
+a long research history. Early in 2008, the Personae corpus (Luyckx and Daelemans, 2008) has
+already been proposed for predicting the personality from the text. The corpus is used for predicting the writer’s personality traits that are reflected in writing style. Input representation is one
+of the most components in NLP. In recent years,
+the novel representation method has been the pretrained word embeddings. Therefore, we mainly
+focus on the personality prediction approaches with
+the pre-trained word embeddings. Methods with
+the pre-trained embeddings are firstly based on
+Word2Vec (Mikolov et al., 2013b,a) and GloVe
+(Pennington et al., 2014). Surprisingly, Poria et al.
+(2013) propose to extract common sense knowledge and affective information to recognize personality from text, where they represent information in
+a directed graph. Despite the success of early word
+embedding models (e.g., Word2Vec), there are still
+practical problems. The first one is that previously
+unseen words make the model get into trouble. The
+second one is the overwhelmingly large parameters
+for a model to learn. Liu et al. (2016) propose a
+recurrent and compositional deep-learning-based
+model to address these issues.
+Very recently, researchers start to explore large
+pre-trained models for NLP (Jawahar et al., 2019;
+He et al., 2020; Malkin et al., 2021). Kazameini
+et al. (2020) use the BERT language model (Devlin
+et al., 2018) to extract contextualized word embeddings and achieve state-of-the-art performance for
+personality detection. Similarly, Transformer-MD
+(Yang et al., 2021) is proposed to put multiple posts
+together for representing the personality of each
+user. The context embeddings learned by large
+pre-trained models can effectively improve the performances and have theoretical advantages over
+traditional embedding methods. Therefore, we also
+adopt a pre-trained model named DeBERTa (He
+et al., 2020) to construct our personality prediction
+model. In this paper, we present our Prompt-based
+pre-trained network for personality prediction at
+Track 3 and Track 4 of WASSA-2022.
+Track 3: Personality Prediction (PER), which
+consists in predicting the personality of the essay
+writer, knowing all his/her essays and the news
+article from which they reacted.
+Track 4: Interpersonal Reactivity Index Prediction (IRI), which consists in predicting the personality of the essay writer, knowing all his/her essays
+and the news article from which they reacted.

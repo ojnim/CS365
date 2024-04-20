@@ -1,0 +1,42 @@
+Human experience is mediated through the senses,
+which we use to interact with the world. Since
+the perceptual world is so important to us, all languages have resources to describe the sensory perception. Nevertheless, previous research showed
+that, at least in Western European languages, the
+visual dimension is prevalent in language, with a
+richer terminology used to describe it, while the
+olfactory dimension is less represented (Winter,
+2019). For example, in English, there are less
+unique words for the smell domain than for the
+other senses. They are also used less frequently
+and olfactory descriptions are often a target of
+cross-modal expressions.
+Sensory terminology has been researched previously, with the goal to build resources and to analyse how the different senses are described in language (Tekiroglu et al. ˘ , 2014b,a). Some research
+is specifically devoted to smell (Lefever et al.,
+2018), but they all focus on contemporary language. One notable exception is the collection of
+essays published in J˛edrzejowski and Staniewski
+(2021), where olfaction in different languages is analysed in a diachronic perspective. For example, Strik Lievers (2021) describes how the olfactory lexicon has changed from Latin to Italian.
+In this work, we contribute to the diachronic
+analysis of olfactory language by annotating
+a multilingual benchmark with smell situations
+spanning three centuries. Compared to existing
+studies, our focus is not on the occurrences of single terms, but we rather capture smell events in
+texts, i.e. more complex structures involving different participants. The benchmark currently covers six languages (Dutch, English, French, German, Italian and Slovene). Annotation of Latin
+data is ongoing, but we do not include here the
+results for this language because they are still preliminary.
+We describe the annotation guidelines and
+the document selection process. Our benchmark includes texts issued between 1620 and
+1920 covering ten domains of olfactory interest to cultural history. We release the benchmark at https://github.com/Odeuropa/
+benchmarks_and_corpora and we present a
+first analysis of its content.
+In this paper, we presented a multilingual benchmark annotated with smell-related information
+and covering six languages, which we make available to the research community. We have described the document selection rationale, the annotation process and the main challenges related
+to the creation of a multilingual benchmark containing historical documents. Annotation of Latin
+is in progress, and it will be added to the benchmark as soon as it is complete.
+The benchmark is only a first step towards the
+analysis and extraction of olfactory information
+from historical documents. The work introduced
+in Section 7 will be extended to all six languages,
+using historical BERTs when available. Furthermore, we will go beyond simple sentence classification, training multilingual classifiers to identify lexical units and frame elements. Since the
+size of the benchmark is rather limited, we will try
+to expand it in the future but also explore semisupervised, few-shot and cross-lingual approaches
+to olfactory information extraction.

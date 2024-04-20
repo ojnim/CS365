@@ -1,0 +1,60 @@
+1 Introduction
+Entity linking, i.e., the task of disambiguating mentions in text by linking them to entities of a knowledge graph (KG), is key to many semantic applications, such as KG population, question answering
+or information retrieval (Sevgili et al., 2021). In
+the context of KGs, a domain is characterized, i.a.,
+by the set and distribution of entities (Onoe and
+Durrett, 2020). For KGs from special domains,
+the availability of annotated data for training entity
+linking is limited. Thus, there is a need for methods
+that work across domains in low-resource settings,
+such as transfer or few-shot learning techniques
+(Hedderich et al., 2021).
+Given a KG from a special domain, it is useful
+for many applications to not treat this KG in isolation but still be able to link mentions to the general
+domain as well. Figure 1 illustrates this. Without
+combining the KGs Wikipedia and Doctor Who, it
+would not be possible to link all mentions of the
+example sentence to their respective entities. Early
+works prior to neural entity linking (Hoffart et al.,
+2011) allow linking to multiple KGs by combining the KGs before applying the methods. In the
+context of neural networks, a more elegant way is
+to combine different KGs via a joint vector space
+(Gupta et al., 2017). This also enables us to learn
+similar embeddings for overlapping entities, i.e.,
+entities that appear in more than one KG, which
+would arguably be more difficult when only uniting
+triple sets. In Figure 1, the entities “Clara Oswald”
+and “Clara Oswald (Immortals)” are an example of
+overlapping entities.
+In this paper, we aim at methods for adding a KG
+from a specific target domain into an existing vector
+space from a source-domain KG and fine-tuning the
+joint vector space to improve the entity linking results. While some recent work has considered zeroshot entity linking (Logeswaran et al., 2019; Wu
+et al., 2020), a systematic investigation on which
+data sources are most useful for fine-tuning entity
+linking systems, is still missing. Thus, the first
+research question we address is: Which data is best
+suited for fine-tuning joint vector spaces of KGs?
+Furthermore, it is unclear how fine-tuning on the
+target domain affects the vector space of the sourcedomain KG. Thus, the second research question we
+pose is: Does fine-tuning harm performance of
+entity linking on the general domain?
+
+To answer these research questions, we present a
+systematic investigation of the impact of different
+information sources on the vector space (intrinsic
+evaluation) as well as on the entity linking performance (extrinsic evaluation). Further, we will publish the list of overlapping entities that we created
+along with this paper to ensure reproducibility.
+
+5 Conclusion
+In this paper, we presented a systematic investigation of extending an entity linking system to a new
+domain by creating a joint vector space. Our results showed that it is helpful to add data from both
+the source domain and the target domain. While
+an additional supervision on entities that appear in
+both knowledge graphs improves the quality of the
+vector space, it has less impact on the downstream
+task of entity linking. Additional data linked to
+the source-domain KG avoids performance loss on
+the general domain and is, thus, especially useful
+to achieve a system that can link mentions to both
+source and target-domain KGs at the same time.

@@ -1,0 +1,36 @@
+Differential privacy (DP), a formal mathematical
+treatment of privacy protection, is making its way
+to NLP (Igamberdiev and Habernal, 2021; Senge
+et al., 2021). Unlike other approaches to protect
+privacy of individuals’ text documents, such as
+redacting named entities (Lison et al., 2021) or
+learning text representation with a GAN attacker
+(Li et al., 2018), DP has the advantage of quantifying and guaranteeing how much privacy can
+be lost in the worst case. However, as Habernal
+(2021) showed, adapting DP mechanisms to NLP
+properly is a non-trivial task.
+Representation learning with protecting privacy in an end-to-end fashion has been recently
+proposed in DPText (Beigi et al., 2019b,a; Alnasser et al., 2021). DPText consists of an autoencoder for text representation, a differential
+privacy-based noise adder, and private attribute
+discriminators, among others. The latent text representation is claimed to be differentially private
+and thus can be shared with data consumers for
+a given down-stream task. Unlike using a predetermined privacy budget ε, DPText takes ε as a
+learnable parameter and utilizes the reparametrization trick (Kingma and Welling, 2014) for random
+sampling. However, the downstream task results
+look too good to be true for such low ε values. We
+thus asked whether DPText is really differentially
+private.
+This paper makes two important contributions
+to the community. First, we formally analyze
+the heart of DPText and prove that the employed
+reparametrization trick based on inverse continuous density function in DPText is wrong and the
+model violates the DP guarantees. This shows that
+extreme care should be taken when implementing
+DP algorithms in end-to-end differentiable deep
+neural networks. Second, we propose an empirical sanity check which simulates the actual privacy loss on a carefully crafted dataset and a reconstruction attack. This supports our theoretical
+analysis of non-privacy of DPText and also confirms previous findings of breaking privacy of another system ADePT.
+We formally proved that DPText (Beigi et al.,2019b,a; Alnasser et al., 2021; Beigi et al., 2021)
+is not differentially private due to wrong sampling
+in its reparametrization trick. We also proposed
+an empirical sanity check that confirmed our findings and can help to reveal potential errors in DP
+mechanism implementations for NLP.

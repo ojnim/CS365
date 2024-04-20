@@ -1,0 +1,69 @@
+Classifier and measure word systems are common
+across the world’s languages. While they are the
+most common and most associated with Southeast
+and East Asia, they are also present in some languages of South Asia, Australia, the Pacific, and the
+Americas among others (Aikhenvald, 2000). Systems vary language-to-language, but share some
+general properties. They divide up the space of
+nouns along some semantic space, often encoding
+lexical semantic information including animacy,
+concreteness, and size and shape categories. For
+example, Mandarin has classifiers for long objects
+(e.g., tiáo 條), some animals (zh¯ı 隻), and vehicles (liàng 輛). On the other hand, some classifiers
+like the Mandarin general classifier gè 個 do not
+seem to pick out anything in particular, or they instead pick out extremely narrow, almost lexicalized
+classes, such as zun¯ 尊, which as a classifier applies only to certain colossal metal objects such
+as cannons and Buddhist statues (Gao and Malt,
+2009).
+Compared to most inflectional noun class systems, classifiers are more subject to variable discourse conditions. Several classifiers may be used
+grammatically with a given noun as conditions allow. For example, ‘a goat’ may be expressed with
+the animal classifier zh¯ı or general classifier gè,
+but also tiáo or tóu 頭 used for livestock (Erbaugh,
+1986). The balance of semantic specificity, arbitrariness, and variability presents a challenge for
+native learners. How do individuals acquire both
+the semantic conditions and arbitrary lexical patterns of classifier systems?
+Parallel to this, classifier systems are subject to
+constant change, both for language-internal reasons
+(e.g., grammaticalization of new classifiers, word
+death of old classifiers) and external ones, particularly contact (Aikhenvald, 2000). Erbaugh (1986)
+illustrates a few cases of changes in classifier usage
+in Mandarin and its ancestors over the past 3500
+years. Gè 個, the overwhelming majority catch-all
+classifier in the modern language only gained this
+status during the Qing Dynasty (CE 1644-1912).
+For the millennium prior since the Tang dynasty,
+méi 枚 had been the default, but it has since been
+relegated to a niche classifier for small needle and
+badge-like objects. Both gè and méi began as niche
+classifiers in their respective eras before gradually
+generalizing. In a similar vein, Habibi et al. (2020)
+explore how linguistic categories change through
+chaining, via the usage of Mandarin Chinese classifiers in the past half century. The latter two studies
+discuss the development of Mandarin classifiers
+over time. They are based on careful research, but
+they are also limited to a single language. Erbaugh
+(1986) in particular stops short of a quantitative
+assessment.
+We provide a computational analysis of diachronic trends in classifier systems which complements prior developmental and historical research. We approach the problem in two ways.
+First, we present a quantitative analysis of classifiers in Cantonese and Mandarin child-directed
+speech to investigate the possibility of a functional
+role for classifiers as disambiguators which could
+influence the direction of child-driven change. Second, we model a simulated classifier system using
+a population-level transmission model to determine
+how language acquisition may drive trends in classifier patterns over time. We find support for input
+sparsity and learning, without reference to specific
+functional concerns, as a primary driver for gradual
+classifier generalization over time.
+Erbaugh (2006) remarked that within noun categorization broadly, classifier systems exist somewhere
+in-between unmarked common nouns and grammatical systems like gender. They therefore balance semantic specificity with variance that tends
+toward arbitrary. We believe, and have sought to
+show in this paper, this follows from a view of language change that is primarily driven by children
+acquiring their native languages with additional
+changes led by adults. This dual perspective provides a place for both grammar learning and sociolinguistic discourse factors as mechanisms for
+change. Classifier systems are a natural juncture
+for these two types of change since they are both
+deeply embedded in the grammar and show heavy
+optionality, variability, and discourse sensitivity.
+Existing “somewhere in-between” then plausibly
+stems from the diffusion of innovation in learning
+and discourse, clarifying that child-driven change
+to classifier systems is neutral with respect to function.

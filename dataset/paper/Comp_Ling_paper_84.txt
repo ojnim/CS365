@@ -1,0 +1,52 @@
+The standard supervised training paradigm in NLP
+research is to fine-tune a pre-trained language
+model on some target task (Peters et al., 2018; Devlin et al., 2018; Raffel et al., 2019; Gururangan
+et al., 2020). When additional non-target supervised datasets are available during fine-tuning, it is
+not always clear how to best make use of the supporting data (Phang et al., 2018, 2020; Liu et al.,
+2019b,a; Pruksachatkun et al., 2020a). Although
+there are an exponential number of ways to combine or alternate between the target and supporting
+tasks, three predominant methods have emerged:
+(1) fine-tuning on a supporting task and then the target task consecutively, often called STILTs (Phang
+et al., 2018); (2) fine-tuning on a supporting task
+and the target task simultaneously (here called pairwise multi-task learning, or simply MTL); and (3)
+fine-tuning on all N available supporting tasks and
+the target tasks together (MTLAll, N > 1).
+Application papers that use these methods generally focus on only one method (Søgaard and Bingel,
+2017; Keskar et al., 2019; Glavas and Vulic´, 2020;
+Sileo et al., 2019; Zhu et al., 2019; Weller et al.,
+2020; Xu et al., 2019; Chang and Lu, 2021), while
+a limited amount of papers consider running two.
+Those that do examine them do so with a limited
+number of configurations: Phang et al. (2018) examines STILTS and one instance of MTL, Changpinyo et al. (2018); Peng et al. (2020); Schröder
+and Biemann (2020) compare MTL with MTLAll,
+and Wang et al. (2018a); Talmor and Berant (2019);
+Liu et al. (2019b); Phang et al. (2020) use MTLAll
+and STILTs but not pairwise MTL.
+In this work we perform comprehensive experiments using all three methods on the 9 datasets in
+the GLUE benchmark (Wang et al., 2018b). We
+surprisingly find that a simple size heuristic can be
+used to determine with more than 92% accuracy
+which method to use for a given target and supporting task: when the target dataset is larger than the
+supporting dataset, STILTS should be used; otherwise, MTL should be used (MTLAll is almost
+universally the worst of the methods in our experiments). To confirm the validity of the size heuristic,
+we additionally perform a targeted experiment varying dataset size for two of the datasets, showing
+that there is a crossover point in performance between the two methods when the dataset sizes are
+equal. We believe that this analysis will help NLP
+researchers to make better decisions when choosing
+a TL method and will open up future research into
+understanding the cause of this heuristic’s success.
+We examined the three main strategies for transfer
+learning in natural language processing: training
+on an intermediate supporting task to aid the target
+task (STILTs), training on the target and supporting
+task simultaneously (MTL), or training on multiple
+supporting tasks alongside the target task (MTLAll).
+We provide the first comprehensive comparison between these three methods using the GLUE dataset
+suite and show that there is a simple rule for when
+to use one of these techniques over the other. This
+simple heuristic, which holds true in more than 92%
+of applicable cases, states that multi-task learning
+is better than intermediate fine tuning when the
+target task is smaller than the supporting task and
+vice versa. Additionally, we showed that these pairwise transfer learning techniques outperform the
+MTLAll approach in almost every case.

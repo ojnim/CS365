@@ -1,0 +1,50 @@
+One major issue in developing conversational dialogue systems is the significant efforts required for
+evaluation. This hinders rapid developments in this
+field because frequent evaluations are not possible
+or very expensive. The goal is to create automated
+methods for evaluating to increase efficiency. Unfortunately, methods such as BLEU (Papineni et al.,
+2002) have been shown to not be applicable to conversational dialogue systems (Liu et al., 2016). Following this observation, in recent years, the trend
+towards training methods for evaluating dialogue
+systems emerged (Lowe et al., 2017; Deriu and
+Cieliebak, 2019; Mehri and Eskenazi, 2020; Deriu
+et al., 2020). The models are trained to take as
+input a pair of context and candidate response, and
+output a numerical score that rates the candidate
+for the given context. These systems achieve high
+correlations to human judgments, which is very
+promising. Unfortunately, these systems have been
+shown to suffer from instabilities. (Sai et al., 2019)
+showed that small perturbations to the candidate
+response already confuse the trained metric. This
+work goes one step further: we propose a method
+that automatically finds strategies that elicit very
+high scores from the trained metric while being of
+Our method uses a trained metric as a reward
+in a Reinforcement Learning setting, where we
+fine-tune a dialogue system to maximize the reward. Using this approach, the dialogue system
+converges towards a degenerate strategy that gets
+high rewards from the trained metric. It converges
+to three different degenerate types of strategies to
+which the policy converges in our experiments: the
+Parrot, the Fixed Response, and the Pattern. For
+each dataset and metric, an adversarial response is
+found, which belongs to one of the three strategy
+types. The responses generated from these strategies then achieve high scores on the metric. Even
+more, in most cases, the scores are higher than
+the scores achieved by human written responses.
+Figure 1 shows the pipeline. The dialogue policy
+receives a reward signal from the trained metric.
+Over time, the policy converges to a fixed response,
+which objectively does not match the context but
+gets a near-perfect score on the trained metric. 
+Trained metrics for automatic evaluation of conversational dialogue systems are an attractive remedy
+for the costly and time-consuming manual evaluation. While high correlation with human judgments
+seems to validate the metrics regarding their ability to mimic human judging behavior, our analysis
+shows that they are susceptible to rather simple
+adversarial strategies that humans easily identify.
+In fact, all metrics that we used failed to recognize
+degenerate responses. Our approach is easily adaptable to any newly developed trained metric that
+takes as input a pair of context and response. There
+are no known remedies for this problem. Thus, the
+next open challenge is to find methods that improve
+the robustness.

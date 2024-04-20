@@ -1,0 +1,55 @@
+While neural networks have recently led to large
+improvements in NLP, most of the models make
+predictions in a black-box manner, making them
+indecipherable and untrustworthy to human users.
+In an attempt to faithfully explain model decisions
+to humans, various work has looked into extracting rationales from text inputs (Jain et al., 2020;
+Paranjape et al., 2020), with rationale defined as
+the “shortest yet sufficient subset of input to predict
+the same label” (Lei et al., 2016; Bastings et al.,
+2019). The underlying assumption is two-fold: (1)
+by retaining the label, we are extracting the texts
+used by predictors (Jain et al., 2020); and (2) short
+rationales are more readable and intuitive for endusers, and thus preferred for human understanding (Vafa et al., 2021). Importantly, prior work
+has knowingly traded off some amount of model
+performance to achieve the shortest possible rationales. For example, when using less than 50% of
+text as rationales for predictions, Paranjape et al.
+(2020) achieved an accuracy of 84.0% (compared
+to 91.0% if using the full text). However, the assumption that the shortest rationales have better
+human interpretability has not been validated by
+human studies (Shen and Huang, 2021). Moreover,
+when the rationale is too short, the model has much
+higher chance of missing the main point in the full
+text. In Figure 1A, although the model can make
+the correct positive prediction when using only 20%
+of the text, it relies on a particular adjective, “lifeaffirming,” which is seemingly positive but does
+not reflect the author’s sentiment. These rationales
+may be confusing when presented to end-users.
+In this work, we ask: Are shortest rationales really the best for human understanding? To answer
+the question, we first design LimitedInk, a selfexplaining model that flexibly extracts rationales
+at any target length (Figure 1A). LimitedInk allows
+us to control and compare rationales of varying
+lengths on input documents. Besides controls on
+rationale length, we also design LimitedInk’s sampling process and objective function to be contextaware (i.e., rank words based on surrounding context rather than individually, Figure 1B2) and coherent (i.e., prioritize continuous phrases over discrete tokens, Figure 1C2). Compared to existing
+baselines (e.g., Sparse-IB ), LimitedInk achieves
+compatible end-task performance and alignment
+with human annotations on the ERASER (DeYoung et al., 2020) benchmark, which means it can
+represent recent class of self-explaining models.
+We use LimitedInk to conduct user studies to
+investigate the effect of rationale length on human
+understanding. Specifically, we ask MTurk participants to predict document sentiment polarities
+based on only LimitedInk-extracted rationales. By
+contrasting rationales at five different length levels, we find that shortest rationales are largely not
+the best for human understanding. In fact, humans
+do not perform better prediction accuracy and confidence better than using randomly masked texts
+when rationales are too short (e.g., 10% of input
+texts). In summary, this work encourages a rethinking of self-explaining methods to find the right
+balance between brevity and sufficiency.
+To investigate if the shortest rationales are best understandable for humans, this work presents a selfexplaining model, LimitedInk, that achieves comparable performance with current self-explaining
+baselines in terms of end-task performance and
+human annotation agreement. We further use LimitedInk to generate rationales for human studies
+to examine how rationale length can affect human
+understanding. Our results show that the shortest
+rationales are largely not the best for human understanding. This would encourage a rethinking of
+rationale methods to find the right balance between
+brevity and sufficiency.

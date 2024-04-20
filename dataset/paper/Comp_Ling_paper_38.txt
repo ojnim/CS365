@@ -1,0 +1,47 @@
+Over the past decade natural language processing
+(NLP) has increasingly set its sights on interdisciplinary tasks, notably those within the computational social sciences (Sap et al., 2014; Preo¸tiucPietro et al., 2016; Zamani et al., 2018). As more
+and more language has been generated on social
+media sites such as Facebook, Twitter, and Reddit,
+researchers have had a wealth of personal discourse
+available to them that spans across thousands of
+users.
+Many researchers focus on applying these social media datasets to predict user demographics,
+personality, or mental health (Matero et al., 2019;
+Iyyer et al., 2014; Lynn et al., 2020). Those predicting facets of mental health, such as depression
+and suicide risk, can help an over-burdened mental
+health industry by using automated screening (Coppersmith et al., 2018). Often these automated tools
+can be applied to forums where a user is an active
+member and their account could be flagged to be
+brought to the attention of a moderator. Thus, a personalized and potentially early intervention could
+be provided to the user in question.
+Here, we investigate one prominent aspect of
+mental health: degree of depression (DDep) as measured by answers to an online questionnaire administered to Facebook users. Depression assessment
+of social media users is of interest for the following reasons: (1) Depression is often highly correlated with suicidal tendencies (Leonard, 1974) with
+deaths by suicide on the rise (Curtin et al., 2016)
+and (2) Automated assessment of depression is of
+high importance as it is often an under-diagnosed
+ailment, where such predictions could be useful to
+screen individuals who are at risk (Eichstaedt et al.,
+2018).
+While many recent NLP pipelines have moved
+onto leveraging large pre-trained language models based on the transformer architecture (Vaswani
+et al., 2017), applying these models to human-level
+analysis, such as predicting a person’s states or
+traits, has received little attention. Even the use of
+extracted embeddings, often called contextual embeddings, has yet to be fully explored in this level
+of analysis (V Ganesan et al., 2021). We expand
+this area of research by investigating how best to
+leverage the individual layers of off-the-shelf transformer models for depression assessment. Notably,
+we are interested in going beyond just a single layer
+and propose a greedy algorithm for selecting layers to extract contextual embeddings and aggregate
+them for large user-level embeddings.
+Our contributions include: (1) A predictive
+model for depression assessment that out-performs
+the current state-of-the-art, (2) Evaluation of standard extraction techniques on contextual embeddings and their ability to detect depression levels
+and (3) Analysis on the effectiveness of layer selection to generate large contextual embedding representations of users.
+With many tasks in NLP focused around humanlevel prediction, methods that can use state-of-theart, off-the-shelf models in the best way are of
+interest to the community at large. In this work,
+we found that applying pre-trained transformer
+language models to depression assessment benefited from non-standard extraction techniques. Further, applying a straight forward empirical analysis of layer performance could lead to noticeable boosts in downstream applications. Ultimately, we achieved sate-of-the-art performance
+of rdis = .554 and MSE = .7206 using a 5-layer
+user representation from RoBERTa-large.

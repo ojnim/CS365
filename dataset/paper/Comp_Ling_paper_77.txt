@@ -1,0 +1,30 @@
+Machine translation (MT) has achieved promising
+performance when large-scale parallel data is available. Unfortunately, the abundance of parallel data
+is largely limited to English, which leads to concerns on the unfair deployment of machine translation service across languages. In turn, researchers
+are increasingly interested in non-English-centric
+machine translation approaches (Fan et al., 2021).
+Triangular MT (Kim et al., 2019; Ji et al., 2020)
+has the potential to alleviate some data scarcity
+conditions when the source and target languages
+both have a good amount of parallel data with a
+pivot language (usually English). Kim et al. (2019)
+have shown that transfer learning is an effective
+approach to triangular MT, surpassing generic approaches like multilingual MT.
+However, previous works have not fully exploited all types of auxiliary data (Table 1). For
+example, it is reasonable to assume that the source,
+target, and pivot language all have much monolingual data because of the notable size of parallel
+data between source-pivot and pivot-target.
+In this work, we propose a transfer-learningbased approach that exploits all types of auxiliary
+data. During the training of auxiliary models on
+auxiliary data, we design parameter freezing mechanisms that encourage the models to compute the
+representations in the same pivot language space,
+so that combining parts of auxiliary models gives
+a reasonable starting point for finetuning on the
+source-target data. We verify the effectiveness of
+our approach with a series of experiments.
+In this work, we propose a transfer-learning-based
+approach that utilizes all types of auxiliary data,
+including both source-pivot and pivot-target parallel data, as well as involved monolingual data. We
+investigate different freezing strategies for training the auxiliary models to improve source-target
+translation, and achieve better performance than
+previous approaches.

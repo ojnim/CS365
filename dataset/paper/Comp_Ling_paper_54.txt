@@ -1,0 +1,62 @@
+The task of monitoring people’s opinion towards
+particular targets in political topics or public life
+debates has grown in the last decade, thus leading
+to the creation of a specific area of investigation
+in NLP named Stance Detection (SD). Research
+on this topic, indeed, might have an impact on
+different aspects of everyone’s life such as public administration, policy-making, advertisement,
+marketing strategies and security. In fact, through
+the constant monitoring of people’s opinion, desires, complaints and beliefs on political agenda or
+public services, administrators could better meet
+population’s needs (Küçük and Can, 2020).
+SD, as a task, shares various similarities with
+Sentiment Analysis (SA), and, exactly like Sentiment Analysis, also SD has been applied in several
+domains. For instance, to discover the reputation of
+an enterprise, what is the general public thought regarding a political reform, if costumers of a fashion
+brand are happy about the customer service, etc...
+Nevertheless, whereas the aim of SA is categorizing texts according to a notion of polarity (positive,
+negative or neutral), the aim of SD consists in classifying texts according to the attitude they express
+towards a given target of interest (Mohammad et al.,
+2017).
+The first shared task entirely dedicated to SD
+was held for English at SemEval in 2016, i.e., Task
+6 “Detecting Stance in Tweets” (Mohammad et al.,
+2016). In the following years, many more shared
+tasks followed tackling the same issue in different
+languages and regarding different targets: Chinese
+(Xu et al., 2016), Spanish and Catalan (Taulé et al.,
+2017, 2018), Italian (Cignarella et al., 2020b), and
+lastly Spanish and Basque (Agerri et al., 2021).
+Provided that several approaches based on different types of linguistic knowledge have been applied
+to address the SD task, in this paper we investigate
+the contribution of syntactic information and in
+particular that provided by dependency relations.
+Therefore, we exploit some of the datasets made
+available in the above-mentioned evaluation campaigns in different languages. In particular, we
+aimed at answering the following research question:
+RQ: Do features derived from morphology and syntax help automatic systems to address the task of
+stance detection?
+Indeed, some research already explored different kinds of syntactic features and their interaction in several NLP tasks, showing their effectiveness. For example, Sidorov et al. (2012) exploited
+syntactic dependency-based n-grams for generalpurpose classification tasks, Socher et al. (2013)
+investigated sentiment and syntax with to the development of a sentiment treebank, and Kanayama
+and Iwamoto (2020) showed a pipeline method
+that makes the most of syntactic structures based
+on Universal Dependencies (UD1
+), achieving high
+precision in sentiment analysis for 17 languages.
+Morphology and syntax have also been proved useful in a number of other tasks, such as rumour
+detection (Ghanem et al., 2019), authorship attribution (Posadas-Duran et al., 2014; Sidorov et al.,
+2014) and humor recognition (Liu et al., 2018). To
+the best of our knowledge there is no prior work
+exploiting dependency-based syntactic features for
+addressing the task of Stance Detection.
+
+The lesson learned form this work suggests that
+morphosyntactic cues combine well as features in
+classical machine learning algorithms, but they do
+not seem to provide an increment in terms of performance in the neural architecture of M-BERT
+in the case study of multilingual Stance Detection.
+Indeed, as shown in linguistics, the expression of
+one’s stance is frequently a phenomenon that seems
+to depend more often on semantics rather than on
+syntactic patterns or constructions.

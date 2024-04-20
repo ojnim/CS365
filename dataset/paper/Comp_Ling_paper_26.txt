@@ -1,0 +1,78 @@
+1 Introduction
+Building reliable automated evaluation metrics is
+a key factor for quick development of better NLG
+systems. Recent work has proposed reference-free
+evaluation metrics as a way to judge the quality of
+generated outputs without the need for human references (Celikyilmaz et al., 2020). Many of these
+reference-free evaluations achieve remarkably high
+correlations with human evaluations, raising hopes
+that they may soon become a viable alternative
+to expensive human evaluations (Kryscinski et al.,
+2020; Goyal and Durrett, 2020; Sinha et al., 2020;
+Phy et al., 2020; Gao et al., 2020).
+However, simply looking at correlation with human scores may not be sufficient to determine the
+efficacy and robustness of an evaluation metric. In
+our work, we study recently proposed referencefree evaluation metrics of text summarization and
+dialog generation. We find that it is possible to
+achieve similar levels of correlation with human
+judgment, using simple spurious correlates such
+as word overlap, length, and perplexity. Furthermore, we find that the learned metrics have a relatively high correlation with the spurious correlates
+as compared to human scores, which suggests that
+these metrics may rely heavily on spurious correlations. This may be a potential explanation for the
+robustness issues that are observed in recent work,
+despite the seemingly high reported correlations
+with human judgements (Gabriel et al., 2021; Yeh
+et al., 2021).
+We further analyze reference-free faithfulness
+evaluation metrics and show that the reliance on
+spurious correlations leads to errors in model selection and development. First, we show that word
+overlap, a spurious correlate for the task, does as
+well as recently proposed reference-free metrics at
+system-level ranking. Then, we look at rankings
+amongst systems that are relatively abstractive and
+faithful, i.e., the current state of the art, and find that
+these learned metrics perform significantly worse
+for these systems. This is because word-overlap is
+not a good measure for ranking these systems in
+terms of their faithfulness since all of these systems
+have similarly low word overlap. This suggests that
+we need metrics that are not overly reliant on word
+overlap in their faithfulness prediction.
+Finally, we explore whether a simple mitigation
+strategy of adversarially training a faithfulness evaluation metric to avoid spurious correlates can lead
+to a more robust metric. We find that our adversarially trained metric performs well at overall pairwise
+ranking while having a significantly lower correlation with the spurious correlate of word-overlap.
+Crucially, we show that our proposed metric has
+improved performance in ranking between abstractive and faithful systems, which is a failure mode
+for existing reference-free faithfulness evaluation
+metrics.
+7 Conclusion
+In conclusion, we study reference-free evaluation
+metrics for summarization and dialog generation
+and show that simply looking at overall examplelevel correlation with human judgment paints an
+incomplete picture of the effectiveness of a metric.
+In particular, we show that these metrics are unable
+to do better than simple spurious correlates for the
+task. We see that this trend carries over in systemlevel ranking for summarization systems, where
+a spurious correlate for the task performs as well
+as existing learned evaluation metrics. We find
+that despite the relatively high overall system-level
+ranking performance, the learned metrics are not
+robust to distribution shifts. We show that they fail
+to properly rank abstractive and (relatively) faithful
+systems, which is where the current state of the
+art operates. Finally, we train a faithfulness metric
+that scores the faithfulness of a summary without
+relying on the spurious overlap correlate. We show
+that our metric is more robust across distribution
+shifts and does better at ranking abstractive, faithful
+summarization systems.
+We suggest that future work in designing
+reference-free evaluation metrics should be mindful
+of the distribution of the evaluation data. In particular, metrics should be assessed across different
+distributions of systems in order to test for robustness and failure modes. Simple spurious correlates
+can be used as a tool to indicate potential overestimates of the effectiveness of proposed metrics.
+Finally, we highlight the importance of collecting
+large-scale human evaluation datasets across a wide range of systems, similar to Fabbri et al. (2020), to
+enable more comprehensive analyses of evaluation
+metrics.

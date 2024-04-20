@@ -1,0 +1,10 @@
+Zero-shot relation extraction (ZSRE) aims to
+predict target relations that cannot be observed
+during training. While most previous studies
+have focused on fully supervised relation extraction and achieved considerably high performance, less effort has been made towards
+ZSRE. This study proposes a new model incorporating discriminative embedding learning for
+both sentences and semantic relations. In addition, a self-adaptive comparator network is used
+to judge whether the relationship between a sentence and a relation is consistent. Experimental
+results on two benchmark datasets showed that
+the proposed method significantly outperforms
+the state-of-the-art methods.

@@ -1,0 +1,157 @@
+Language change is often depicted as a competition
+between an entrenched variant, and an innovative,
+rising competitor; e.g. the replacement of of course
+by obviously (Tagliamonte and Smith, 2021) in
+Present Day Canadian English, of werðan by becuman in Middle English (Petré and Cuyckens,
+2008), of moult by beaucoup and très in Middle
+French (Marchello-Nizia, 2000), of en par dans as
+the chief locative preposition in Modern French
+(Fagard and Combettes, 2013), or of the former
+syntactic patterns for negation and interrogation by
+the periphrastic do pattern (Kroch, 1989).
+Such a competition, however, is difficult to evidence. For instance, what can the way construction
+(Israel, 1996; Perek, 2018) (e.g. ’the Black Prince
+plundered his way eastward to Narbonne and back’)
+possibly replace? Moreover, in the case of a clear
+replacement, the replacement is seldom total. For
+instance, the periphrastic do did not replace auxiliaries, and some verbs like need are still found
+with the older pattern; moult was replaced by two
+different words, but they both show uses that moult
+had not, and they do not cover the whole functional
+range that was carried by moult. The French en
+was replaced by dans in most locative contexts, but
+it remains more frequent than its newer counterpart
+(Eckart and Quasthoff, 2013; Corpus and language
+statistics for corpora of the Leipzig Corpora Collection, 2021). Similarly, while be going to can
+be seen as a competitor for will, both auxiliaries
+differ semantically; furthermore, it has been argued
+that they both feature semantic retention pertaining to their respective origins (Nicolle, 1998). The
+same phenomenon has been observed for discourse
+markers based on prepositional adverbs in French
+(Fagard and Charolles, 2018).
+In the meanwhile, it has been posited that frequency rise evidenced by lexical items or constructions is a sign of semantic expansion (Feltgen et al.,
+2017). This hypothesis would provide a convenient account of the phenomena mentioned above:
+language change is, first and foremost, a semantic
+shift; if this semantic shift spills over the semantic
+domain of an existing form, competition arises over
+this overlap; if this semantic shift leads to meanings
+and functions that were not formerly expressed in
+the language, no competition occurs and there is
+no competitor. In this sense, lexical competitions
+are a sign of a semantic shift, and help identify
+ongoing language changes; yet language change
+may happen without any obvious competition.
+In this paper, another perspective on the interplay
+between semantic change and competition is offered. Indeed, competition may arise within a given
+linguistic form dominion, especially in the case of
+schematic constructions, that is, constructions that
+feature an open slot that can be filled by different
+arguments (e.g. the way too + {ADJ/ADV} intensifier construction). These arguments can compete
+against one another, within the construction. Moreover, this competition needs not be one-to-one:
+since a large number of arguments are involved,
+the competition may unfold between different clusters of arguments. Therefore, we can detect such
+paradigmatic competitions by looking at the correlations and anti-correlations between the frequency
+dynamics of the different fillers.
+To give a somehow hypothetical example of this
+semantic shift at the paradigm level, we may consider the paradigm of classifiers (e.g. in Thai or
+in Korean), which categorizes nouns according to
+a set of principles. This categorization can, for
+instance, be driven by considerations of shape, or
+by considerations of function (Carpenter, 1992).
+These two broad principles may in principle both
+co-exist and compete over time, and individual
+classifiers typically fall into one or the other broad
+group of function-based classifiers and shape-based
+classifiers (things being more blurry in practice).
+In this regard, we can conceive of three levels of
+semantic change, that are not mutually exclusive.
+The first is the constructional level, which corresponds to a significant change in the broad scope
+of the nouns to which the construction applies, for
+instance through the recruitment of new classifiers
+to operate on nouns that were previously beyond
+the scope of the construction, e.g. the emergence
+of a new classifier for the class of machines. The
+second level is that of the individual classifiers; e.g.
+the reanalysis of Thai /khan/ from a shape-based
+classifier to a function-based one. The third level is
+what I refer to as the ’paradigmatic level’. This happens when one group takes over the nouns that were
+classified by the other group. Nouns become then
+re-classified according to a new set of principles.
+In this case, the individual classifiers do not have
+to undergo semantic change; and the broad ’classifiers’ construction still applies to the same nouns.
+Yet, these nouns are now preferentially categorized
+in a new way (e.g. function over shape); therefore,
+the properties that are made salient by the choice
+of a specific classifier are now different. This kind
+of paradigmatic reorganization is for instance illustrated by the different yet overlapping semantic
+roles of verb classifiers in the related Nyulnyul and
+Warrwa languages (McGregor, 2018).
+This kind of semantic change only reveals itself
+at the scale of a system of linguistic units, such as
+constructional paradigms. As a result, traditional
+tools, such as word embeddings that rely on collocations (Mikolov et al., 2013), cannot be readily
+expected to account for it. In this paper, I offer a
+simple method to detect such a paradigmatic reorganization. I illustrate it on the French quantifier
+construction un N de (e.g. une profusion de), which
+exactly mirrors the English quantifier construction
+a N of (e.g. a lot of), whose historical development
+has already been studied (Traugott and Trousdale,
+2013). Besides the entrenchment of the construction in Middle French, I evidence, by looking at
+the network of correlation between the fillers frequencies, a major paradigmatic shift occurring in
+Modern French. A qualitative analysis of the competing clusters is also offered.
+Language change, as it unfolds over several, interrelated levels of the linguistic organization, is inherently complex. To understand the diachronic
+processes that a form or a construction participates
+in, tracking its frequency soon faces drastic limitations: besides the S-curve pattern of entrenchment,
+frequency is volatile and extremely variable, for noevident reason. Here, I have argued that we can
+achieve a fine-grained understanding of the process
+by looking at the interactions between the members
+of a constructional schema. I have offered a computational method to track and visualize such interactions, a method that can be perfected and further
+automatized, e.g. with the use of clustering algorithms. The picture that emerges remains highly
+complex, but the large cluster-to-cluster competitions that the method can evidence may lead to a
+fascinating linguistic insight into the fine-grained
+processes of language change.
+When considering schematic constructions, that
+is, constructions that can host a variety of fillers,
+similarly to an ecological niche, change can occur on three levels: 1) on the level of the individual fillers (whenever they undergo functional
+change); 2) on the level of the construction, typically through the recruitment or loss of new fillers,
+that is, through changes in its syntactic productivity (Sánchez-Marco and Evert, 2011); and finally
+3) in the way the fillers are organized within the
+construction, that is, on the paradigm level, leading to a new way to categorize the semantic space
+on which the construction applies. Although all
+three changes are expected to occur to an extent
+in a given process, such a process can be better
+characterized by one or the other of these changes.
+All these changes are instances of semantic
+shifts; while it is clear that the first two changes affect meaning (that of the individual filler in 1, that
+of the construction as a whole in 2), the third kind
+of change is less obvious. Yet, as it redefines the
+categories in which the arguments of the construction are partitioned, it evidences different features
+of these arguments. This kind of semantic shift is
+especially prevalent when considering tight categories applying to a broad class of words, such as
+determiners, classifiers, or auxiliaries. Examples
+of this shift are the emergence of French demonstratives (Marchello-Nizia, 2006) or the change in
+the auxiliaries in Old Spanish (Mateu, 2009).
+In our example of the French paradigm of quantifiers, we have shown that the construction underwent a significant paradigmatic change in the
+1801-1950 period. This paradigmatic change can
+be related, at least on a qualitative level, to semantic considerations regarding the logic underlying
+the different partitioning of nouns by the two competing clusters. Individual change does not seem
+to play a large role in this picture, even though un
+nombre de is more versatile than the other quantifiers and is likely to have undergone a semantic
+shift. Constructional change does occur to some
+extent (the nouns covered by the innovative cluster
+do not all overlap with the nouns covered by the
+entrenched cluster). Among the innovative quantifiers, those tied to a precise quantity such as une
+douzaine de (’a dozen’) are the more likely to be
+associated with new nouns, indicative of a semantic opening of the quantifier construction towards a
+’measure’ meaning, while it was more closely associated to a ’count’ one (Unterbeck, 1994). This
+latter change may also be due to an increasing proportion of scientific texts in the corpus. Yet, the remarkable cluster competition that unfolds throughout the nineteenth century is testimony enough that
+the paradigm level is the most suited to understand
+the change phenomenon in this period.
+This study is a first step, an invitation to consider more systematically language change from a
+systemic perspective, especially with the help of
+automated tools, that are most needed to deal with
+the intrinsic complexity of these systems. Although
+the analysis presented here could be refined with
+the use of a wider range of methods, I hope that
+the results are intriguing enough to foster further
+interest in changes unfolding on the paradigm level.

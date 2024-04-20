@@ -1,0 +1,78 @@
+Active Learning (AL) is a method for training supervised models in a data-efficient way (Cohn et al.,
+1996; Settles, 2009). It is especially useful in scenarios where a large pool of unlabeled data is available but only a limited annotation budget can be afforded; or where expert annotation is prohibitively
+expensive and time consuming. AL methods iteratively alternate between (i) model training with
+the labeled data available; and (ii) data selection
+for annotation using a stopping criterion, e.g. until
+exhausting a fixed annotation budget or reaching a
+pre-defined performance on a held-out dataset.
+Data selection is performed by an acquisition
+function that ranks unlabeled data points by some
+informativeness metric aiming to improve over random selection, using either uncertainty (Lewis and
+Gale, 1994; Cohn et al., 1996; Gal et al., 2017;
+Kirsch et al., 2019; Zhang and Plank, 2021), diversity (Brinker, 2003; Bodó et al., 2011; Senerand Savarese, 2018), or both (Ducoffe and Precioso, 2018; Ash et al., 2020; Yuan et al., 2020;
+Margatina et al., 2021).
+Previous AL approaches in NLP use taskspecific neural models that are trained from scratch
+at each iteration (Shen et al., 2017; Siddhant and
+Lipton, 2018; Prabhu et al., 2019; Ikhwantri et al.,
+2018; Kasai et al., 2019). However, these models
+are usually outperformed by pretrained language
+models (LMs) adapted to end-tasks (Howard and
+Ruder, 2018), making them suboptimal for AL.
+Only recently, pretrained LMs such as BERT (Devlin et al., 2019) have been introduced in AL settings (Yuan et al., 2020; Ein-Dor et al., 2020; Shelmanov et al., 2021; Karamcheti et al., 2021; Margatina et al., 2021). Still, they are trained at each
+AL iteration with a standard fine-tuning approach
+that mainly includes a pre-defined number of training epochs, which has been demonstrated to be
+unstable, especially in small datasets (Zhang et al.,
+2020; Dodge et al., 2020; Mosbach et al., 2021).
+Since AL includes both low and high data resource
+settings, the AL model training scheme should be
+robust in both scenarios.2
+To address these limitations, we introduce a suite
+of effective training strategies for AL (§2). Contrary to previous work (Yuan et al., 2020; Ein-Dor
+et al., 2020; Margatina et al., 2021) that also use
+BERT (Devlin et al., 2019), our proposed method
+accounts for various data availability settings and
+the instability of fine-tuning. First, we continue
+pretraining the LM with the available unlabeled
+data to adapt it to the task-specific domain. This
+way, we leverage not only the available labeled data
+at each AL iteration, but the entire unlabeled pool.
+Second, we further propose a simple yet effective
+fine-tuning method that is robust in both low and
+high resource data settings for AL.
+We explore the effectiveness of our approach on
+five standard natural language understandings tasks
+with various acquisition functions, showing that it
+outperforms all baselines (§3). We also conduct an
+analysis to demonstrate the importance of effective
+adaptation of pretrained models for AL (§4). Our
+findings highlight that the LM adaptation strategy
+can be more critical than the actual data acquisition
+strategy.
+We have presented a simple yet effective training
+scheme for AL with pretrained LMs that accounts
+for varying data availability and instability of finetuning. Specifically, we propose to first continue
+pretraining the LM with the available unlabeled
+data to adapt it to the task-specific domain. This
+way, we leverage not only the available labeled data
+at each AL iteration, but the entire unlabeled pool.
+We further propose a method to fine-tune the model
+during AL iterations so that training is robust in
+both low and high resource data settings.
+Our experiments show that our approach yields
+substantially better results than standard fine-tuning
+in five standard NLP datasets. Furthermore, we find
+that the training strategy can be more important
+than the acquisition strategy. In other words, a
+poor training strategy can be a crucial impediment
+to the effectiveness of a good acquisition function,
+and thus limit its effectiveness (even over random
+sampling). Hence, our work highlights how critical
+it is to properly adapt a pretrained LM to the low
+data resource AL setting.
+As state-of-the-art models in NLP advance
+rapidly, in the future we would be interested in
+exploring the use of larger LMs, such as GPT3 (Brown et al., 2020) and FLAN (Wei et al.,
+2022). These models have achieved impressive
+performance in very low data resource settings (e.g.
+zero-shot and few-shot), so we would imagine they
+would be good candidates for the challenging setting of active learning.

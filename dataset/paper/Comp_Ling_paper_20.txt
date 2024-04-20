@@ -1,0 +1,78 @@
+1 Introduction
+Adversarial examples are slightly perturbed input
+samples purposely crafted to fool a target model
+(Szegedy et al., 2014). Despite being similar to the
+original samples, they are often misclassified with
+high confidence (Goodfellow et al., 2015). Without effective defense techniques, machine learning
+models become unusable in high-stakes situations
+and safety-critical tasks (Sharma et al., 2019).
+Research in computer vision has extensively
+worked on better understanding adversarial image
+attacks and developing more robust models (Madry
+et al., 2018; Ozdag, 2018). However, the literature in Natural Language Processing (NLP) has
+witnessed fewer advances concerning this issue
+(Mozes et al., 2021; Zhou et al., 2019; Wang et al.,
+2019).
+Text data needs to fulfill several properties such
+as lexical, grammatical, and semantic constraints.
+Thus, many efficient adversarial image attacks—
+e.g. gradient-based ones—are not transferable as
+they would lead to incorrect characters and nonexisting terms (Zhang et al., 2020). However, wordlevel attacks that can preserve semantical information without introducing noticeable inconsistencies are particularly effective and not detectable via
+spell checkers (Garg and Ramakrishnan, 2020; Ren
+et al., 2019).
+The lack of defense strategies against word-level
+text attacks motivates our research as this is a major
+obstacle to the safe deployment of NLP models.
+This work’s contribution can be summarized as
+follows:
+(1) Based on an analogous idea from computer
+vision (Fidel et al., 2020), we propose an adversarial attack detector leveraging SHapley Additive
+exPlanations (SHAP) to accurately recognize input
+manipulations (Lundberg and Lee, 2017). Results
+show that it outperforms the previous state of the
+art in adversarial detection on multiple datasets
+(Mozes et al., 2021).
+(2) We analyze our method in terms of data efficiency and generalization. The proposed approach
+still offers competitive performance when trained
+on very little data and can even be transferred to unseen datasets while almost matching the previous
+state of the art.
+(3) Alongside the quantitative analysis and its results, we visualize the space of generated Shapleyvalue-based explanations. This qualitative analysis
+sheds light on the reasons behind our method’s high
+performance and desirable properties.
+5 Conclusion
+Adversarial text examples are a major challenge
+for current research and represent an obstacle for
+safely deploying NLP models in high-stakes applications. While attacks are hard to be distinguished
+from their corresponding originals, patterns in the
+model’s reaction can be recognized and leveraged
+using SHAP signatures for detecting manipulated
+input samples.
+Our work trains a machine learning detector using SHAP explanations of normal and adversarial samples generated with PWWS. The proposed
+method is both intuitive and effective since it allows to detect parts of a sentence that have a suspiciously high impact on the model prediction and
+therefore distinguishes between regular and manipulated samples. Furthermore, our detector is
+model-agnostic as it does not make any assumption
+on the classifier targeted by the attacks.
+Our approach achieves high accuracy and considerably outperforms the previous state of the art. In
+terms of data efficiency, we prove that the method
+can achieve nearly optimal performance also when
+using a small portion of the available data for training. A qualitative analysis of the SHAP signature
+landscape shows most adversarial samples contained in a single cluster, suggesting that model
+explanations explicitly encode information to separate attacks from their counterpart. We believe
+this result explains why relatively simple detector
+architectures suffice to achieve good performance
+
+results.
+In terms of transferability to multiple datasets,
+our results are promising but yet not sufficient to
+prove full generalization capabilities. Although in
+some cases we match state-of-the-art performance
+even when training on one dataset and testing on
+another, our results are highly dependent on the
+dataset pair.
+We encourage future research to continue working on generalization across multiple data sources
+and to evaluate performance against multiple types
+of attacks and models. We believe our contribution can help researchers to develop better defense
+strategies against attacks and thus promoting the
+safe deployment of NLP models in practice. We
+release our code to the public to facilitate further
+research and development

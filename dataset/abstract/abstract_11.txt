@@ -1,0 +1,12 @@
+Detecting emotion in text allows social and
+computational scientists to study how people
+behave and react to online events. However,
+developing these tools for different languages
+requires data that is not always available. This
+paper collects the available emotion detection
+datasets across 19 languages. We train a multilingual emotion prediction model for social
+media data, XLM-EMO. The model shows
+competitive performance in a zero-shot setting,
+suggesting it is helpful in the context of lowresource languages. We release our model to
+the community so that interested researchers
+can directly use it.

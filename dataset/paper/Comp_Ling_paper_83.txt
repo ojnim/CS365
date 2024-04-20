@@ -1,0 +1,68 @@
+Text style transfer (TST) is a text generation task
+where a given sentence must get rewritten changing its style while preserving its meaning. Traditionally, tasks such as swapping the polarity of a
+sentence (e.g. “This restaurant is getting worse and
+worse.”↔“This restaurant is getting better and better.”) as well as changing the formality of a text
+(e.g. “it all depends on when ur ready.”↔“It all
+depends on when you are ready.”) are considered
+as instances of TST. We focus here on the latter
+case only, i.e. formality transfer, because (i) recent work has shown that polarity swap is less of a
+style transfer task, since meaning is altered in the
+transformation (Lai et al., 2021a), and (ii) data in
+multiple languages has recently become available
+for formality transfer (Briakou et al., 2021b).
+Indeed, mostly due to the availability of parallel
+training and evaluation data, almost all prior TST
+work focuses on monolingual (English) text (Rao
+and Tetreault, 2018; Li et al., 2018; Prabhumoye
+et al., 2018; Cao et al., 2020).1 As a first step
+towards multilingual style transfer, Briakou et al.
+(2021b) have released XFORMAL, a benchmark
+of multiple formal reformulations of informal text
+in Brazilian Portuguese (BR-PT), French (FR), and
+Italian (IT). For these languages the authors have
+manually created evaluation datasets. On these,
+they test several monolingual TST baseline models
+developed using language-specific pairs obtained
+by machine translating GYAFC, a English corpus
+for formality transfer (Rao and Tetreault, 2018).
+Briakou et al. (2021b) find that the models trained
+on translated parallel data do not outperform a simple rule-based system based on handcrafted transformations, especially on content preservation, and
+conclude that formality transfer on languages other
+than English is particularly challenging.
+One reason for the poor performance could be
+the low quality (observed upon our own manual
+inspection) of the pseudo-parallel data, especially
+the informal side. Since machine translation systems are usually trained with formal texts like
+news (Zhang et al., 2020), informal texts are harder
+to translate, or might end up more formal when
+translated. But most importantly, the neural models
+developed by Briakou et al. (2021b) do not take advantage of two recent findings: (i) pre-trained models, especially the sequence-to-sequence model
+BART (Lewis et al., 2020), have proved to help substantially with content preservation in style transfer (Lai et al., 2021b); (ii) Multilingual Neural Machine Translation (Johnson et al., 2017; Aharoni
+et al., 2019; Liu et al., 2020) and Multilingual Text
+Summarization (Hasan et al., 2021) have achieved
+impressive results leveraging multilingual models
+which allow for cross-lingual knowledge transfer.
+In this work we use the multilingual large model
+mBART (Liu et al., 2020) to model style transfer in
+a multilingual fashion exploiting available parallel
+data of one language (English) to transfer the task
+and domain knowledge to other target languages.
+To address real-occurring situations, in our experiments we also simulate complete lack of parallel
+data for a target language (even machine translated),
+and lack of style-related data at all (though availability of out-of-domain data). Language specificities are addressed through adapter-based strategies (Pfeiffer et al., 2020; Üstün et al., 2020, 2021).
+We obtain state-of-the-art results in all three target
+languages, and propose a modular methodology
+that can be applied to other style transfer tasks as
+well as to other languages. We release our code
+and hopefully foster the research progress.
+Fine-tuning a pre-trained multilingual model with
+machine translated training data yields state-of-theart results for transferring informal to formal text.
+The results for the formal-to-informal direction are
+considerably worse—the task is more difficult, and
+the quality of translated informal text is lower. We
+have also proposed two adaptation training strategies that can be applied in a cross-lingual transfer
+strategy . These strategies target language and task
+adaptation, and can be combined to adapt mBART
+for multilingual formality transfer. The adaptation
+strategies with auxiliary parallel data from a different language are effective, yielding competitive results and outperforming more classic IBT-based approaches without task-specific parallel data. Lastly,
+we have shown that formal-to-informal transformation is harder than the opposite direction.

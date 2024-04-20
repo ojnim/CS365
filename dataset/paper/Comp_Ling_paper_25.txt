@@ -1,0 +1,95 @@
+1 Introduction
+Generating abstractive summaries of documents
+has been a long-standing goal of summarization.
+While there has been tremendous progress towards
+this goal (Krysci ´ nski et al. ´ , 2018; Dong et al., 2019;
+Zhang et al., 2019; Lewis et al., 2020), abstractive
+summarization systems still suffer from faithfulness errors (Cao et al., 2018), generating information that is not present in the original text. This has
+led to an increased research in faithfulness evaluation of summarization systems (Falke et al., 2019;
+Kryscinski et al., 2020; Durmus et al., 2020) as
+well as methods to improve faithfulness of generated summaries (Kang and Hashimoto, 2020;
+Chen et al., 2021). Intuitively, one straightforward way of improving faithfulness of generated
+summaries is to copy a larger amount of content
+from the source article (i.e. more extraction). Thus,
+any methods that increase the level of extractiveness, whether intentionally or not, would improve
+faithfulness. Without reported extractiveness, it is
+unclear whether prior improvements mainly arise
+from increased extractiveness. We argue that in
+order to make progress in abstractive summarization, it is important to tease apart faithfulness improvements due to increased extractiveness versus
+improvements due to improved abstraction.
+In order to tease this apart, we develop a framework for evaluating progress in faithfulness, by considering the effective faithfulness, i.e. the improvement in faithfulness over a baseline system (control) operating at the same level of extractiveness.
+In particular, we split the training examples into different groups by the extractiveness of the summary,
+and train the control models on each group. Each
+of these models corresponds to a specific tradeoff
+between abstractiveness and faithfulness, forming
+a trade-off curve indicating how much faithfulness
+can be improved solely by increasing extractiveness. Systems that improve effective faithfulness
+should lie above this curve.
+Using this framework, we show that the improved faithfulness of recently proposed methods
+comes mainly from an increased extractiveness.
+We then conduct further analysis to explore whether
+it is possible to have a system that can be both more
+abstractive and more faithful than the baseline system. We train a selector on a small set of humanannotated data that, given a set of output summaries
+with varying levels of extractiveness, picks the most
+abstractive output that is faithful to the source. Our
+proposed system is both more abstractive and more
+faithful than the baseline. Moreover, we show that
+our system is able to improve the effective faithfulness, achieving a better trade-off than the control
+at the same point on the abstractiveness spectrum.
+To summarize, our contributions are as follows:
+1. We present a framework to evaluate the
+progress in improving effective faithfulness
+of models considering the control at the same
+level of extractiveness.
+2. We illustrate the importance of considering
+effective faithfulness by showing that recently
+proposed methods for improving faithfulness
+are able to attain higher faithfulness scores
+than the baseline, but do not consistently improve over the control curve, indicating that
+most of their improvements come from generating more extractive outputs, on average.
+3. We propose a selector that picks the most
+abstractive and faithful summary from a set
+of possible summaries, and show that this
+method gets higher effective faithfulness compared to the existing methods.
+5.5 Results
+Table 4 shows the coverage and faithfulness results for the baseline, Loss Truncation, DAE, and
+the selectors. We observe that as we use smaller
+values for β for Selector-Fβ, we get more extractive and more faithful outputs. This allows us to
+have a trade-off between faithfulness and abstractiveness. Moreover, with both Selector-ROC and
+Selector-Fβ, we produce output with less coverage but higher faithfulness scores than the baseline.
+For Wikihow, Selector-ROC produces outputs with
+lower coverage but similar faithfulness scores to
+Loss Truncation. We can further obtain a higher
+faithfulness score at a similar coverage level as
+DAE and Loss truncation with Selector-Fβ with
+β = 0.1. For Gigaword, Select-ROC produces
+output with significantly lower coverage than Loss
+Truncation and DAE. Selector-Fβ produces output
+with similar coverage to Loss Truncation with a
+higher faithfulness score (β = 0.1).
+It is important to understand whether models improve faithfulness by simply being more extractive
+or if they are able to improve effective faithfulness.
+In order to understand this, we measure whether the
+models get improvement in faithfulness over the
+control operating at the same level of extractiveness.
+In Figure 2, we plot the faithfulness-abstractiveness
+curve with the faithfulness and abstractiveness of
+the quartile models. If a model lies above this
+curve, it improves the effective faithfulness. If the
+model is below this curve, it is not able to improve
+the effective faithfulness and it has a worse tradeoff than the control operating at the same level of
+extractiveness.
+For both Gigaword and Wikihow, Selector-ROC
+lies above the curve improving this trade-off. However, both the baseline and Loss Truncation models
+get worse trade-off than the control operating at
+the same level of extractiveness. Similarly, we
+can obtain several models that lie above the curve
+for both Gigaword and Wikihow using SelectorFβ. The selector approach allows us to get better effective faithfulness at different points in the
+abstractiveness-extractiveness spectrum. The DAE
+based model is able to improve effective faithfulness on the Wikihow dataset, but not on the Gigaword dataset, indicating that the improvements are
+not consistent across datasets. Table 5 shows example summaries generated by the baseline, Loss
+Truncation, DAE and the Selector-ROC models.
+We observe that selector model is able to generate
+summaries that are faithful to the original article
+while having more novel words and phrases in the
+generated summaries.

@@ -1,0 +1,83 @@
+1 Introduction
+Pre-trained transformer-based language models (e.g., Devlin et al., 2019) form the basis of
+state-of-the-art results across NLP. The relative
+opacity of these models has prompted the development of many probes to investigate linguistic
+regularities captured in them (e.g., Kovaleva et al.,
+2019; Conneau et al., 2018; Jawahar et al., 2019).
+Broadly speaking, there are two ways to use
+a pre-trained representation (Peters et al., 2019):
+as a fixed feature extractor (where the pre-trained
+weights are frozen), or by fine-tuning it for a
+task. The probing literature has largely focused
+on the former (e.g., Kassner and Schütze, 2020;
+Perone et al., 2018; Yaghoobzadeh et al., 2019;
+Krasnowska-Kieras and Wróblewska ´ , 2019; Wallace et al., 2019; Pruksachatkun et al., 2020; Aghajanyan et al., 2021). Some previous work (Merchant et al., 2020; Mosbach et al., 2020b; Hao
+et al., 2020) does provide insights about fine-tuning:
+fine-tuning changes higher layers more than lower
+ones and linguistic information is not lost during
+fine-tuning. However, relatively less is understood
+about how the representation changes during the
+process of fine-tuning and why fine-tuning invariably seems to improve task performance.
+In this work, we investigate the process of finetuning of representations using the English BERT
+family (Devlin et al., 2019). Specifically, we ask:
+1. Does fine-tuning always improve performance?
+2. How does fine-tuning alter the representation
+to adjust for downstream tasks?
+3. How does fine-tuning change the geometric
+structure of different layers?
+We apply two probing techniques—classifierbased probing (Kim et al., 2019; Tenney et al.,
+2019) and DIRECTPROBE (Zhou and Srikumar,
+2021)—on variants of BERT representations that
+are fine-tuned on five tasks: part-of-speech tagging, dependency head prediction, preposition supersense role & function prediction and text classification. Beyond confirming previous findings
+about fine-tuning, our analysis reveals several new
+findings, briefly described below.
+First, we find that fine-tuning introduces a divergence between training and test sets, which is
+not severe enough to hurt generalization in most
+cases. However, we do find one exception where
+fine-tuning hurts the performance; this setting also
+has the largest divergence between training and test
+set after fine-tuning (§4.1).
+Second, we examine how fine-tuning changes
+labeled regions of the representation space. For
+a representation where task labels are not linearly
+separable, we find that fine-tuning adjusts it by
+grouping points with the same label into a small
+number of clusters (ideally one), thus simplifying
+the underlying representation. Doing so makes it
+easier to linearly separate labels with fine-tuned
+representations than untuned ones (§4.2). For a
+representation whose task labels are already linearly separable, we find that fine-tuning pushes the
+clusters of points representing different labels away
+from each other, thus introducing large separating
+regions between labels. Rather than simply scaling the points, clusters move in different directions
+and with different extents (measured by Euclidean
+distance). Overall, these clusters become distant
+compared to the untuned representation. We conjecture that the enlarged region between groups
+admits a bigger set of classifiers that can separate
+them, leading to better generalization (§4.3).
+We verify our distance hypothesis by investigating the effect of fine-tuning across tasks. We
+observe that fine-tuning for related tasks can also
+provide useful signal for the target task by altering
+the distances between clusters representing different labels (§4.4).
+Finally, fine-tuning does not change the higher
+layers arbitrarily. This confirms previous findings.
+Additionally, we find that fine-tuning largely preserves the relative positions of the label clusters,
+while reconfiguring the space to adjust for downstream tasks (§4.5). Informally, we can say that
+fine-tuning only “slightly” changes higher layers.
+These findings help us understand fine-tuning
+better, and justify why fine-tuned representations
+can lead to improvements across many NLP tasks1.
+7 Conclusions
+In this work, we take a close look at how finetuning a contextualized representation for a task
+modifies it. We investigate the fine-tuned representations of several BERT models using two probing
+techniques: classifier-based probing and DIRECTPROBE. First, we show that fine-tuning introduces
+divergence between training and test set, and in
+at least one case, hurts generalization. Next, we
+show fine-tuning alters the geometry of a representation by pushing points belonging to the same
+label closer to each other, thus simpler and better
+classifiers. We confirm this hypothesis by crosstask fine-tuning experiments. Finally, we discover
+that while adjusting representations to downstream
+tasks, fine-tuning largely preserves the original spatial structure of points across all layers. Taken
+collectively, the empirical study presented in this
+work can not only justify the impressive performance of fine-tuning, but may also lead to a better
+understanding of learned representations.

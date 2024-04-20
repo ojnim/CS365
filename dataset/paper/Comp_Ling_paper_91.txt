@@ -1,0 +1,53 @@
+The most popular way to pre-train a transformerbased (Vaswani et al., 2017) language model (LM),
+e.g. BERT (Devlin et al., 2019), is by optimizing a
+masked language modeling (MLM) objective. The
+MLM task was inspired by the Cloze Task (Taylor,
+1953), where humans were asked to guess omitted
+words in a sentence using its context, knowledge
+of syntax and other skills. The premise is that such
+an objective will guide a LM to encode linguistic
+information.
+Apart from MLM, different types of objectives
+have been recently proposed. Yang et al. (2019)
+introduced a pre-training objective based on token
+order permutations. Clark et al. (2020) proposed
+a Replaced Token Detection pre-training task, that
+uses the output of a small MLM to corrupt the input by replacing some of the tokens. It then trains
+a discriminative model to predict if a token has
+been replaced or not. Aroca-Ouellette and Rudzicz
+(2020) explored various sentence and token-level
+auxiliary pre-training tasks (e.g. sentence ordering,
+term-frequency prediction), as better alternatives to
+the next sentence prediction (NSP) auxiliary task
+originally used to train BERT. Lan et al. (2020)
+introduced the sentence-order prediction task that
+focuses on the inter-sentence coherence, by predicting if two contiguous sentences have been swapped
+or not. Iter et al. (2020) proposed another intersentence pre-training task, that helps LMs to encode discourse relationships between sentences using contrastive learning. Yamaguchi et al. (2021)
+showed that a non-linguistically intuitive task (i.e.
+masked first character prediction) can effectively
+be used for pre-training.
+Meanwhile, several studies have explored how
+well and to what extent LMs learn linguistic information. This is usually examined using probing tasks, i.e. simple classification tasks that test
+the LM’s encodings for a single linguistic feature such as grammatical information. It has been
+found through probing that BERT encodes syntactic (Tenney et al., 2019; Liu et al., 2019; Miaschi and Dell’Orletta, 2020; Hewitt and Manning,
+2019; Jawahar et al., 2019) and semantic information (Ettinger, 2020; Jawahar et al., 2019; Tenney
+et al., 2019). However, Hall Maudslay and Cotterell (2021) argue that BERT’s syntactic abilities
+may have been overestimated.
+In this paper, we hypothesize that linguistically
+motivated objectives (e.g. MLM) should help
+BERT to acquire better linguistic knowledge compared to using non-linguistically motivated objectives, i.e. tasks that are hard for humans to guess
+the association between the input and the label to
+be predicted. To this end, we seek to answer the
+following research question: How does the pretraining objective affect what LMs learn about the
+English language?
+Our findings challenge the MLM status quo,
+showing that pre-training with non-linguistically
+informative objectives (§2) results in models with
+comparable linguistic capabilities, as measured by
+standard probing benchmarks (§3). These surprising results (§4) suggest that careful analysis of how
+LMs learn is critical to further improve language
+modeling (§5).
+In this work, we compared the linguistic capabilities of LMs. Surprisingly, our results show that pretraining with linguistically motivated objectives obtain comparable performance to non-linguistically
+motivated objectives. This suggests that the data
+and the size of the model could be more influential
+than the objectives themselves in language modeling. In future work, we plan to extend our experiments into other languages and probing tasks.

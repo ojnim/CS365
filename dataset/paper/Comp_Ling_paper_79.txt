@@ -1,0 +1,70 @@
+Abstract Meaning Representation (AMR) (Banarescu et al., 2013) is a graph that encodes the
+semantic meaning of a sentence. In Figure 1a, we
+show the AMR of the sentence: You told me to
+wash the dog. AMR has been widely used in many
+NLP tasks (Liu et al., 2015; Hardy and Vlachos,
+2018; Mitra and Baral, 2016).
+AMR parsing is the task of mapping a sentence
+to an AMR semantic graph automatically. A graph
+is a complex data structure which is composed of
+multiple vertices and edges. There are roughly four
+types of parsing strategies in previous work:
+• Two-Stage Parsing (Flanigan et al., 2014;
+Lyu and Titov, 2018; Zhang et al., 2019a;
+Zhou et al., 2020): first produce vertices, and
+produce edges after that.
+• Transition-Based Parsing (Damonte et al.,
+2016; Ballesteros and Al-Onaizan, 2017; Guo
+and Lu, 2018; Wang and Xue, 2017; Naseem
+et al., 2019; Astudillo et al., 2020; Zhou et al., 2021): process the sentence from left to right,
+and produce vertices and edges based on the
+current focused word.
+• Graph-Based Parsing (Zhang et al., 2019b;
+Cai and Lam, 2019, 2020): produce vertices
+and edges based on a graph traversal order,
+such as DFS or BFS.
+• Sequence-to-Sequence Parsing (Konstas
+et al., 2017; van Noord and Bos, 2017; Peng
+et al., 2017, 2018; Xu et al., 2020; Bevilacqua
+et al., 2021): this method linearizes the AMR
+graph to a sequence, then uses a sequence-tosequence model to do the parsing.
+Bevilacqua et al. (2021) achieved the state-ofthe-art performance by using the last seq-to-seq
+strategy. They linearized the AMR graph (see Figure 1b) and fine-tuned BART (Lewis et al., 2020), a
+denoising sequence-to-sequence pretrained model
+based on Transformer (Vaswani et al., 2017), for
+the parsing. We briefly show the method in Figure 2. During training, they linearize all the AMR
+graphs in the training dataset into sequences, then
+they can fine-tune the BART model in this new
+sequence-to-sequence dataset. At inference time,
+they first generate the AMR sequence using the
+BART model, then they recover the AMR graph
+from this sequence.
+However, purely treating the graph as a sequence
+may not take advantage of important information
+about the structure of the graph. When generating
+the last token dog in Figure 1b, for example, the dotproduct attention layer in the Transformer Decoder
+attends to all the previous tokens and lets the model
+learn the weight of these tokens. However, if we
+can tell the model which tokens are its ancestors,
+like its parent is wash-01 and its grand-parent is
+tell-01 (see Figure 1a), it will make this token much
+easier to generate. Adding graph structure has been
+demonstrated to be useful for the AMR-to-text task
+(Zhu et al., 2019; Yao et al., 2020; Wang et al.,
+2020). These approaches added the graph structure
+to the Transformer Encoder. Therefore, we expect
+that adding structure in Transformer Decoder for
+AMR parsing task will also be helpful.
+In this paper, we base our work on the seq-to-seq
+model of Bevilacqua et al. (2021) with the AMR
+linearized by DFS traversal order. We introduce
+several strategies to add ancestor information into
+the Transformer Decoder layer. We also propose a
+novel strategy, which consists of setting parameters
+in the mask matrix for those ancestor tokens and
+tuning them. We find that this new strategy makes
+the largest improvement.
+In this paper, we focus on the DFS linearization
+and introduce several strategies to add ancestor information into the model. We conduct experiments
+to show the improvement for both AMR 2.0 and
+AMR 3.0 datasets. Our method achieves new stateof-the-art performances for the AMR parsing task.

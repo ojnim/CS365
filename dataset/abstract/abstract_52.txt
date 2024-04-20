@@ -1,0 +1,10 @@
+We propose a morphology-based method for
+low-resource (LR) dependency parsing. We
+train a morphological inflector for target LR
+languages, and apply it to related rich-resource
+(RR) treebanks to create cross-lingual (xinflected) treebanks that resemble the target
+LR language. We use such inflected treebanks
+to train parsers in zero- (training on x-inflected
+treebanks) and few-shot (training on x-inflected
+and target language treebanks) setups. The results show that the method sometimes improves
+the baselines, but not consistently.

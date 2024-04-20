@@ -1,0 +1,72 @@
+Reading puts the unfolding of linguistic input in
+the hands—or, really, the eyes—of the reader. Consequently, it presents a unique opportunity to gain
+a better understanding of how humans comprehend
+written language. The rate at which humans choose
+to read text (and process its information) should
+be determined by their goal of understanding
+it. Ergo, examining where a reader spends their
+time should help us to understand the nature of
+language comprehension processes themselves.
+Indeed, studies analyzing reading times have been
+employed to explore a number of psycholinguistic
+theories (e.g., Smith and Levy, 2013; Futrell et al.,
+2020; Van Schijndel and Linzen, 2021).
+One behavior revealed by such studies is the
+tendency for humans to spend more time1 on
+the last word of a sentence or clause. While the
+existence of such wrap-up effects is well-known
+(Just et al., 1982; Hill and Murray, 2000; Rayner
+et al., 2000; Camblin et al., 2007), the cognitive
+processes giving rise to them are still not fully
+understood. This is likely (at least in part) due
+to the dearth of analyses targeting naturalistic
+sentence-final reading behavior. First, most studies
+of online processing omit data from these words
+to explicitly control for the confounding factors
+wrap-up effects introduce (e.g., Smith and Levy,
+2013; Goodkind and Bicknell, 2018). Second,
+the few studies on wrap-up effects rely on small
+datasets, none of which analyze naturalistic text
+(Just and Carpenter, 1980; Rayner et al., 2000;
+Kuperberg et al., 2011). This work addresses this
+gap, using several large corpora of reading time
+data. Specifically, we study whether informationtheoretic concepts (such as surprisal) provide
+insights into the cognitive processes that occur
+at a sentence’s boundary. Notedly, informationtheoretic approaches have been proven effective for
+analyzing sentence-medial reading time behavior.
+We follow the long line of work that has
+connected information-theoretic measures and
+psychometric data (Frank et al., 2015; Goodkind
+and Bicknell, 2018; Wilcox et al., 2020; Meister
+et al., 2021 , inter alia), employing similar methods
+to build models of sentence- and clause-final RTs.
+Using surprisal estimates from state-of-the-art language models, we search for a link between wrapup effects and the information content within a
+sentence. We find that the distribution of surprisals
+of prior context is often predictive of sentence- and
+clause-final reading times (RTs), while not adding
+significant predictive power to models of sentencemedial RTs. This result suggests that the nature
+of cognitive processes involved during the reading
+of these boundary words may indeed be different
+than those at other positions. Such findings lend
+support to several prior hypotheses regarding
+which processes may underlie wrap-up effects
+(e.g., the resolution of prior ambiguities) while
+providing evidence against other speculations (e.g.,
+that the time spent at sentence boundaries can be
+quantified with a constant factor, independent of
+the processing difficulty of the text itself).
+We attempt to shed light on the nature of wrap-up
+effects by exploring the relationship between
+clause-final RTs and information-theoretic attributes of text. We find that operationalizations
+of the information contained in the preceding
+context lead to better predictions of these RTs,
+while not adding significant predictive power
+for sentence-medial RTs. This suggests that
+information-theoretic attributes of text can shed
+light on the cognitive processes happening during
+the comprehension of clause-final words. Further,
+these processes may indeed be different in nature
+than those required for sentence-medial words.
+In short, our results provide evidence (either in
+support or against) about several theories of the
+nature of wrap-up processes.

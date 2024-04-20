@@ -1,0 +1,60 @@
+Go is fundamentally a game of pattern recognition:
+from ladders and walls to sente and shape, professional players rely on a rich set of concepts to
+communicate about structures on the game board.
+Some patterns are relatively simple: walls are lines
+of adjacent stones, and an atari is a threat to capture stones on the next move; other patterns are less
+clearly defined: hane refers to any move that “goes
+around” the opponent’s stones, and sente describes
+a general state of influence or tempo. Despite the
+nebulous definitions of some of these terms, human
+players use them productively. Beginners learn
+about eyes that determine when groups of stones
+are alive or dead and are given guidelines for when
+they should play a cut or extend a ladder; more advanced players learn sequences of joseki and tesuji
+and are taught to distinguish good shape from bad
+shape. Figures 1-2 depict some example concepts.
+Computers have recently surpassed human performance at Go (Silver et al., 2016), but relatively
+little is known about why these programs perform
+so well and whether they rely on similar representational units to choose the moves they play.
+While post-hoc behavioral analyses suggest that
+AlphaGo and its successor AlphaGo Zero (Silver
+et al., 2017) can process complex game situations
+involving shape, capturing races, sente, tesuji, and
+even ladders, existing interpretability work has focused on the moves that agents play, rather than the
+internal computations responsible for those moves.
+Our work instead proposes a structural analysis
+by correlating the internal representations of gameplaying agents with information from a naturallyoccurring dataset of move-by-move annotations.
+In this paper, we use linear probing to explore
+how domain-specific concepts are represented by
+game-playing agents. Because we do not have
+ground-truth labels explaining which concepts are
+relevant to a given game state, we collect a dataset
+of 10K annotated Go games (§2.1). Given a board
+state and its associated comment, we produce binary feature vectors summarizing which game phenomena (e.g., ko, atari) are mentioned in the comment and use pattern-based feature extractors to
+determine which phenomena are actually present
+on the board (§2.2). We then feed board states into
+two policy networks with disparate architectures
+and training methods (§3.1) to obtain intermediate representations. Finally, we use linear probes
+(§3.2) to predict the binary feature vectors from our
+policy networks. Generally, we find that patternbased features are encoded in the early layers of
+policy networks, while natural language features
+are most easily extracted from the later layers of
+both models. 
+We presented a new dataset of move-by-move annotations for the game of Go and showed how it
+can be used to interpret game-playing agents via
+linear probes. We observed large differences in
+the predictability of pattern-based features, which
+are extracted from the board state, and keywordbased features, which are extracted from comments.
+In particular, pattern-based features were easily extracted from lower layers of the policy networks we
+studied, while keyword-based features were most
+predictable from later layers. At a high level, this
+finding reinforces the intuition that written annotations describe high-level, abstract patterns that cannot easily be described by a rule-based approach.
+Accordingly, we argue there is much to learn from
+this annotation data: future work might attempt to
+correlate policy network representations with richer
+representations of language, such as those provided
+by a large language model. Future work might also
+explore whether similar approaches could be used
+to improve game-playing agents, either by exposing their weaknesses or providing an auxiliary training signal. We also expect similar approaches may
+be viable in other reinforcement learning domains
+with existing natural language data.

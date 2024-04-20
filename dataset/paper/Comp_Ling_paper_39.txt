@@ -1,0 +1,79 @@
+Neural data-driven models have managed to perform comparably well in various tasks related to
+natural language processing (Eberts and Ulges,
+2020; Adoma et al., 2020). Nevertheless, the definition and the training processes of such models
+have made their decision non-natively interpretable.
+Several studies and experiments have been conducted to address this issue and explain the decision outputs of such models in various tasks such
+as emotion prediction (Yang et al., 2019), question
+answering (Ramnath et al., 2020), the classification of linguistic styles (Hayati et al., 2021), and
+lexicon-based sentiment prediction (Hwang and
+Lee, 2021).
+Sentiment analysis is a well-established field
+of research that aims to extract sentiment and its
+aspects in a written text. Its performances have
+reached acceptable levels in different domains such
+as product reviews (Xie et al., 2020), movie reviews
+(Thongtan and Phienthrakul, 2019), social media
+(Tam et al., 2021), financial news (Takala et al.,
+2014), and Personal Narratives (PN) which are recollections of real-life events that are experienced
+by the narrator (Tammewar et al., 2019).
+Recently, a deeper understanding of the expressed sentiment and emotion has gained growing
+research interest (Tammewar et al., 2020, 2021;
+Bayerl et al., 2021; Ding et al., 2020). These works
+focus on a more fine-grained analysis on the expressed sentiment/emotion by identifying the Emotion Carriers (entities or actions that explain, cause
+or carry the emotion). The concept of Emotion Carriers (EC) was first introduced by Tammewar et al.
+(2020) for German PNs. In this genre of text, the
+identification of ECs may help in better understanding the emotional state of the narrator and what
+has caused distress (Tammewar et al., 2021; Bayerl
+et al., 2021).
+In this work, we address the problem of analyzing and comparing the text chunks used by machines and humans when predicting the sentiment
+polarity of text documents. For this study we have
+selected the Personal Narrative genre since it is
+rich with entities and relations which are sparsely
+distributed. We identify the tokens that contribute
+to the model’s prediction according to their attributions given by Integrated Gradients (Sundarara jan et al., 2017), an Explainable-AI technique, and
+compare them with the tokens tagged as ECs by the
+human annotator. Our comparative analysis shows
+the human annotator identifies the tokens that explain an event or its participants as the carrier of
+emotions and sentiments, which clearly convey the
+activation of the emotional state in the narrator,
+even though they are not explicitly manifesting a
+sentiment. Meanwhile, the DNN model bases its
+decision mostly on a limited set of tokens which
+belong to the category of emotion-laden words (see
+Figure 1 for an example).
+We summarize our contribution as follows:
+• The annotation of a dataset of Personal Narratives to obtain the sentiment polarity, and the
+Emotion Carriers at the Functional Unit (Bunt
+et al., 2010) level to take into account the communicative functions. This is in contrast with
+traditional annotation at the document or sentence level.
+• The evaluation of the annotation results and
+training a sentiment prediction model based
+on the AlBERTo architecture (Polignano et al.,
+2019) using the annotated data, as well as a
+baseline architecture for the task of Emotion
+Carrier Detection.
+• The study of the tokens contributing to the
+model’s prediction of sentiment and comparing them with the Emotion Carriers identified
+by the human annotator, and the contribution
+of the Emotion Carriers in the prediction of
+the model by their  influence on the output
+confidence score.
+
+In this work we studied whether the sentiment prediction decision of DNN models can be explained
+by Emotion Carriers, spans of text that convey and
+carry emotions. We have focused our study on Personal Narratives which encompass real-life events
+and experiences that activate the emotional state
+of the narrator. We have collected a dataset of Personal Narratives and conducted an annotation task
+for sentiment polarity and Emotion Carrier selection at the Functional Unit for each narrative. We
+have then developed a sentiment prediction model
+based on AlBERTo architecture (Polignano et al.,
+2019). We have investigated whether the decision
+of the model is based on the Emotion Carriers that
+the human annotator selected to explain the sentiment of the text. Furthermore, we have studied the
+impact of the Emotion Carriers on the confidence
+score of the polarity prediction model. Our analysis has shown that the human annotators tend to
+focus on manifestation of emotions through words
+describing actions and events that have activated
+the emotional state of the narrator. However, the
+model bases its decision on explicit representations
+of sentiment such as emotion-laden words.

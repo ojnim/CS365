@@ -1,0 +1,60 @@
+Pretrained language models (Radford et al., 2019;
+Devlin et al., 2018; Yang et al., 2019; Raffel et al.,
+2019) improve performance on a wide range of
+natural language understanding (NLU) tasks. A
+widely-used method, fine-tuning, updates the entire set of model parameters for a target task.
+While fine-tuning obtains good performance, it is
+memory-consuming during training because gradients and optimizer states for all parameters must be
+stored. Moreover, keeping a copy of model parameters for each task during inference is inconvenient
+since pre-trained models are usually large.
+Prompting, on the other hand, freezes all parameters of a pre-trained model and uses a natural language prompt to query a language model (Brownet al., 2020). For example, for sentiment analysis, we can concatenate a sample (e.g., "Amazing
+movie!") with a prompt “This movie is [MASK]”
+and ask the pre-trained language model to predict
+the probabilities of masked token being “good” and
+“bad” to decide the sample’s label. Prompting requires no training at all and stores one single copy
+of model parameters. However, discrete prompting (Shin et al., 2020; Gao et al., 2020) can lead to
+suboptimal performance in many cases compared
+to fine-tuning.
+Prompt tuning2
+is an idea of tuning only the
+continuous prompts. Specifically, Liu et al. (2021);
+Lester et al. (2021) proposed to add trainable
+continuous embeddings (also called continuous
+prompts) to the original sequence of input word
+embeddings. Only the continuous prompts are updated during training. While prompt tuning improves over prompting on many tasks (Liu et al.,
+2021; Lester et al., 2021; Zhong et al., 2021), it still
+underperforms fine-tuning when the model size is
+not large, specifically less than 10 billion parameters (Lester et al., 2021). Moreover, as shown in
+our experiments, prompt tuning performs poorly
+compared to fine-tuning on several hard sequence
+labeling tasks such as extractive question answering (Cf. Section 4.2).
+Our main contribution in this paper is a novel
+empirical finding that properly optimized prompt
+tuning can be comparable to fine-tuning universally
+across various model scales and NLU tasks. In contrast to observations in prior work, our discovery
+reveals the universality and potential of prompt
+tuning for NLU.
+Technically, our approach P-tuning v2 is not conceptually novel. It can be viewed as an optimized
+and adapted implementation of Deep Prompt Tuning (Li and Liang, 2021; Qin and Eisner, 2021)
+designed for generation and knowledge probing.
+The most significant improvement originates from
+appling continuous prompts for every layer of the
+pretrained model, instead of the mere input layer.
+Deep prompt tuning increases the capacity of continuous prompts and closes the gap to fine-tuning
+across various settings, especially for small models
+and hard tasks. Moreover, we present a series of
+critical details of optimization and implementation
+to ensure finetuning-comparable performance.
+Experimental results show that P-tuning v2
+matches the performance of fine-tuning at different model scales ranging from 300M to 10B parameters and on various hard sequence tagging
+tasks such as extractive question answering and
+named entity recognition. P-tuning v2 has 0.1%
+to 3% trainable parameters per task compared to
+fine-tuning, which substantially reduces training
+time memory cost and per-task storage cost.
+We present P-tuning v2, a prompt tuning method.
+Despite its relatively limited technical novelty, it
+contributes to a novel finding that prompt tuning
+can be comparable to fine-tuning universally across
+scales (from 330M to 10B parameters) and tasks.
+With high accuracy and parameter efficiency, PTuning v2 can be a potential alternative for finetuning and a strong baseline for future work.

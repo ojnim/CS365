@@ -1,0 +1,58 @@
+1 Introduction
+Information disseminated in social media such as
+Twitter can be useful for addressing several realworld problems like rumour detection, disaster
+management, and opinion mining. Most of these
+problems involve classifying social media posts
+into different categories based on their textual content. For example, classifying the veracity of tweets
+as False, True, or unverified allows one to debunk
+the rumours evolving in social media (Zubiaga
+et al., 2018a). However, social media text is extremely noisy with informal grammar, typographical errors, and irregular vocabulary. In addition,
+the character limit (240 characters) imposed by social media such as Twitter make it even harder to
+perform text classification.
+Social media text classification, such as rumour stance classification1
+(Qazvinian et al.,
+2011; Zubiaga et al., 2016; Lukasik et al., 2019)
+can be addressed effectively using sequence labelling models such as long short term memory
+(LSTM) networks (Zubiaga et al., 2016; Augenstein et al., 2016; Kochkina et al., 2017; Zubiaga
+et al., 2018b,a; Dey et al., 2018; Liu et al., 2019;
+Tian et al., 2020). Though they consider the sequential nature of tweets, they ignore the temporal
+aspects associated with the tweets. The time gap
+between tweets varies a lot and LSTMs ignore this
+irregularity in tweet occurrences. They are discrete
+state space models where hidden representation
+changes from one tweet to another without considering the time difference between the tweets.
+Considering the exact times at which tweets occur
+can play an important role in determining the label.
+If the time gap between tweets is large, then the
+corresponding labels may not influence each other
+but can have a very high influence if they are closer.
+We propose to use recurrent neural ordinary differential equations (RNODE) (Rubanova
+et al., 2019) and developed a novel approach bidirectional RNODE (Bi-RNODE), which can naturally consider the temporal information to perform
+time sensitive classification of social media posts.
+NODE (Chen et al., 2018) is a continuous depth
+deep learning model that performs transformation
+of feature vectors in a continuous manner using ordinary differential equation solvers. NODEs bring
+parameter efficiency and address model selection
+in deep learning to a great extent. RNODE generalizes RNN by extending NODE for time-series
+data by considering temporal information associated with the sequential data. Hidden representations are changed continuously by considering the
+temporal information.
+We propose to use RNODE for the task of sequence labeling of posts, which considers arrival
+times of the posts for updating hidden representations and for classifying the post. In addition, we
+propose a novel model, Bi-RNODE, which considers not only information from the past but also
+from the future in predicting the label of the post.
+Here, continuously evolving hidden representations
+in the forward and backward directions in time are
+combined and used to predict the post label. We
+show the effectiveness of the proposed models on
+the rumour stance classification problem in Twitter using the RumourEval-2019 (Derczynski et al.,
+2019) dataset. We found RNODE and Bi-RNODE
+can improve the social media text classification by
+effectively making use of the temporal information
+and is better than LSTMs and gated recurrent units
+(GRU) with temporal features.
+5 Conclusion
+We proposed RNODE, Bi-RNODE models for sequence classification of social media posts. These
+models consider temporal information of the posts
+and hidden representation are evolved as solution
+to ODE. Through experiments, we show these models perform better than LSTMs on rumour stance
+classification problem in Twitter

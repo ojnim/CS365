@@ -1,0 +1,63 @@
+A piece of text can contain several events. In order
+to truly understand this text, it is vital to understand
+the subevent and temporal relationships between
+these events.(Mani et al., 2006a; Chambers and Jurafsky, 2008; Yang and Mitchell, 2016; Araki et al.,
+2014). Both temporal as well as subevent relationships between events satisfy transitivity constraints.
+For instance, in the paragraph, “There was a storm
+in Atlanta in the night. All the phone lines were
+dead the next morning. I was not able to call for
+help.”, the event marked by dead occurs after storm
+and the event call occurs after dead. Hence, by transitivity, a sensible model should predict that storm
+occurs before call. In general, predicting the relationships between different events in the same
+document, such that these predictions are coherent,
+is a challenging task (Xiang and Wang, 2019).
+While previous works utilizing neural methods
+provide competitive performances, these works employ multi-class classification per event-pair independently and are not capable of preserving logical
+constraints among relations, such as asymmetry
+and transitivity, during training time (Ning et al.,
+2019; Han et al., 2019a). To address this problem
+Wang et al. (2020) introduced a constrained learning framework, wherein they enforce logical coherence amongst the predicted event types through
+extra loss terms. However, since the coherence is
+enforced in a soft manner using extra loss terms,
+there is still room for incoherent predictions. In
+this work, we show that it is possible to induce coherence in a much stronger manner by representing
+each event using a box (Dasgupta et al., 2020).
+We propose a Box Event Relation Extraction
+(BERE) model that represents each event as a probabilistic box. Box embeddings (Vilnis et al., 2018)
+were first introduced to embed nodes of hierarchical graphs into Euclidean space using hyperrectangles, which were later extended to jointly
+embed multi-relational graphs and perform logical
+queries (Patel et al., 2020; Abboud et al., 2020). In
+this paper, we represent an event complex using
+boxes–one box for each event. Such a model enforces logical constraints by design (see Section
+3.2). Consider the example in Figure 1. Event dead
+(e2) follows event storm (e1), indicating e2 is child
+of e1. Boxes can represent these two events as separate representations and by making e1 to contain
+the box e2, which not only preserve their semantics, but also can infer its antisymmetric relation
+that event e1 is a parent of event e2. However, the
+previous models based on pairwise-event vector
+representations have no real relation between representations (e1, e2) and (e2, e1) that can guarantee
+the logical coherence.
+Experimental results over three datasets, HiEve,
+MATRES, and Event StoryLine (ESL), show that
+our method improves the baseline (Wang et al.,2020) by 6.8 and 4.2 F1 points on single task and
+by 0.95 and 3.29 F1 points on joint task over symmetrical dataset. Furthermore, our BERE model
+decreases conjunctive constraint violation rate by
+85∼88% on a single-task models compared to plain
+vector model, and by 38% on joint-task model compared to constraint-injected vector model. We show
+that handling antisymmetric constraints, that exist among different relations, can satisfy the interwined conjunctive constraints and encourage the
+model towards a coherent output across temporal
+and subevent tasks.
+We propose a novel event relation extraction
+method that utilizes box representation. The proposed method projects each event to a box representation which can model asymmetric relationships
+between entities. Utilizing this box representation,
+we design our relation extraction model to handle antisymmetry between events of (ei
+, ej ) and
+(ej , ei) which previous vector models were not capable of. Through experiments on three datasets,
+we show that the proposed method not only free of
+antisymmetric constraint violations but also have
+drastically lower conjunctive constraint violations
+while maintaining similar or better performance
+in F1. Our model shows that box representation
+can provide coherent classification across multiple event relations and opens up future research
+for box representations in event-to-event relation
+classification.

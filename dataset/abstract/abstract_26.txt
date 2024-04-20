@@ -1,0 +1,11 @@
+Model-based, reference-free evaluation metrics
+have been proposed as a fast and cost-effective
+approach to evaluate Natural Language Generation (NLG) systems. Despite promising recent
+results, we find evidence that reference-free
+evaluation metrics of summarization and dialog generation may be relying on spurious
+correlations with measures such as word overlap, perplexity, and length. We further observe
+that for text summarization, these metrics have
+high error rates when ranking current state-ofthe-art abstractive summarization systems. We
+demonstrate that these errors can be mitigated
+by explicitly designing evaluation metrics to
+avoid spurious features in reference-free evaluation.

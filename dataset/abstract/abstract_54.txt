@@ -1,0 +1,13 @@
+In this paper we present a set of multilingual experiments tackling the task of Stance Detection
+in five different languages: English, Spanish,
+Catalan, French and Italian. Furthermore, we
+study the phenomenon of stance with respect
+to six different targets – one per language, and
+two different for Italian – employing a variety
+of machine learning algorithms that primarily
+exploit morphological and syntactic knowledge
+as features, represented throughout the format
+of Universal Dependencies. Results seem to
+suggest that the methodology employed is not
+beneficial per se, but might be useful to exploit
+the same features with a different methodology
